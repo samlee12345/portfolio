@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=Work+Sans:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Work Sans', sans-serif;
+  color: #1b1c19;
+  background: #faf9f4;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Newsreader', serif;
+}
+
+.font-label {
+  font-family: 'Space Grotesk', sans-serif;
+}
+
+/* Side nav links */
+.nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #737785;
+  text-decoration: none;
+  display: block;
+  padding: 0.25rem 0;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: #1b1c19;
+}
+
+.nav-link.active {
+  color: #0056c5;
+  font-weight: 600;
+}
+
+/* Right margin callouts */
+.margin-callout {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.55;
+  color: #c2c6d6;
+  transition: color 0.3s;
+}
+
+.margin-callout.active {
+  color: #0056c5;
+}
+
+/* Section subtitle (one-liner under section title) */
+.section-subtitle {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 1.2rem;
+  color: #c2c6d6;
+  line-height: 1.5;
+  margin-bottom: 1.75rem;
+  transition: color 0.3s;
+}
+
+.section-subtitle.active {
+  color: #0056c5;
+}
+
+/* Timeline */
+.timeline-step {
+  display: flex;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.timeline-step::before {
+  content: '';
+  position: absolute;
+  left: 0.375rem;
+  top: 1.25rem;
+  bottom: -1rem;
+  width: 1px;
+  background: #c2c6d6;
+}
+
+.timeline-step:last-child::before {
+  display: none;
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0;
+  top: 0.25rem;
+  width: 0.8rem;
+  height: 0.8rem;
+  border-radius: 50%;
+  background: #0056c5;
+  flex-shrink: 0;
+}
+
+/* Stat blocks */
+.stat-block {
+  background: #faf9f4;
+  padding: 2rem 1.75rem;
+}
+
+.stat-number {
+  font-family: 'Newsreader', serif;
+  font-size: 3.5rem;
+  color: #0056c5;
+  display: block;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+/* Status tags */
+.tag {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.6rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  white-space: nowrap;
+}
+
+.tag-shipped {
+  color: #0056c5;
+  background: #e3eeff;
+}
+
+.tag-backlog {
+  color: #737785;
+  background: #e9e8e3;
+}
+
+/* Stretched link — makes entire positioned parent clickable */
+.stretched-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+/* Placeholder blocks */
+.placeholder-block {
+  background: #e9e8e3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Section layout */
+.section-grid {
+  margin-bottom: 6rem;
+}
+
+/* Top nav */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: rgba(250, 249, 244, 0.88);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(194, 198, 214, 0.2);
+}
+
+.site-nav-inner {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 1.25rem 3rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-nav-logo {
+  font-family: 'Newsreader', serif;
+  font-size: 1.1rem;
+  font-style: italic;
+  font-weight: 600;
+  color: #1b1c19;
+  text-decoration: none;
+}
+
+.site-nav-links {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.site-nav-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #737785;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-nav-link:hover {
+  color: #1b1c19;
+}
+
+.site-nav-link.active {
+  color: #0056c5;
+  font-weight: 600;
+  border-bottom: 1.5px solid #0056c5;
+  padding-bottom: 2px;
+}
+
+/* Footer */
+.site-footer {
+  background: #f4f4ef;
+  margin-top: 4rem;
+  padding: 3rem;
+  text-align: center;
+}
+
+.site-footer-name {
+  font-family: 'Newsreader', serif;
+  font-style: italic;
+  font-size: 1.1rem;
+  color: #1b1c19;
+  margin-bottom: 1.25rem;
+}
+
+.site-footer-links {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+}
+
+.site-footer-link {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #737785;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.site-footer-link:hover {
+  color: #1b1c19;
+}
