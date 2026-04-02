@@ -136,6 +136,12 @@ h1, h2, h3, .font-serif {
   background: #e9e8e3;
 }
 
+.tag-dev {
+  color: #424654;
+  background: #e9e8e3;
+  border-left: 2px solid #0056c5;
+}
+
 /* Stretched link — makes entire positioned parent clickable */
 .stretched-link::after {
   content: '';
