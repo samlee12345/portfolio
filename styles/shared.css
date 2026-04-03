@@ -280,8 +280,12 @@ h1, h2, h3, .font-serif {
 .cs-decisions              { display:flex; flex-direction:column; gap:2rem; margin-bottom:2.5rem; }
 .cs-decision               { border-left:2px solid #0056c5; padding-left:1.5rem; }
 .cs-decision-secondary     { border-left:2px solid #c2c6d6; padding-left:1.5rem; }
+.cs-validation             { border-right:2px solid #0056c5; padding-right:1.5rem; text-align:right; }
+.cs-validation-red         { border-right:2px solid #ba1a1a; padding-right:1.5rem; text-align:right; }
 .cs-decision-label         { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#0056c5; margin-bottom:0.5rem; }
 .cs-decision-label-secondary { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#737785; margin-bottom:0.5rem; }
+.cs-validation-label       { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#0056c5; margin-bottom:0.5rem; }
+.cs-validation-label-red   { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#ba1a1a; margin-bottom:0.5rem; }
 .cs-decision-title         { font-weight:600; font-size:1rem; margin-bottom:0.5rem; }
 
 /* Placeholder inner content */

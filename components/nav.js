@@ -17,7 +17,7 @@
   placeholder.outerHTML = `
     <nav class="site-nav">
       <div class="site-nav-inner">
-        <a href="index.html" class="site-nav-logo">Sam Lee</a>
+        <a href="index.html" class="site-nav-logo">Samantha Lee</a>
         <div class="site-nav-links">${links}</div>
       </div>
     </nav>`;
