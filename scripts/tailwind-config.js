@@ -2,7 +2,7 @@ tailwind.config = {
   theme: {
     extend: {
       colors: {
-        "primary": "#0056c5",
+        "primary": "#A08FEF",
         "primary-container": "#2d6fe4",
         "on-surface": "#1b1c19",
         "on-surface-variant": "#424654",

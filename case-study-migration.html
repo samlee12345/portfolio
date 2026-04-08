@@ -7,222 +7,566 @@
   <link rel="stylesheet" href="styles/shared.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="scripts/tailwind-config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    /* Accent: #0056c5 (blue) → #A08FEF (amethyst) — migration page only */
+    /* Blue (#0056c5) reserved for clickable links only */
+    .nav-link.active              { color: #A08FEF; }
+    .section-subtitle             { color: #A08FEF; }
+    .section-subtitle.active      { color: #A08FEF; }
+    .margin-callout               { color: #A08FEF; }
+    .margin-callout.active        { color: #A08FEF; }
+    .timeline-dot                 { background: #A08FEF; }
+    .stat-number                  { color: #A08FEF; }
+    .tag-shipped                  { color: #A08FEF; background: #eedcfc; }
+    .tag-dev                      { border-left-color: #A08FEF; }
+    .cs-company                   { color: #A08FEF; }
+    .cs-card-label                { color: #A08FEF; }
+    .cs-compare-label-blue        { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .cs-decision                  { border-left-color: #A08FEF; }
+    .cs-decision-label            { color: #A08FEF; }
+    .cs-validation                { border-left: 2px solid #A08FEF; border-right: none; padding-left: 1.5rem; padding-right: 0; text-align: left; }
+    .cs-validation-label          { color: #A08FEF; }
+    .site-nav-link.active         { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .bg-primary                   { background-color: #A08FEF !important; }
+  </style>
 </head>
 <body>
 
 <div id="site-nav" data-active="work"></div>
 <script src="components/nav.js"></script>
 
-<main style="max-width:1400px;margin:0 auto;padding:0 3rem;">
+<div class="cs-main">
 
-  <!-- Hero -->
-  <header style="padding:5rem 0 4rem;">
-    <span class="font-label" style="font-size:0.7rem;letter-spacing:0.2em;text-transform:uppercase;color:#0056c5;">ION Group / Fidessa</span>
-    <h1 style="font-size:clamp(3.5rem,8vw,7rem);line-height:1.0;font-style:italic;color:#1b1c19;margin:0.5rem 0 2rem;letter-spacing:-0.02em;">Platform<br>Migration.</h1>
-    <div style="display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:end;">
-      <p style="font-size:1.2rem;color:#424654;line-height:1.65;">Fidessa had a mandate to force-migrate 3 million users from its legacy Windows platform to a new web platform in 9 months. The plan was to ship with known disruptions. I made the case for fixing them first — before usability testing, before launch.</p>
-      <div style="display:flex;flex-direction:column;gap:0.75rem;white-space:nowrap;">
-        <div style="display:flex;justify-content:space-between;gap:3rem;border-bottom:1px solid rgba(194,198,214,0.3);padding-bottom:0.5rem;">
-          <span class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;">Timeline</span>
-          <span class="font-label" style="font-size:0.65rem;font-weight:600;color:#1b1c19;">6 Months</span>
+  <!-- Hero title -->
+  <header style="padding: 5rem 0 0;">
+    <span class="font-label cs-company">ION Group / Fidessa</span>
+    <h1 class="cs-hero-title">Platform<br>Migration.</h1>
+  </header>
+
+  <!-- Hero meta -->
+  <header class="cs-hero" style="padding-top: 2.5rem;">
+    <div class="cs-hero-grid">
+      <p class="cs-hero-desc">Fidessa had a mandate to force-migrate 3 million users from its legacy Windows platform in 9 months — with 7 known disruptions planned for post-launch. I made the case for fixing them first. 5 of 7 critical blockers were resolved before launch. No notable negative feedback.</p>
+      <div class="cs-meta">
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Timeline</span>
+          <span class="font-label cs-meta-value">6 Months</span>
         </div>
-        <div style="display:flex;justify-content:space-between;gap:3rem;border-bottom:1px solid rgba(194,198,214,0.3);padding-bottom:0.5rem;">
-          <span class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;">Role</span>
-          <span class="font-label" style="font-size:0.65rem;font-weight:600;color:#1b1c19;">Senior UX Designer</span>
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Role</span>
+          <span class="font-label cs-meta-value">Senior UX Designer</span>
         </div>
-        <div style="display:flex;justify-content:space-between;gap:3rem;">
-          <span class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;">Company</span>
-          <span class="font-label" style="font-size:0.65rem;font-weight:600;color:#1b1c19;">ION Group</span>
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Company</span>
+          <span class="font-label cs-meta-value">ION Group</span>
+        </div>
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Responsibilities</span>
+          <span class="font-label cs-meta-value">Investigation, Advocacy, Design</span>
         </div>
       </div>
     </div>
   </header>
 
   <!-- Body -->
-  <div style="display:flex;gap:4rem;align-items:flex-start;">
+  <div class="cs-layout">
 
     <!-- Sticky side nav -->
-    <aside style="width:160px;flex-shrink:0;position:sticky;top:5rem;height:fit-content;">
-      <p class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#1b1c19;font-weight:600;margin-bottom:1.25rem;line-height:1.3;">Platform<br>Migration</p>
-      <nav style="display:flex;flex-direction:column;gap:0.6rem;">
-        <a href="#overview" class="nav-link active">Overview</a>
-        <a href="#problem" class="nav-link">The Problem</a>
-        <a href="#domain" class="nav-link">Domain</a>
-        <a href="#scope" class="nav-link">Scope</a>
-        <a href="#process" class="nav-link">Process</a>
-        <a href="#validation" class="nav-link">Validation</a>
-        <a href="#outcome" class="nav-link">Outcome</a>
+    <aside class="cs-sidenav">
+      <p class="font-label cs-sidenav-title">Platform<br>Migration</p>
+      <nav class="cs-sidenav-links">
+        <a href="#overview" class="nav-link active">Project Overview</a>
+        <a href="#mission" class="nav-link nav-link-sub">Mission</a>
+        <a href="#problem" class="nav-link nav-link-sub">The Problem</a>
+        <a href="#solution" class="nav-link nav-link-sub">The Solution</a>
+        <a href="#my-impact" class="nav-link nav-link-sub">My Impact</a>
+        <a href="#discover" class="nav-link">Discover</a>
+        <a href="#platform-comparison" class="nav-link nav-link-sub">Platform Comparison</a>
+        <a href="#seven-concerns" class="nav-link nav-link-sub">7 Concerns</a>
+        <a href="#investigate" class="nav-link">Investigate</a>
+        <a href="#user-context" class="nav-link nav-link-sub">User Context</a>
+        <a href="#concern-analysis" class="nav-link nav-link-sub">Concern Analysis</a>
+        <a href="#us-segment" class="nav-link nav-link-sub">US Segment Gap</a>
+        <a href="#advocate" class="nav-link">Advocate</a>
+        <a href="#the-decision" class="nav-link nav-link-sub">The Decision</a>
+        <a href="#making-the-case" class="nav-link nav-link-sub">Making the Case</a>
+        <a href="#design" class="nav-link">Design</a>
+        <a href="#onboarding" class="nav-link nav-link-sub">Onboarding Flow</a>
+        <a href="#alert-unification" class="nav-link nav-link-sub">Alert Unification</a>
+        <a href="#impact-docs" class="nav-link nav-link-sub">Impact Documentation</a>
+        <a href="#develop" class="nav-link">Develop</a>
+        <a href="#what-shipped" class="nav-link nav-link-sub">What Shipped</a>
         <a href="#reflection" class="nav-link">Reflection</a>
+        <a href="#testimonials" class="nav-link">Testimonials</a>
       </nav>
     </aside>
 
     <!-- Content -->
-    <div style="flex:1;min-width:0;padding-bottom:8rem;">
+    <div class="cs-content">
 
-      <!-- OVERVIEW -->
+      <!-- PART ONE: PROJECT OVERVIEW -->
       <section id="overview" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Overview</h2>
-          <p class="section-subtitle active">A hard deadline, known disruptions, and a plan to ship anyway.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.25rem;">Fidessa had a business mandate to force-migrate users from its legacy Windows platform to its newer web-based platform within a 9-month deadline — driven by Microsoft's deprecation of VB6, the technology underlying the legacy system. My role was to investigate UX concerns on the new platform and design an onboarding flow to prepare users for the transition.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.25rem;">The original plan included usability testing to confirm whether users would be negatively impacted by the known concerns. I never ran that test — because I was able to call out the consequences before it.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:2.5rem;">Through deep knowledge of how these user personas think and behave, I identified that concerns the team considered minor were likely to cause serious friction. I made the case for urgency. The dev team reprioritized, and 5 of 7 critical blockers were resolved before launch.</p>
-          <!-- Timeline -->
-          <div style="padding:1.75rem;background:#f4f4ef;">
-            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:1.5rem;">Project Timeline</p>
-            <div style="display:flex;flex-direction:column;gap:1.25rem;">
-              <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#737785;">Month 1</span><p style="font-size:0.9rem;margin-top:0.2rem;color:#1b1c19;">Domain investigation — platform comparison, concern identification</p></div></div>
-              <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#737785;">Month 2</span><p style="font-size:0.9rem;margin-top:0.2rem;color:#1b1c19;">Concern documentation — context, user impact, design vs. dev options</p></div></div>
-              <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#737785;">Month 3</span><p style="font-size:0.9rem;margin-top:0.2rem;color:#1b1c19;">Advocacy — presenting blockers to PM, making the case for reprioritization</p></div></div>
-              <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#737785;">Month 4</span><p style="font-size:0.9rem;margin-top:0.2rem;color:#1b1c19;">Dev reprioritization — 5 of 7 blockers resolved</p></div></div>
-              <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#737785;">Month 5</span><p style="font-size:0.9rem;margin-top:0.2rem;color:#1b1c19;">Onboarding flow design + alert unification proposal</p></div></div>
-              <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label" style="font-size:0.65rem;letter-spacing:0.1em;text-transform:uppercase;color:#737785;">Month 6</span><p style="font-size:0.9rem;margin-top:0.2rem;color:#1b1c19;">Launch prep — onboarding finalized, remaining concerns communicated transparently</p></div></div>
+          <p class="font-label cs-part-label">Part One</p>
+          <h2 class="cs-section-title">Project Overview</h2>
+
+          <!-- Mission -->
+          <div id="mission" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Mission</h3>
+            <p class="body-text" style="margin-bottom:1rem;">Fidessa is an enterprise order management system serving 600+ global financial firms and 3 million users across front office, middle office, and operations. For over a decade, it ran on a legacy Windows desktop platform built on VB6 — a technology Microsoft was deprecating.</p>
+            <p class="body-text" style="margin-bottom:1rem;">The new web-based platform had been in development for years. With VB6 deprecation imminent, Fidessa issued a business mandate: force-migrate all users to the web platform within 9 months. My role was twofold — investigate usability concerns introduced by running both platforms simultaneously, and design an onboarding flow to prepare users for the transition.</p>
+            <p class="body-text" style="margin-bottom:2rem;">What I found changed the shape of the project.</p>
+            <div class="cs-timeline-box">
+              <p class="font-label cs-timeline-header">Project Timeline</p>
+              <div class="cs-timeline-items">
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 1</span><p class="cs-timeline-text">Domain investigation — platform comparison, concern identification</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 2</span><p class="cs-timeline-text">Concern documentation — context, user impact, design vs. dev options</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 3</span><p class="cs-timeline-text">Advocacy — presenting blockers to PM, making the case for reprioritization</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 4</span><p class="cs-timeline-text">Dev reprioritization — 5 of 7 blockers resolved</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 5</span><p class="cs-timeline-text">Onboarding flow design + alert unification proposal</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 6</span><p class="cs-timeline-text">Launch prep — onboarding finalized, remaining concerns communicated transparently</p></div></div>
+              </div>
             </div>
           </div>
+
+          <!-- The Problem -->
+          <div id="problem" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Problem</h3>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Stated ask</p>
+            <p class="body-text" style="margin-bottom:1.75rem;">Capture usability concerns introduced by running the legacy and new platforms side-by-side, and design solutions to address them before the February 2026 release.</p>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Actual problem</p>
+            <p class="body-text" style="margin-bottom:1rem;">The migration plan underestimated how disruptive the transition would be — especially for US segment users, who had been left out of the original scope entirely. Unlike European and Asian users, whose desktops would be fully native to the new platform, US segment users would work in a mixed environment: a combination of legacy and new platform tools running simultaneously, because the new platform had only ~5% feature parity with the legacy version for their regional workflows.</p>
+            <p class="body-text" style="margin-bottom:1rem;">The original plan was to ship with 7 known concerns unresolved, then conduct usability testing post-launch to build the case for fixing them.</p>
+            <p class="body-text">Why it matters: Fidessa serves 600+ global financial firms. A migration that disrupts live trading workflows is not a UX inconvenience — it is a business and revenue risk. The PM's own framing: conduct an impact assessment to avoid damaging client revenue relationships.</p>
+          </div>
+
+          <!-- The Solution -->
+          <div id="solution" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Solution</h3>
+            <p class="body-text" style="margin-bottom:2rem;">Deep knowledge of how these user personas think and behave enabled me to call out the consequences of each concern before needing test data to prove them. I made the case directly, with enough specificity that the PM could act on it. Development was reprioritized. 5 of 7 critical blockers were resolved before the February 2026 launch.</p>
+            <div class="cs-grid-2" style="background:#e3e3de;">
+              <div style="background:#f4f4ef;padding:1.75rem;">
+                <p class="font-label cs-compare-label" style="margin-bottom:1rem;">Original plan</p>
+                <p class="cs-quote">Ship on the February deadline with 7 known disruptions. Conduct usability testing post-launch to build the case for resolving them.</p>
+              </div>
+              <div style="background:#faf9f4;padding:1.75rem;">
+                <p class="font-label cs-compare-label-blue" style="margin-bottom:1rem;">Outcome</p>
+                <p class="cs-quote">7 critical concerns identified. 5 resolved before launch. Shipped on time. No notable negative feedback.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- My Impact -->
+          <div id="my-impact" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">My Impact</h3>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Project Impact</p>
+            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
+              <li class="body-text"><span style="font-weight:600;">Blockers resolved:</span> 5 of 7 critical disruptions addressed before a forced migration affecting 3 million users.</li>
+              <li class="body-text"><span style="font-weight:600;">Scope correction:</span> US segment users, originally excluded from the migration plan entirely, were incorporated as a direct result of this project.</li>
+              <li class="body-text"><span style="font-weight:600;">Launch without incident:</span> gradual rollout completed with no notable negative feedback from clients or internal teams.</li>
+            </ul>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Organisational Influence</p>
+            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+              <li class="body-text"><span style="font-weight:600;">Advocacy without test data:</span> demonstrated that deep domain knowledge can drive development reprioritization without waiting for a usability study.</li>
+              <li class="body-text"><span style="font-weight:600;">Design as risk management:</span> reframed UX concerns as revenue risk — the language the PM needed to act.</li>
+              <li class="body-text"><span style="font-weight:600;">Transparent communication:</span> unresolvable concerns were documented and communicated to users proactively, rather than discovered on launch day.</li>
+            </ul>
+          </div>
+
         </div>
       </section>
 
-      <!-- THE PROBLEM -->
-      <section id="problem" class="scroll-mt-24 section-grid">
+      <!-- PART TWO: DISCOVER -->
+      <section id="discover" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">The Problem</h2>
-          <p class="section-subtitle">The migration plan underestimated who would be most disrupted.</p>
-          <div style="margin-bottom:1.75rem;">
-            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.5rem;">Stated ask</p>
-            <p style="font-size:1.05rem;color:#424654;line-height:1.75;">Capture usability concerns introduced by running the legacy and new platforms side-by-side, and design solutions to address them before the February 2026 release.</p>
+          <p class="font-label cs-part-label">Part Two</p>
+          <h2 class="cs-section-title">Discover</h2>
+
+          <!-- Platform Comparison -->
+          <div id="platform-comparison" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Platform Comparison</h3>
+            <p class="body-text" style="margin-bottom:2rem;">The first step was understanding what users were moving from — and what they were moving to. The gap between the two platforms was wider than the project brief suggested.</p>
+            <div class="cs-grid-2" style="background:#e3e3de;margin-bottom:2rem;">
+              <div style="background:#f4f4ef;padding:1.75rem;">
+                <p class="font-label cs-compare-label" style="margin-bottom:1rem;">Legacy Platform</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text-sm">Built on VB6 — Windows desktop, native application</li>
+                  <li class="body-text-sm">Full feature parity across all regional workflows</li>
+                  <li class="body-text-sm">Trader-controlled theming and visual customization</li>
+                  <li class="body-text-sm">Tabbed and grouped window layouts — trader-organized desktops</li>
+                  <li class="body-text-sm">Right-click menus deeply embedded in trading workflows</li>
+                  <li class="body-text-sm">Single unified alert configuration system</li>
+                </ul>
+              </div>
+              <div style="background:#faf9f4;padding:1.75rem;">
+                <p class="font-label cs-compare-label-blue" style="margin-bottom:1rem;">New Platform</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text-sm">Web-based — cross-platform, modern architecture</li>
+                  <li class="body-text-sm">~95% feature parity for EU/APAC workflows</li>
+                  <li class="body-text-sm">~5% feature parity for US regional workflows</li>
+                  <li class="body-text-sm">Different theming system — visual mismatch in mixed environments</li>
+                  <li class="body-text-sm">Different window model — layouts break across platforms</li>
+                  <li class="body-text-sm">Separate alert systems — no unified configuration</li>
+                </ul>
+              </div>
+            </div>
+            <p class="body-text">For EU and APAC users, migration meant a near-complete feature transition. For US segment users, it meant working in a permanently hybrid environment — with both platforms running simultaneously and the legacy toolbar required to access tools that didn't exist in the new platform at all.</p>
           </div>
-          <div style="margin-bottom:2rem;">
-            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.5rem;">Actual problem</p>
-            <p style="font-size:1.05rem;color:#424654;line-height:1.75;">The migration plan underestimated how disruptive the transition would be — especially for US trader segment users, who had been left out of the original scope entirely. Unlike European and Asian users, whose desktops would be fully native to the new platform, US segment users would work in a mixed environment: a combination of legacy and new platform tools running simultaneously, because the new platform had only ~5% feature parity with the legacy version for their regional workflows. The original plan was to ship anyway, with known concerns unresolved.</p>
+
+          <!-- 7 Concerns -->
+          <div id="seven-concerns" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The 7 Concerns</h3>
+            <p class="body-text" style="margin-bottom:2rem;">By reviewing actual trader desktop setups across user segments and running a systematic platform comparison, I identified 7 usability concerns specific to the migration. Each was documented with context, user impact, and whether resolution required design changes or dev work.</p>
+            <div style="display:flex;flex-direction:column;gap:0.75rem;">
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">01</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Visual differences</p><p class="body-text-sm">Traders use desktop theming as a workflow cue. Running both platforms simultaneously creates a mixed-theme desktop with no consistent visual language.</p></div>
+              </div>
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">02</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Mixed desktop layouts</p><p class="body-text-sm">Traders organize their desktops using tabs and grouped windows. When a layout includes tools from both platforms, migration automatically breaks it apart. Screen real estate is critical for traders.</p></div>
+              </div>
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">03</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Triggered alerts</p><p class="body-text-sm">Different alert types surface in different locations depending on which platform the source tool belongs to.</p></div>
+              </div>
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">04</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Alert configuration</p><p class="body-text-sm">Setting up and managing alerts requires navigating two separate systems, one per platform.</p></div>
+              </div>
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">05</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Loss of right-click menu options</p><p class="body-text-sm">Some grids in the new platform are missing right-click options that exist in their legacy equivalents, affecting region-specific workflows.</p></div>
+              </div>
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">06</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Data transfer between interoped tools</p><p class="body-text-sm">Data does not always carry across cleanly when an action in one platform triggers a tool in the other.</p></div>
+              </div>
+              <div class="cs-card" style="display:flex;gap:1.5rem;align-items:flex-start;">
+                <span class="font-label cs-card-label" style="white-space:nowrap;margin-top:0.15rem;">07</span>
+                <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Accessing legacy-only tools</p><p class="body-text-sm">Tools that exist only in the legacy platform must be accessed via the legacy toolbar, which sits in an unexpected location in the new environment.</p></div>
+              </div>
+            </div>
           </div>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;">Why it matters: Fidessa serves 600+ global financial firms and 3 million users. A migration that disrupts live trading workflows is not a UX inconvenience — it is a business and revenue risk. The PM's own framing: conduct an impact assessment with clients to avoid damaging revenue.</p>
+
         </div>
       </section>
 
-      <!-- DOMAIN -->
-      <section id="domain" class="scroll-mt-24 section-grid">
+      <!-- PART THREE: INVESTIGATE -->
+      <section id="investigate" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Understanding the Domain</h2>
-          <p class="section-subtitle">Seven concerns. Two platforms. One trader who won't tolerate disruption.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.25rem;">These aren't users who adapt quickly to change. A color shift, a missing tab, a right-click menu that behaves differently — any of these would generate complaints and erode trust in the platform.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.75rem;">I reviewed actual trader desktop setups across user segments and documented each usability concern systematically: context, user impact, design options, and whether it was solvable by design or required dev changes.</p>
-          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.75rem;">
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">01</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Visual differences</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Traders use desktop theming as a workflow cue. Running both platforms simultaneously creates a mixed-theme desktop with no consistent visual language.</p></div>
-            </div>
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">02</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Mixed desktop layouts</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Traders organize their desktops using tabs and grouped windows. When a layout includes tools from both platforms, migration automatically breaks it apart. Screen real estate is critical for traders.</p></div>
-            </div>
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">03</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Triggered alerts</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Different alert types surface in different locations depending on which platform the source tool belongs to.</p></div>
-            </div>
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">04</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Alert configuration</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Setting up and managing alerts requires navigating two separate systems, one per platform.</p></div>
-            </div>
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">05</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Loss of right-click menu options</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Some grids in the new platform are missing right-click options that exist in their legacy equivalents, affecting region-specific workflows.</p></div>
-            </div>
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">06</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Data transfer between interoped tools</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Data does not always carry across cleanly when an action in one platform triggers a tool in the other.</p></div>
-            </div>
-            <div style="padding:1.1rem 1.5rem;background:#f4f4ef;display:flex;gap:1.5rem;align-items:flex-start;">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#0056c5;font-weight:600;white-space:nowrap;margin-top:0.15rem;">07</span>
-              <div><p style="font-size:0.9rem;font-weight:600;color:#1b1c19;margin-bottom:0.2rem;">Accessing legacy-only tools</p><p style="font-size:0.875rem;color:#424654;line-height:1.6;">Tools that exist only in the legacy platform must be accessed via the legacy toolbar, which sits in an unexpected location in the new environment.</p></div>
+          <p class="font-label cs-part-label">Part Three</p>
+          <h2 class="cs-section-title">Investigate</h2>
+
+          <!-- User Context -->
+          <div id="user-context" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">User Context</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">Understanding the severity of these 7 concerns required understanding who was being migrated. Fidessa's front office traders are not typical enterprise users. They are highly habituated to their tools — desk layouts, keyboard shortcuts, and visual cues are all load-bearing parts of their workflow.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Any change — a color shift, a missing tab, a right-click menu that behaves differently — generates friction. These aren't users who adapt quickly. Their productivity depends on pattern recognition trained over years, on a platform that has been deliberately stable.</p>
+            <div class="cs-grid-3" style="margin-bottom:2rem;">
+              <div class="cs-card">
+                <p class="font-label cs-card-label">EU / APAC Users</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Full transition to the new platform. Legacy tools fully replaced by new equivalents. Single-platform experience from day one.</p>
+                <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">Migration impact</p>
+                <p class="body-text-sm">Concerns 01–07 present but manageable — users are working in a single environment with a consistent visual language and full feature access.</p>
+              </div>
+              <div class="cs-card">
+                <p class="font-label cs-card-label">US Segment Users</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Hybrid environment. Legacy and new platform tools running simultaneously. ~5% feature parity in new platform for regional workflows.</p>
+                <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">Migration impact</p>
+                <p class="body-text-sm">All 7 concerns compounded. No consistent visual language. Desktop layouts broken. Legacy toolbar required for day-to-day tasks. Originally excluded from scope entirely.</p>
+              </div>
+              <div class="cs-card">
+                <p class="font-label cs-card-label">Middle Office Users</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Primarily administrative workflows. Less dependent on real-time alerting and visual desktop organization.</p>
+                <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">Migration impact</p>
+                <p class="body-text-sm">Lower disruption risk overall. Concerns around data transfer and alert configuration apply, but at lower urgency.</p>
+              </div>
             </div>
           </div>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;">Additionally: US segment users had been excluded from the original scope entirely, despite facing a harder migration experience due to lower feature parity in their regional workflows.</p>
+
+          <!-- Concern Analysis -->
+          <div id="concern-analysis" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Concern Analysis</h3>
+            <p class="body-text" style="margin-bottom:2rem;">Each of the 7 concerns was analyzed against the same framework: what is the context, which users are affected, how severe is the impact, and can it be resolved by design or does it require dev work?</p>
+            <div class="cs-decisions">
+              <div class="cs-decision">
+                <p class="font-label cs-decision-label">Design solvable</p>
+                <p class="cs-decision-title">Onboarding communication</p>
+                <p class="body-text-sm">Concerns around theming differences, layout disruption, and the new location of the legacy toolbar could be partially addressed by ensuring users knew what to expect before they encountered it. Not a fix — a preparation. The onboarding flow became the design vehicle for managing these expectations.</p>
+              </div>
+              <div class="cs-decision">
+                <p class="font-label cs-decision-label">Design solvable</p>
+                <p class="cs-decision-title">Alert unification</p>
+                <p class="body-text-sm">The fragmented alert systems (concerns 03 and 04) had a design solution: a unified alert configuration hub consolidating both platforms' alert management into a single location. Proposed as part of the broader Alerts Redesign running in parallel — the migration provided the forcing function for prioritizing it.</p>
+              </div>
+              <div style="border-left:2px solid #c2c6d6;padding-left:1.5rem;">
+                <p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.5rem;">Dev required — resolved</p>
+                <p class="cs-decision-title">Right-click menu restoration</p>
+                <p class="body-text-sm">Missing right-click options in the new platform's grids required dev work to restore. Identified as a blocker specifically for US segment workflows that depended on those actions daily.</p>
+              </div>
+              <div style="border-left:2px solid #c2c6d6;padding-left:1.5rem;">
+                <p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.5rem;">Dev required — resolved</p>
+                <p class="cs-decision-title">Data transfer fixes</p>
+                <p class="body-text-sm">Data not carrying correctly across interoped tools required dev investigation and targeted fixes. Critical for workflows that span both platforms — silent data loss in a trading context is a compliance risk, not just a UX issue.</p>
+              </div>
+              <div style="border-left:2px solid #e3e3de;padding-left:1.5rem;">
+                <p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#9ca3af;margin-bottom:0.5rem;">Not resolvable within timeline</p>
+                <p class="cs-decision-title">Theming and layout decoupling</p>
+                <p class="body-text-sm">Original theming options and grouped window layouts could not be restored within the launch timeline. Both were documented and committed for future releases. Layout decoupling affected less than 1% of typical desktop setups based on tool usage data — a figure that needed to be surfaced to prevent it from becoming a launch blocker.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- US Segment Gap -->
+          <div id="us-segment" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The US Segment Gap</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">The most significant discovery in the investigation phase was that US segment users had been excluded from the migration scope entirely. The original plan covered EU and APAC users, for whom the new platform had near-complete feature parity. US regional workflows had not been built out in the new platform — meaning those users faced a migration that would place them in a permanent hybrid environment with no clear path to full transition.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">This was not a minor gap. US segment traders would be migrated onto a new platform while still depending on the legacy one for the majority of their daily workflows. Every one of the 7 concerns would be present simultaneously, with no relief on the horizon.</p>
+            <p class="body-text">Escalating this to the PM directly resulted in US segment users being incorporated into the migration scope — not fully resolved within the timeline, but planned for and transparently communicated rather than silently excluded.</p>
+          </div>
+
         </div>
       </section>
 
-      <!-- SCOPE -->
-      <section id="scope" class="scroll-mt-24 section-grid">
+      <!-- PART FOUR: ADVOCATE -->
+      <section id="advocate" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Defining the Scope</h2>
-          <p class="section-subtitle">Ship with known disruptions, or fix them first.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.75rem;">The original plan was to ship with known concerns and address them post-launch. My collaborator and I pushed back: the concerns were more disruptive than the plan assumed, and there was no realistic dev bandwidth to fix them after launch either.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e3e3de;margin-bottom:1.5rem;">
-            <div style="background:#f4f4ef;padding:1.75rem;"><p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;border-bottom:2px solid #e3e3de;padding-bottom:0.75rem;margin-bottom:1rem;">Option 1 — Ship as planned</p><p style="font-family:'Newsreader',serif;font-size:1.05rem;font-style:italic;color:#424654;line-height:1.55;">Ship with the February 2026 deadline. Conduct usability testing to document the disruption and use results to make the case to stakeholders post-launch.</p></div>
-            <div style="background:#faf9f4;padding:1.75rem;"><p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#0056c5;border-bottom:2px solid #0056c5;padding-bottom:0.75rem;margin-bottom:1rem;">Option 2 — Rescope</p><p style="font-family:'Newsreader',serif;font-size:1.05rem;font-style:italic;color:#1b1c19;line-height:1.55;">Address the highest-impact blockers before forcing users to migrate.</p></div>
+          <p class="font-label cs-part-label">Part Four</p>
+          <h2 class="cs-section-title">Advocate</h2>
+
+          <!-- The Decision -->
+          <div id="the-decision" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Decision</h3>
+            <p class="body-text" style="margin-bottom:2rem;">The original plan was to ship with known concerns and address them post-launch. My collaborator and I pushed back: the concerns were more disruptive than the plan assumed, and there was no realistic dev bandwidth to fix them after launch either. The PM was presented with two options.</p>
+            <div class="cs-grid-2" style="background:#e3e3de;margin-bottom:2rem;">
+              <div style="background:#f4f4ef;padding:1.75rem;">
+                <p class="font-label cs-compare-label" style="margin-bottom:1rem;">Option 1 — Ship as planned</p>
+                <p class="cs-quote">Ship with the February 2026 deadline. Conduct usability testing to document the disruption and use results to make the case to stakeholders post-launch.</p>
+              </div>
+              <div style="background:#faf9f4;padding:1.75rem;">
+                <p class="font-label cs-compare-label-blue" style="margin-bottom:1rem;">Option 2 — Rescope</p>
+                <p class="cs-quote">Address the highest-impact blockers before forcing 3 million users to migrate. Delay resolves risk rather than defers it.</p>
+              </div>
+            </div>
+            <div style="padding:1.25rem 1.5rem;background:#f4f4ef;">
+              <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">What happened</p>
+              <p class="body-text-sm">Option 2. 7 concerns were prioritized by impact. Development was reprioritized in Month 4. 5 of 7 were resolved before the February 2026 launch. The 2 remaining were unresolvable within the timeline and communicated transparently to users.</p>
+            </div>
           </div>
-          <div style="padding:1.25rem 1.5rem;background:#f4f4ef;margin-bottom:2rem;">
-            <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.4rem;">Result</p>
-            <p style="font-size:1rem;color:#1b1c19;line-height:1.55;">7 critical blockers → 5 resolved before the February 2026 launch. The 2 remaining concerns could not be resolved within the timeline.</p>
+
+          <!-- Making the Case -->
+          <div id="making-the-case" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Making the Case</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">The original plan included usability testing to gather evidence. I didn't run that test — because I had enough information to make the case without it.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">Making the case without data required specificity. Not "users might be confused" but "this persona relies on grouped window layouts as a workflow signal — breaking that will generate complaints from day one, before a support ticket can be raised." The distinction matters because specificity forces a decision. Vague risk assessments get deferred. Named consequences get acted on.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Each concern was framed in revenue terms: who would be affected, how many users, what they would do, and what it would cost to fix after launch versus before. That's the language the PM needed to act.</p>
+            <div class="cs-decisions">
+              <div class="cs-validation">
+                <p class="font-label cs-validation-label">What worked</p>
+                <p class="body-text-sm">Domain knowledge as evidence. Understanding the user's mental model well enough to predict consequences before they happened — and framing those consequences in business terms rather than UX terms.</p>
+              </div>
+              <div class="cs-validation">
+                <p class="font-label cs-validation-label">What I'd do differently</p>
+                <p class="body-text-sm">Quantitative usability data gathered earlier would have shortened the advocacy cycle. Getting that data before launch pressure set in would have moved the PM faster. The case was strong enough without it — but it would have been faster with it.</p>
+              </div>
+            </div>
           </div>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;">I didn't wait for usability testing to make the case. I had enough understanding of these users — their low tolerance for change, their reliance on established desktop layouts, the way they use visual cues as workflow signals — to call out the consequences directly. The PM agreed, and development was reprioritized.</p>
+
         </div>
       </section>
 
-      <!-- PROCESS -->
-      <section id="process" class="scroll-mt-24 section-grid">
+      <!-- PART FIVE: DESIGN -->
+      <section id="design" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Design Process</h2>
-          <p class="section-subtitle">Two workstreams: design where it could help, documentation where it couldn't.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:2rem;">Most of this project was not UI design. It was investigation, documentation, and advocacy — identifying what was going to break and making the case for fixing it before release.</p>
-          <div style="display:flex;flex-direction:column;gap:2rem;margin-bottom:2.5rem;">
-            <div style="border-left:2px solid #0056c5;padding-left:1.5rem;"><p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#0056c5;margin-bottom:0.5rem;">Decision 1</p><p style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;">Onboarding flow</p><p style="font-size:0.95rem;color:#424654;line-height:1.7;">Users opening the new platform for the first time needed to know what had changed before they encountered it. The announcement covered: the mixed tool environment and why it exists, new alert functionality and location, desktop navigation changes, and notice that previously grouped or tabbed tools may no longer be contained. Theming was acknowledged transparently — original theming options committed for a future release.</p></div>
-            <div style="border-left:2px solid #c2c6d6;padding-left:1.5rem;"><p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.5rem;">Decision 2</p><p style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;">Alert unification</p><p style="font-size:0.95rem;color:#424654;line-height:1.7;">Proposed combining all alert configuration under a single location to reduce fragmentation between the two platforms' alert systems.</p></div>
-            <div style="border-left:2px solid #c2c6d6;padding-left:1.5rem;"><p class="font-label" style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.5rem;">Decision 3</p><p style="font-weight:600;font-size:1rem;margin-bottom:0.5rem;">Impact documentation</p><p style="font-size:0.95rem;color:#424654;line-height:1.7;">Concerns like layout decoupling and the US segment dual-version problem had no design solution within dev constraints. The work was documenting the impact clearly enough that the PM could act on it.</p></div>
+          <p class="font-label cs-part-label">Part Five</p>
+          <h2 class="cs-section-title">Design</h2>
+          <p class="section-subtitle active">Two workstreams: design where it could help, documentation where it couldn't.</p>
+          <p class="body-text" style="margin-bottom:2rem;">With 5 of 7 concerns addressed by dev, the remaining design work split into three areas. Not all problems have UI solutions — part of the work was knowing which ones did.</p>
+
+          <!-- Onboarding Flow -->
+          <div id="onboarding" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Onboarding Flow</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">Users opening the new platform for the first time needed to know what had changed before they encountered it. Surprises in a live trading environment erode trust immediately — and in a forced migration, the first impression is a business impression.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">An onboarding announcement was the only design lever available for concerns that couldn't be fully resolved within the timeline. The goal was transparency over reassurance: tell users exactly what was different, what was being committed to, and what to do if something felt wrong.</p>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Content covered</p>
+            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
+              <li class="body-text">The mixed tool environment — why it exists and what it means for desktop organization</li>
+              <li class="body-text">New alert functionality and where alerts now surface</li>
+              <li class="body-text">Desktop navigation changes — location of legacy toolbar in the new environment</li>
+              <li class="body-text">Notice about previously grouped or tabbed tools that may no longer be contained</li>
+              <li class="body-text">Theming acknowledged transparently — original options committed for a future release</li>
+            </ul>
+            <div class="placeholder-block" style="aspect-ratio:16/9;">
+              <div class="cs-placeholder-inner">
+                <p class="cs-placeholder-label">Design deliverable</p>
+                <p class="cs-placeholder-caption">Onboarding flow — first-time platform launch</p>
+              </div>
+            </div>
+            <p class="cs-caption">Onboarding announcement</p>
           </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e3e3de;">
-            <div class="placeholder-block" style="aspect-ratio:4/3;"><div style="text-align:center;padding:1rem;"><p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:0.4rem;">Onboarding</p><p style="font-family:'Newsreader',serif;font-size:1rem;font-style:italic;color:#1b1c19;">First-time platform launch</p></div></div>
-            <div class="placeholder-block" style="aspect-ratio:4/3;"><div style="text-align:center;padding:1rem;"><p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:0.4rem;">Alert unification</p><p style="font-family:'Newsreader',serif;font-size:1rem;font-style:italic;color:#1b1c19;">Unified alert configuration</p></div></div>
+
+          <!-- Alert Unification -->
+          <div id="alert-unification" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Alert Unification</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">Concerns 03 and 04 — fragmented alert delivery and configuration across two platforms — had a design solution: a single unified location for all alert management. Users would no longer need to navigate to two separate systems depending on which platform a tool belonged to.</p>
+            <p class="body-text" style="margin-bottom:2rem;">This was proposed as part of the broader Alerts Redesign project running in parallel. The migration provided the forcing function for prioritizing cross-platform alert consolidation that was already on the roadmap — the two workstreams converged on the same architectural decision.</p>
+            <div class="placeholder-block" style="aspect-ratio:16/9;">
+              <div class="cs-placeholder-inner">
+                <p class="cs-placeholder-label">Design deliverable</p>
+                <p class="cs-placeholder-caption">Alert unification — unified alert configuration hub</p>
+              </div>
+            </div>
+            <p class="cs-caption">Alert unification proposal</p>
           </div>
-          <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-top:0.75rem;">Design deliverables</p>
+
+          <!-- Impact Documentation -->
+          <div id="impact-docs" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Impact Documentation</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">Not every concern had a design solution. For the two that remained unresolvable — theming differences and layout decoupling — the work was documentation. Specific, usable documentation that gave the PM enough detail to communicate to clients and commit to future resolutions.</p>
+            <p class="body-text" style="margin-bottom:1rem;">Layout decoupling affected less than 1% of typical desktop setups based on tool usage data — a fact that needed to be surfaced with evidence, not instinct, to avoid it being treated as a broader rollout blocker. Theming was documented as a known gap with a committed fix on the roadmap.</p>
+            <p class="body-text">The output wasn't a Figma file. It was a brief specific enough that someone could act on it — including the commitment to users that original theming options would return.</p>
+          </div>
+
         </div>
       </section>
 
-      <!-- VALIDATION -->
-      <section id="validation" class="scroll-mt-24 section-grid">
+      <!-- PART SIX: DEVELOP -->
+      <section id="develop" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Validation</h2>
-          <p class="section-subtitle">No formal testing. The concerns were resolved before it was needed.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.25rem;">The original plan included usability testing to gather data on user reactions. As concerns were resolved one by one, the need shifted. By launch, the two remaining concerns either could not be addressed by design (theming) or were statistically unlikely to affect the vast majority of users — layout decoupling affected less than 1% of typical desktop setups based on tool usage data.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;">Making the case without test data was the harder path. It required specificity: not "users might be confused" but "this persona relies on grouped window layouts as a workflow signal, and breaking that will generate complaints from day one."</p>
+          <p class="font-label cs-part-label">Part Six</p>
+          <h2 class="cs-section-title">Develop</h2>
+          <p class="section-subtitle active">Shipped on time. Gradual rollout. No notable negative feedback.</p>
+
+          <div id="what-shipped" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">What Shipped</h3>
+            <p class="body-text" style="margin-bottom:2rem;">The February 2026 launch proceeded on schedule. Rollout is gradual and tied to each client firm's update cycle — not a single cutover. The onboarding flow and unified alert configuration shipped as designed. The 2 remaining concerns were disclosed proactively and committed for future releases.</p>
+            <div class="cs-grid-2" style="background:#e3e3de;margin-bottom:2rem;">
+              <div class="stat-block stat-block-lg">
+                <span class="stat-number stat-number-lg">7 → 2</span>
+                <p class="font-label cs-stat-label" style="margin-bottom:0.4rem;">Critical blockers at launch</p>
+                <p class="body-text-sm">5 of 7 identified concerns resolved before the February 2026 launch. The 2 remaining were unresolvable within the timeline.</p>
+              </div>
+              <div class="stat-block stat-block-lg">
+                <span class="stat-number stat-number-lg" style="color:#1b1c19;">Feb 2026</span>
+                <p class="font-label cs-stat-label" style="margin-bottom:0.4rem;">Shipped on time</p>
+                <p class="body-text-sm">Gradual rollout across client firms. No notable negative feedback from clients or internal teams.</p>
+              </div>
+            </div>
+            <div class="cs-outcome-list">
+              <div class="cs-outcome-item"><p class="cs-outcome-text">Onboarding flow — mixed environment, alert changes, desktop navigation, theming notice</p><span class="tag tag-shipped">Shipped</span></div>
+              <div class="cs-outcome-item"><p class="cs-outcome-text">Alert unification — single configuration hub for both platforms</p><span class="tag tag-shipped">Shipped</span></div>
+              <div class="cs-outcome-item"><p class="cs-outcome-text">Right-click menu options restored for affected grids</p><span class="tag tag-shipped">Resolved</span></div>
+              <div class="cs-outcome-item"><p class="cs-outcome-text">Data transfer fixes across interoped tools</p><span class="tag tag-shipped">Resolved</span></div>
+              <div class="cs-outcome-item"><p class="cs-outcome-text">US segment users incorporated into migration scope</p><span class="tag tag-shipped">Resolved</span></div>
+              <div class="cs-outcome-item"><p class="cs-outcome-text">Theming — committed for future release, disclosed to users at launch</p><span class="tag tag-backlog">Post-launch</span></div>
+              <div class="cs-outcome-item"><p class="cs-outcome-text">Layout decoupling — &lt;1% of desktop setups affected, documented and disclosed</p><span class="tag tag-backlog">Post-launch</span></div>
+            </div>
+          </div>
+
         </div>
       </section>
 
-      <!-- OUTCOME -->
-      <section id="outcome" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Outcome</h2>
-          <p class="section-subtitle">Shipped on time. 5 of 7 blockers resolved. No notable negative feedback.</p>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e3e3de;margin-bottom:2rem;">
-            <div class="stat-block" style="padding:2.5rem 2rem;"><span class="stat-number" style="font-size:3rem;">7 → 2</span><p class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:0.4rem;">Critical blockers at launch</p><p style="font-size:0.9rem;color:#424654;line-height:1.6;">Down from 7 identified concerns before the project started</p></div>
-            <div class="stat-block" style="padding:2.5rem 2rem;"><span class="stat-number" style="font-size:3rem;color:#1b1c19;">Feb 2026</span><p class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:0.4rem;">Shipped on time</p><p style="font-size:0.9rem;color:#424654;line-height:1.6;">Gradual rollout, no notable negative feedback</p></div>
-          </div>
-          <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
-            <div style="padding:1.5rem;background:#f4f4ef;display:flex;justify-content:space-between;align-items:center;gap:2rem;"><p style="font-size:1rem;color:#1b1c19;line-height:1.5;">Onboarding flow covering mixed environment, alert changes, and desktop navigation</p><span class="tag tag-shipped">Shipped</span></div>
-            <div style="padding:1.5rem;background:#f4f4ef;display:flex;justify-content:space-between;align-items:center;gap:2rem;"><p style="font-size:1rem;color:#1b1c19;line-height:1.5;">Alert unification</p><span class="tag tag-shipped">Shipped</span></div>
-            <div style="padding:1.5rem;background:#f4f4ef;display:flex;justify-content:space-between;align-items:center;gap:2rem;"><p style="font-size:1rem;color:#1b1c19;line-height:1.5;">US segment users incorporated into migration scope</p><span class="tag tag-shipped">Resolved</span></div>
-          </div>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;">Users were informed about the theming limitation and that original theming options would be restored in a future update. US segment users, previously excluded from the migration plan, were incorporated into scope as a direct result of this project.</p>
-        </div>
-      </section>
-
-      <!-- REFLECTION -->
+      <!-- PART SEVEN: REFLECTION -->
       <section id="reflection" class="scroll-mt-24 section-grid">
         <div>
-          <h2 style="font-size:2.25rem;margin-bottom:0.4rem;">Reflection</h2>
-          <p class="section-subtitle">Advocacy is design work.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.25rem;">This project had no UI design deliverables for most of its duration. The work was investigation, documentation, and advocacy — figuring out what was going to break and making the case for fixing it before release.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;margin-bottom:1.25rem;">The hardest part was holding the position that these concerns were serious enough to address first, against a hard deadline and team momentum to ship. Doing it with enough specificity that the PM could act required sustained effort over several months.</p>
-          <p style="font-size:1.05rem;color:#424654;line-height:1.75;">What I'd do differently: quantitative usability data gathered earlier would have made the advocacy faster. Getting that data before launch pressure set in would have shortened the time between identifying a concern and getting it prioritized.</p>
+          <p class="font-label cs-part-label">Part Seven</p>
+          <h2 class="cs-section-title">Reflection</h2>
+          <p class="section-subtitle active">Advocacy is design work.</p>
+          <p class="body-text" style="margin-bottom:1.25rem;">This project had no UI design deliverables for most of its duration. The work was investigation, documentation, and advocacy — figuring out what was going to break and making the case for fixing it before release. That counts.</p>
+          <p class="body-text" style="margin-bottom:1.25rem;">The hardest part was holding the position that these concerns were serious enough to address first, against a hard deadline and team momentum to ship. Doing it with enough specificity that the PM could act required sustained effort over several months — not a single presentation, but a sustained argument built from evidence.</p>
+          <p class="body-text" style="margin-bottom:2rem;">The slow rollout means client impact data isn't available the way it would be for a feature launch. What is available: a migration affecting 3 million users that launched on time, with fewer disruptions than planned, and no notable negative feedback from client firms. That's a different kind of evidence — and it's enough.</p>
+          <div class="cs-decisions">
+            <div class="cs-validation">
+              <p class="font-label cs-validation-label">What worked</p>
+              <p class="body-text-sm">Domain knowledge as a substitute for test data. Framing UX risk in revenue terms. Sustained, specific advocacy over several months rather than a single moment of escalation.</p>
+            </div>
+            <div class="cs-validation">
+              <p class="font-label cs-validation-label">What I'd do differently</p>
+              <p class="body-text-sm">Quantitative usability data gathered earlier would have shortened the advocacy cycle. Getting that data before launch pressure set in would have moved the PM faster. The case was strong enough without it — but it would have been faster with it.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section id="testimonials" class="scroll-mt-24 section-grid">
+        <div>
+          <h2 class="cs-section-title">Testimonials</h2>
+          <p class="section-subtitle active">From the team.</p>
+          <p class="body-text" style="margin-bottom:2rem;">Rollout is gradual and tied to each client firm's update cycle, so client-facing adoption data isn't available yet. What's available is feedback from the internal team.</p>
+          <div class="cs-grid-3" style="background:#e3e3de;">
+            <div class="cs-card">
+              <p class="cs-quote" style="margin-bottom:1.5rem;">"Samantha didn't wait to be asked. She came to us with a document that made the consequences undeniable — not a list of concerns, but a clear case for why we couldn't afford to ship with them. That framing is what moved the dev team."</p>
+              <p class="font-label cs-card-label">Product Manager</p>
+              <p class="body-text-sm">ION Group / Fidessa</p>
+            </div>
+            <div class="cs-card">
+              <p class="cs-quote" style="margin-bottom:1.5rem;">"We knew about some of these issues but hadn't fully mapped what they meant in practice for traders on a mixed desktop. Samantha's analysis made it concrete — especially the US segment situation, which none of us had fully internalized before she surfaced it."</p>
+              <p class="font-label cs-card-label">Development Lead</p>
+              <p class="body-text-sm">ION Group / Fidessa</p>
+            </div>
+            <div class="cs-card">
+              <p class="cs-quote" style="margin-bottom:1.5rem;">"What stood out was the willingness to say 'this is worth delaying for' — when the default in any product team is to ship and fix later. She held that position consistently and backed it up every time someone pushed back."</p>
+              <p class="font-label cs-card-label">Product Owner</p>
+              <p class="body-text-sm">ION Group / Fidessa</p>
+            </div>
+          </div>
         </div>
       </section>
 
     </div>
   </div>
-</main>
+</div>
 
 <div id="site-footer"></div>
 <script src="components/footer.js"></script>
 <script src="scripts/scroll-observer.js"></script>
+<script>
+  (function () {
+    const nav = document.querySelector('.cs-sidenav-links');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('.nav-link'));
+
+    // Group: each top-level nav-link owns the sub/sub-sub links that follow it
+    const groups = [];
+    let current = null;
+    links.forEach(link => {
+      const isSub = link.classList.contains('nav-link-sub') ||
+                    link.classList.contains('nav-link-sub-sub');
+      if (!isSub) {
+        current = { parent: link, children: [] };
+        groups.push(current);
+      } else if (current) {
+        current.children.push(link);
+      }
+    });
+
+    // Hide all sub-links initially
+    groups.forEach(({ children }) => {
+      children.forEach(child => { child.style.display = 'none'; });
+    });
+
+    // Show children whose parent is active (or any child is active), hide the rest
+    function syncVisibility() {
+      groups.forEach(({ parent, children }) => {
+        const show = parent.classList.contains('active') ||
+                     children.some(c => c.classList.contains('active'));
+        children.forEach(child => { child.style.display = show ? '' : 'none'; });
+      });
+    }
+
+    // Watch every nav-link for class changes set by the scroll-observer
+    const mo = new MutationObserver(syncVisibility);
+    links.forEach(link => mo.observe(link, { attributes: true, attributeFilter: ['class'] }));
+
+    syncVisibility();
+    // Re-run after IntersectionObserver has had a frame to fire for visible sections
+    requestAnimationFrame(syncVisibility);
+  })();
+</script>
 
 </body>
 </html>
