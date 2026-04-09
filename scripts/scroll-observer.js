@@ -7,6 +7,25 @@
   // Build ordered list of section IDs from DOM order (for callout index)
   const sectionIds = Array.from(sections).map(s => s.id);
 
+  // Collapse sub-links that belong to inactive top-level nav sections
+  function collapseNav() {
+    const sidenav = document.querySelector('.cs-sidenav-links');
+    if (!sidenav) return;
+
+    let currentTopLink = null;
+    Array.from(sidenav.children).forEach(link => {
+      const isSub = link.classList.contains('nav-link-sub') || link.classList.contains('nav-link-sub-sub');
+      if (!isSub) {
+        currentTopLink = link;
+      } else if (currentTopLink) {
+        link.style.display = currentTopLink.classList.contains('active') ? '' : 'none';
+      }
+    });
+  }
+
+  // Set initial collapse state on page load
+  collapseNav();
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (!entry.isIntersecting) return;
@@ -23,6 +42,8 @@
         const isParent = parentSection && href === '#' + parentSection.id && !link.classList.contains('nav-link-sub');
         link.classList.toggle('active', isMatch || isParent);
       });
+
+      collapseNav();
 
       // Update margin callouts (keyed to section index, not subsections)
       if (idx !== -1) {

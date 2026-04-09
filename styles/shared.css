@@ -251,15 +251,15 @@ h1, h2, h3, .font-serif {
 .cs-subsection-block { margin-top:3rem; }
 .body-text          { font-size:1.05rem; color:#424654; line-height:1.75; }
 .body-text-sm       { font-size:0.9rem; color:#424654; line-height:1.6; }
-.cs-field-label     { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#737785; margin-bottom:0.5rem; }
+.cs-field-label     { font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:#737785; margin-bottom:0.5rem; }
 .cs-stat-label      { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:#737785; }
 .cs-caption         { font-size:0.6rem; letter-spacing:0.12em; text-transform:uppercase; color:#737785; margin-top:0.75rem; }
 
 /* Timeline */
 .cs-timeline-box    { margin-top:2.5rem; padding:1.75rem; background:#f4f4ef; }
-.cs-timeline-header { font-size:0.65rem; letter-spacing:0.15em; text-transform:uppercase; color:#737785; margin-bottom:1.5rem; }
+.cs-timeline-header { font-size:0.8rem; letter-spacing:0.15em; text-transform:uppercase; color:#737785; margin-bottom:1.5rem; }
 .cs-timeline-items  { display:flex; flex-direction:column; gap:1.25rem; }
-.cs-month-label     { font-size:0.65rem; letter-spacing:0.1em; text-transform:uppercase; color:#737785; }
+.cs-month-label     { font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:#737785; }
 .cs-timeline-text   { font-size:0.9rem; margin-top:0.2rem; color:#1b1c19; }
 
 /* Grids */

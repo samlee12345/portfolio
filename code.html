@@ -16,6 +16,10 @@
         .font-label { font-family: 'Space Grotesk', sans-serif; }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .nav-link { color: #9ca3af; text-decoration: none; transition: color 0.2s; }
+        .nav-link:hover { color: #1b1c19; }
+        .nav-link.active { color: #A08FEF; font-weight: 600; }
+        .nav-link-sub { padding-left: 1.25rem; font-size: 0.65rem; }
     </style>
 <script id="tailwind-config">
       tailwind.config = {
@@ -126,31 +130,33 @@
 <p class="font-serif italic text-lg text-on-surface">Project Narrative</p>
 <p class="font-label text-[10px] uppercase tracking-widest text-outline">Case Study Index</p>
 </div>
-<nav class="flex flex-col gap-4 font-label text-xs uppercase tracking-widest">
-<a class="text-blue-700 dark:text-blue-400 font-bold scale-105 origin-left transition-transform flex items-center gap-2" href="#overview">
+<nav class="flex flex-col gap-3 font-label text-xs uppercase tracking-widest" id="sidenav">
+<a class="nav-link flex items-center gap-2" href="#overview">
 <span class="material-symbols-outlined text-sm">info</span> Overview
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#problem">
+</a>
+<a class="nav-link flex items-center gap-2" href="#problem">
 <span class="material-symbols-outlined text-sm">warning</span> The Problem
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#domain">
+</a>
+<a class="nav-link flex items-center gap-2" href="#domain">
 <span class="material-symbols-outlined text-sm">domain</span> Domain
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#scope">
+</a>
+<a class="nav-link flex items-center gap-2" href="#scope">
 <span class="material-symbols-outlined text-sm">zoom_out</span> Scope
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#process">
+</a>
+<a class="nav-link flex items-center gap-2" href="#process">
 <span class="material-symbols-outlined text-sm">account_tree</span> Process
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#validation">
+</a>
+<a class="nav-link nav-link-sub" href="#process-blueprint">The Blueprint</a>
+<a class="nav-link nav-link-sub" href="#process-prototype">The Prototype</a>
+<a class="nav-link flex items-center gap-2" href="#validation">
 <span class="material-symbols-outlined text-sm">fact_check</span> Validation
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#outcome">
+</a>
+<a class="nav-link flex items-center gap-2" href="#outcome">
 <span class="material-symbols-outlined text-sm">emoji_events</span> Outcome
-                    </a>
-<a class="text-stone-400 dark:text-stone-600 hover:text-stone-900 dark:hover:text-stone-200 hover:translate-x-1 transition-all duration-300 flex items-center gap-2" href="#reflection">
+</a>
+<a class="nav-link flex items-center gap-2" href="#reflection">
 <span class="material-symbols-outlined text-sm">psychology</span> Reflection
-                    </a>
+</a>
 </nav>
 </div>
 </aside>
@@ -270,7 +276,7 @@
                         The solution required balancing three distinct personas: the Day Trader (speed), the Risk Manager (compliance), and the Portfolio Manager (long-term strategy). Instead of building separate flows, I designed a modular Hub where the UI adapted based on the user's focus.
                     </p>
 <div class="grid grid-cols-1 gap-12">
-<div class="group">
+<div class="group cs-subsection-block scroll-mt-32" id="process-blueprint">
 <div class="aspect-video bg-surface-container relative overflow-hidden rounded-sm border border-outline-variant/15 flex items-center justify-center">
 <img alt="UX Design Wireframes" class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" data-alt="High fidelity minimalist digital wireframes showing a complex dashboard layout with modular components and data tables" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-Qu4kaUCNkBpomPHCXYFpmhCIQU_cJpbpAznxQAMlj2jaaayWW1FUoi4Gw-l2Jd5L4p77GtRhH5hSrdqkDlTRu0aRRu90p8u2a9mj8c0CUGxn9uTABAex3wgugk6kynhYaxnEf8TDjR8hxsJ9ooPDurku_0brkL0qdCM1JiFYi66CHu7u5k7B2O-T3eMp1Q_1F3knQPz3Jihqw7LSZyPQnXLTgpz-FhnhArxqOXWHJj9hLGEDvCufuv-p9Bjnzaece3MyicMeBCtn"/>
 <div class="z-10 text-center">
@@ -280,7 +286,7 @@
 </div>
 <p class="mt-4 font-label text-xs uppercase tracking-widest text-outline">Design Concept: Layout &amp; Information Architecture</p>
 </div>
-<div class="group">
+<div class="group cs-subsection-block scroll-mt-32" id="process-prototype">
 <div class="aspect-video bg-surface-container relative overflow-hidden rounded-sm border border-outline-variant/15 flex items-center justify-center">
 <img alt="UI Prototype" class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale" data-alt="Clean and professional user interface prototype on a laptop screen with elegant typography and dark theme accents" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBQJvIGIYNhPDhueQ2gdQj2Y12z87sxVwwx9c-ssKiRa84-uKYltSRW7FazhvLaA_bUcpmlvpv1GpnF-AG4dAjgLNrAQLOxMbtjpE0CLVJ59XS1eRGz-9R32t1A1zexQ_urqD82vNn6x8OjTBcJcGLBk4zO9aEZN4wYOg3iWGWw8gmHsOVmgErSLXkG3rRUnE2BpDLj52XTHx9aPwACXuHj43XXsS9YzRfymlcg124zIuKmIe-qEq5QivX5UI5Pyh9myhjgQn8dsKlO"/>
 <div class="z-10 text-center">
@@ -356,4 +362,44 @@
         © 2024 The Curated Gallery. All rights reserved.
     </div>
 </footer>
+<script src="scripts/scroll-observer.js"></script>
+<script>
+(function () {
+  const nav = document.getElementById('sidenav');
+  if (!nav) return;
+  const links = Array.from(nav.querySelectorAll('.nav-link'));
+
+  // Group: each top-level nav-link owns the sub-links that follow it
+  const groups = [];
+  let current = null;
+  links.forEach(link => {
+    const isSub = link.classList.contains('nav-link-sub');
+    if (!isSub) {
+      current = { parent: link, children: [] };
+      groups.push(current);
+    } else if (current) {
+      current.children.push(link);
+    }
+  });
+
+  // Hide all sub-links initially
+  groups.forEach(({ children }) => {
+    children.forEach(child => { child.style.display = 'none'; });
+  });
+
+  function syncVisibility() {
+    groups.forEach(({ parent, children }) => {
+      const show = parent.classList.contains('active') ||
+                   children.some(c => c.classList.contains('active'));
+      children.forEach(child => { child.style.display = show ? '' : 'none'; });
+    });
+  }
+
+  // Watch every nav-link for class changes set by scroll-observer.js
+  const mo = new MutationObserver(syncVisibility);
+  links.forEach(link => mo.observe(link, { attributes: true, attributeFilter: ['class'] }));
+
+  syncVisibility();
+})();
+</script>
 </body></html>
