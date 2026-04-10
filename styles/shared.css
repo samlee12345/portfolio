@@ -305,7 +305,8 @@ h1, h2, h3, .font-serif {
 
 /* Outcome */
 .cs-outcome-list { display:flex; flex-direction:column; gap:1rem; margin-bottom:2rem; }
-.cs-outcome-item { padding:1.5rem; background:#f4f4ef; display:flex; justify-content:space-between; align-items:center; gap:2rem; }
+.cs-outcome-item { padding:1.5rem; background:#f4f4ef; display:flex; align-items:flex-start; gap:1.5rem; }
+.cs-outcome-item .tag { width:6.5rem; text-align:center; flex-shrink:0; }
 .cs-outcome-text { font-size:1rem; color:#1b1c19; line-height:1.5; }
 
 /* Footer */
