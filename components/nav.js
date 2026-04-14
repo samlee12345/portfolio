@@ -1,4 +1,14 @@
 (function () {
+  // Google Analytics 4
+  var gtagScript = document.createElement('script');
+  gtagScript.async = true;
+  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QGB963KK9R';
+  document.head.appendChild(gtagScript);
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-QGB963KK9R');
+
   const placeholder = document.getElementById('site-nav');
   if (!placeholder) return;
 
