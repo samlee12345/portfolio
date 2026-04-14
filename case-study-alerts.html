@@ -90,7 +90,7 @@
   <header class="cs-hero" style="padding-top: 2.5rem;">
     <div class="cs-hero-grid">
       <p class="cs-hero-desc">
-        Redesigned order-level alerting for front office traders at Fidessa, from 13% adoption to a 25x increase in alerts created post-launch.</p>
+        Redesigned order-level alerting for front office traders at Fidessa. Adoption was at 13%. Triggers were limited to order state changes, not the performance fields traders actually watch. Within 12 months of launch, alerts created across the platform increased 34x.</p>
       <div class="cs-meta">
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">
@@ -116,6 +116,10 @@
           <span class="font-label cs-meta-value">
             Research, Strategy, Design, Handoff</span>
         </div>
+        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
+          <span class="font-label cs-meta-label">Status</span>
+          <span class="font-label tag tag-shipped" style="padding: 0.15rem 0.6rem;">Shipped</span>
+        </div>
       </div>
     </div>
   </header>
@@ -132,16 +136,12 @@
           Project Overview</a>
         <a href="#pf-mission" class="nav-link nav-link-sub">
           Mission</a>
+        <a href="#pf-why-alerting" class="nav-link nav-link-sub">
+          Why Alerting</a>
         <a href="#pf-problem" class="nav-link nav-link-sub">
           The Problem</a>
         <a href="#pf-solution" class="nav-link nav-link-sub">
           The Solution</a>
-        <a href="#pf-why-alerting" class="nav-link nav-link-sub">
-          Why Alerting</a>
-        <a href="#pf-impact" class="nav-link nav-link-sub">
-          My Impact</a>
-        <a href="#pf-design-process" class="nav-link nav-link-sub">
-          Design Process</a>
         <a href="#pf-discover" class="nav-link">
           Discover</a>
         <a href="#pf-domain" class="nav-link nav-link-sub">
@@ -216,6 +216,8 @@
           Final Validation</a>
         <a href="#pf-outcome" class="nav-link">
           Outcome</a>
+        <a href="#pf-impact" class="nav-link">
+          Impact</a>
         <a href="#pf-documentation" class="nav-link">
           Documentation</a>
         <a href="#pf-reflection" class="nav-link">
@@ -235,34 +237,46 @@
           <h2 class="cs-section-title">Project Overview</h2>
 
           <div style="margin-bottom:2rem;">
-            <div class="cs-wip" style="margin-top:0.75rem;margin-bottom:0;">
-              <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-              <p>Placeholder. Will be replaced with the modernized version.</p>
-            </div>
-            <img src="assets/Alerts_Desktop monitor.png" alt="Fidessa front office alerts redesign on desktop monitor" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_Desktop monitor.png" alt="Fidessa front office alerts redesign on desktop monitor" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Mission -->
           <div id="pf-mission" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Mission</h3>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
-              <p class="body-text">Fidessa is an enterprise OMS used by 600+ trading firms, where front office traders manage and monitor client orders at volume. With only 13% of traders using alerts and triggers limited to order state changes, not the performance fields traders actually watch, there was a clear opportunity to redesign alerting to fit how front office traders work.</p>
+              <p class="body-text">Fidessa is an enterprise order management system (OMS) used by 600+ trading firms, where front office traders manage and monitor client orders at volume. With only 13% of traders using alerts and triggers limited to order state changes, not the performance fields traders actually watch, there was a clear opportunity to redesign alerting to fit how front office traders work.</p>
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Key Responsibilities</p>
                 <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
                   <li class="body-text">End-to-end ownership across research, design, and release</li>
                   <li class="body-text">Domain research and functionality mapping across the platform</li>
-                  <li class="body-text">User research and validation across 3 front office trader personas</li>
+                  <li class="body-text">User research and validation across three front office trader personas</li>
                   <li class="body-text">Built the Fidessa Alerts Concept Library: reusable alert components</li>
                 </ul>
               </div>
             </div>
           </div>
 
+          <!-- Why Alerting -->
+          <div id="pf-why-alerting" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Why Do Users Need Better Alerting?</h3>
+            <p class="body-text" style="margin-bottom:1.25rem;">Front office traders are legally required to take all reasonable steps to secure the most favorable terms for every client order. That obligation requires effective order monitoring, but current alerts fire on order state changes, not on the performance data traders use to decide whether to intervene. Manual monitoring doesn’t scale.</p>
+            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem;">
+              <li class="body-text"><span style="font-weight:600;">Sales traders:</span> client relationships at risk. Without timely alerts on fill progress, they can't advise clients on next steps or demonstrate they pursued best execution.</li>
+              <li class="body-text"><span style="font-weight:600;">High-touch traders:</span> missed execution timing windows.</li>
+              <li class="body-text"><span style="font-weight:600;">Low-touch traders:</span> no early signal on algo performance. By the time underperformance is visible, it has already compounded across the full order set.</li>
+            </ul>
+            <p class="body-text">Better alerting closes that gap, letting the system flag what traders can't watch, across every order, simultaneously.</p>
+          </div>
+
           <!-- The Problem -->
           <div id="pf-problem" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Problem</h3>
             <p class="body-text" style="margin-bottom:2rem;">Front office traders monitor 100–10,000 orders at any moment with no automated way to flag which need attention. The only fallback is filtered grids. Adoption sat at 13%, with most users having inherited alerts from a colleague. Triggers were limited to order state changes, not the performance fields traders actually watch. A new regional client also required single-order alerting as a contract condition.</p>
+            <div style="margin-bottom:2rem;">
+              <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Stated Ask</p>
+              <p class="body-text">Allow alerting on single orders and alert triggering on order metadata.</p>
+            </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">User Sentiment</p>
@@ -277,7 +291,7 @@
                 <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
                   <li class="body-text"><span style="font-weight:600;">Negative impression:</span> front office traders are the highest-value user segment, and a tool that doesn't fit their workflow is a visible failure</li>
                   <li class="body-text"><span style="font-weight:600;">Competitive gap:</span> alternative trading platforms offer threshold alerting as standard; Fidessa does not</li>
-                  <li class="body-text"><span style="font-weight:600;">Productivity loss:</span> manual monitoring across 100 to 10,000 orders at any moment represents significant desk time that proper alerting would eliminate</li>
+                  <li class="body-text"><span style="font-weight:600;">Productivity loss:</span> time spent monitoring is time not spent executing. Ineffective alerting makes that trade-off unavoidable</li>
                 </ul>
               </div>
             </div>
@@ -297,22 +311,18 @@
                   <li class="cs-scope-item">&#8212;&nbsp; Multi-order alerting</li>
                   <li class="cs-scope-item">&#8212;&nbsp; Order metadata triggers</li>
                 </ul>
-                <div style="width:100%;aspect-ratio:4/3;background:#e3e3de;display:flex;align-items:center;justify-content:center;border-radius:4px;margin-top:auto;">
-                  <span style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Image placeholder</span>
-                </div>
+                <img src="assets/Alerts_Additive.png" alt="Scope 1: Additive version — Create Alert dialog" style="width:100%;display:block;border-radius:4px;margin-top:auto;"/>
               </div>
               <div class="cs-card" style="display:flex;flex-direction:column;">
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Scope 2</p>
                 <p class="cs-deliverable-title">Full redesign</p>
                 <p class="body-text-sm" style="margin-bottom:0.75rem;">One unified alert configuration hub consolidating all alert types and all front office personas.</p>
                 <ul style="padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0.35rem;margin-bottom:1rem;">
-                  <li class="cs-scope-item">&#8212;&nbsp; 3 Additive Improvements</li>
+                  <li class="cs-scope-item">&#8212;&nbsp; All additive improvements</li>
                   <li class="cs-scope-item">&#8212;&nbsp; Macro-level alerting</li>
-                  <li class="cs-scope-item">&#8212;&nbsp; Timing and macro triggers</li>
+                  <li class="cs-scope-item">&#8212;&nbsp; Macro triggers</li>
                 </ul>
-                <div style="width:100%;aspect-ratio:4/3;background:#e3e3de;display:flex;align-items:center;justify-content:center;border-radius:4px;margin-top:auto;">
-                  <span style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Image placeholder</span>
-                </div>
+                <img src="assets/Alerts_Full Redesign.png" alt="Scope 2: Full redesign — unified Alert Hub" style="width:100%;display:block;border-radius:4px;margin-top:auto;"/>
               </div>
             </div>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
@@ -376,77 +386,25 @@
                 </div>
               </div>
               <div style="display:flex;flex-direction:column;gap:2rem;">
-                <div>
+                <!-- <div>
                   <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Addressing User Needs</p>
                   <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
                     <li class="body-text"><span style="font-weight:600;">Fit for purpose:</span> meets the needs of all three front office trader personas</li>
                     <li class="body-text"><span style="font-weight:600;">Full coverage:</span> supports single-order, multi-order, and apply-to-all alert configurations across all three trader personas</li>
                     <li class="body-text"><span style="font-weight:600;">Threshold control:</span> traders define alerts based on the conditions they are currently monitoring to evaluate order performance</li>
                   </ul>
-                </div>
+                </div> -->
                 <div>
                   <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Business Impact</p>
                   <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-                    <li class="body-text"><span style="font-weight:600;">Reduced overhead:</span> consolidates fragmented alerting functionality into a single hub, cutting code duplication across the platform</li>
-                    <li class="body-text"><span style="font-weight:600;">Product confidence:</span> front office traders see Fidessa actively investing in tools that support their workflow</li>
-                    <li class="body-text"><span style="font-weight:600;">Trader productivity:</span> traders execute more orders during market hours when alerts replace manual monitoring</li>
+                    <li class="body-text">Fragmented alerting functionality consolidated into a single hub, reducing code duplication across the platform</li>
+                    <li class="body-text">Threshold and performance-based alerting brought to parity with alternative trading platforms</li>
+                    <li class="body-text">Manual order monitoring replaced with system-driven alerts across 100–10,000 orders per trader</li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <!-- Why Alerting -->
-          <div id="pf-why-alerting" class="cs-subsection-block scroll-mt-24">
-            <h3 class="cs-subsection-title">Why Do Users Need Better Alerting?</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">Front office traders are legally required to take all reasonable steps to secure the most favorable terms for every client order. That obligation requires effective order monitoring, but current alerts don't support it. Existing triggers fire on order state changes, not on the performance data traders use to decide whether to intervene, leaving traders to monitor manually. Manual monitoring doesn't scale:</p>
-            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:1.25rem;">
-              <li class="body-text"><span style="font-weight:600;">Sales traders:</span> client relationships at risk. Without timely alerts on fill progress, they can't advise clients on next steps or demonstrate they pursued best execution.</li>
-              <li class="body-text"><span style="font-weight:600;">High-touch traders:</span> missed execution timing windows.</li>
-              <li class="body-text"><span style="font-weight:600;">Low-touch traders:</span> no early signal on algo performance. By the time underperformance is visible, it has already compounded across the full order set.</li>
-            </ul>
-            <p class="body-text">Better alerting closes that gap, letting the system flag what traders can't watch, across every order, simultaneously.</p>
-          </div>
-
-          <!-- My Impact -->
-          <div id="pf-impact" class="cs-subsection-block scroll-mt-24">
-            <h3 class="cs-subsection-title">My Impact</h3>
-            <p class="body-text" style="margin-bottom:2rem;">Two design deliverables: an additive release constrained by the initial client timeline, and a full hub redesign. When the India team didn't sign and the timeline pressure lifted, the full redesign is what shipped.</p>
-
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
-              <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Project Impact</p>
-                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-                  <li class="body-text"><span style="font-weight:600;">Exceeding KPI expectations:</span> 25x increase in alerts created within 12 months, surpassing the 20x target set by the head of product.</li>
-                  <li class="body-text"><span style="font-weight:600;">Competitive parity:</span> 600+ firms gained threshold alerting on par with alternative trading platforms, closing a capability gap that had been a consistent source of competitive frustration.</li>
-                  <li class="body-text"><span style="font-weight:600;">UX precedent:</span> first UX-led project at Fidessa to ship. Developer collaboration throughout ensured technical feasibility where a previous UX effort had not, establishing a process that subsequent projects followed.</li>
-                </ul>
-              </div>
-              <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Organizational Influence</p>
-                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-                  <li class="body-text"><span style="font-weight:600;">UX as a practice:</span> established UX involvement as a standard part of the product development process at Fidessa, shifting the team from shipping without user input to treating research and validation as a prerequisite for scope decisions.</li>
-                  <li class="body-text"><span style="font-weight:600;">UX as a partner:</span> pushed for and shipped the full hub redesign, unprompted, turning user research findings into a live product rather than a scope compromise.</li>
-                  <li class="body-text"><span style="font-weight:600;">Consolidated alert architecture:</span> the full hub redesign replaces alerting functionality scattered across multiple tools with a single entry point, reducing code duplication and giving the platform a maintainable foundation for future alert development.</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <!-- Design Process -->
-          <div id="pf-design-process" class="cs-subsection-block scroll-mt-24">
-            <h3 class="cs-subsection-title">Design Process</h3>
-            <div style="display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:center;">
-              <div>
-                <p class="body-text" style="margin-bottom:1.25rem;">The design process moved through two modes of thinking:</p>
-                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-                  <li class="body-text"><span style="font-weight:600;">Divergent:</span> open up the problem space to explore what was really going on</li>
-                  <li class="body-text"><span style="font-weight:600;">Convergent:</span> commit to the right solution</li>
-                </ul>
-              </div>
-              <img src="assets/Alert_Triple%20diamond.png" alt="Double diamond design process: Discover, Define, Develop, Deliver" style="width:100%;display:block;"/>
-            </div>
-          </div>
-
         </div>
       </section>
 
@@ -459,19 +417,23 @@
           <!-- Domain Research -->
           <div id="pf-domain" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Domain Research</h3>
-            <p class="body-text" style="margin-bottom:1.5rem;">Knowledge transfer sessions with SMEs produced a functionality map covering all alerting behavior and current state across the platform. The goal was to understand what already existed before defining what was missing.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;">
+            <p class="body-text" style="margin-bottom:1.5rem;">Knowledge transfer sessions with subject matter experts produced a functionality map covering all alerting behavior and current state across the platform — establishing what already existed before defining what was missing.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.5rem;align-items:start;">
               <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Functionality map: alert landscape across Fidessa</p>
-                <img src="assets/Alerts_Landscape.png" alt="Functionality map: alert landscape across Fidessa" style="width:100%;display:block;"/>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Functionality map</p>
+                <img src="assets/Alerts_Landscape.png" alt="Functionality map: alert landscape across Fidessa" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Front office trader personas</p>
-                <div class="cs-wip" style="margin-bottom:0.75rem;">
-                  <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-                  <p>Will be replaced with a condensed version of the personas.</p>
-                </div>
-                <img src="assets/Alerts_Persona.png" alt="Front office trader personas" style="width:100%;display:block;"/>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Low Touch Trader</p>
+                <img src="assets/Low Touch User Persona.png" alt="Low Touch Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">High Touch Trader</p>
+                <img src="assets/High Touch User Persona.png" alt="High Touch Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">High Touch Sales Trader</p>
+                <img src="assets/High Touch Sales User Persona.png" alt="High Touch Sales Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
             </div>
           </div>
@@ -485,9 +447,9 @@
                 <p class="font-label cs-card-label">Sales Trader</p>
                 <p class="cs-quote" style="margin-bottom:0.75rem;font-size:0.9rem;">"My clients expect to hear from me throughout the day: where their order is, how it's tracking, what they should be looking at next. If I'm not on top of that, the relationship suffers."</p>
                 <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">Alerting need</p>
-                <p class="body-text-sm" style="margin-bottom:0.75rem;">Time-based alerts on client orders. Fill progress updates to communicate order status to clients before they ask.</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Fill progress alerts on client orders to communicate order status before clients ask.</p>
                 <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">Current gap</p>
-                <p class="body-text-sm">No time-based triggers. No fill rate alerts. Manual monitoring means delayed client updates and missed communication windows.</p>
+                <p class="body-text-sm">No fill rate alerts. Manual monitoring means delayed client updates and missed communication windows.</p>
               </div>
               <div class="cs-card">
                 <p class="font-label cs-card-label">High-Touch Trader</p>
@@ -513,7 +475,7 @@
           <!-- Competitive Analysis -->
           <div id="pf-benchmarking" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Competitive Analysis</h3>
-            <p class="body-text" style="margin-bottom:2rem;">I reviewed how alerting works in comparable trading tools to establish what standard capability looks like, not to copy patterns. Research confirmed the gap: some firms run multiple platforms simultaneously, giving traders access to more advanced alerting elsewhere. As those platforms expand their coverage, the gap on Fidessa becomes harder to justify.</p>
+            <p class="body-text" style="margin-bottom:2rem;">A review of alerting in comparable trading tools established what standard capability looks like, not to copy patterns, but to identify where the platform was falling short. Research confirmed the gap: some firms run multiple trading platforms simultaneously, giving traders access to more advanced alerting elsewhere. As those platforms expand their coverage, the capability gap on Fidessa becomes harder to justify.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1px;">
               <div class="cs-card">
                 <p class="font-label cs-card-label">Industry standard</p>
@@ -527,7 +489,7 @@
               </div>
               <div class="cs-card">
                 <p class="font-label cs-card-label">Fidessa (current state)</p>
-                <p class="body-text-sm mb-3">Grid-based filter alerts only. Triggers limited to order status fields. No threshold, timing, or market movement triggers. No unified hub.</p>
+                <p class="body-text-sm mb-3">Grid-based filter alerts only. Triggers limited to order status fields. No threshold or market movement triggers. No unified hub.</p>
                 <div style="display:flex;flex-wrap:wrap;gap:0.4rem;">
                   <span class="tag tag-backlog">State only</span>
                   <span class="tag tag-backlog">No hub</span>
@@ -543,7 +505,7 @@
                   <tr style="border-bottom:2px solid #1b1c19;">
                     <th style="text-align:left;padding:0.6rem 0.75rem 0.6rem 0;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Platform</th>
                     <th style="text-align:center;padding:0.6rem 0.75rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Threshold triggers</th>
-                    <th style="text-align:center;padding:0.6rem 0.75rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Centralised hub</th>
+                    <th style="text-align:center;padding:0.6rem 0.75rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Centralized hub</th>
                     <th style="text-align:center;padding:0.6rem 0.75rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Alert history</th>
                     <th style="text-align:center;padding:0.6rem 0.75rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Actionable from notification</th>
                     <th style="text-align:center;padding:0.6rem 0.75rem;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;font-weight:500;">Batching / grouping</th>
@@ -592,15 +554,15 @@
                   </tr>
                   <tr style="border-bottom:2px solid #1b1c19;">
                     <td style="padding:0.65rem 0.75rem 0.65rem 0;color:#1b1c19;font-weight:500;">Fidessa (current)</td>
-                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#ba1a1a;">—</td>
-                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#ba1a1a;">—</td>
-                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#ba1a1a;">—</td>
-                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#ba1a1a;">—</td>
-                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#ba1a1a;">—</td>
+                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#737785;">—</td>
+                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#737785;">—</td>
+                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#737785;">—</td>
+                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#737785;">—</td>
+                    <td style="text-align:center;padding:0.65rem 0.75rem;color:#737785;">—</td>
                   </tr>
                 </tbody>
               </table>
-              <p class="cs-caption" style="margin-top:0.75rem;">Threshold-based triggering, centralised alert management, and actionability from a notification are standard across both financial and non-financial tools designed for high-volume signal environments.</p>
+              <p class="cs-caption" style="margin-top:0.75rem;">Threshold-based triggering, centralized alert management, and actionability from a notification are standard across both financial and non-financial tools designed for high-volume signal environments.</p>
             </div>
           </div>
 
@@ -693,10 +655,6 @@
           <!-- Design Decisions group -->
           <div id="pf-define-decisions" class="cs-subsection-block scroll-mt-24" style="padding-top:1.75rem;border-top:1px solid #e3e3de;">
             <h3 class="cs-subsection-title">Design Decisions</h3>
-            <div class="cs-wip">
-              <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-              <p>Content will be reduced and shown as inline annotations to design mockup.</p>
-            </div>
           </div>
 
           <!-- Define: Notification Delivery Labels -->
@@ -728,11 +686,11 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
               <div>
                 <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Current state</p>
-                <img src="assets/Alerts_CurrentState_Notifications.png" alt="Current Alert Settings dialog: Flash tab, Display control, Set focus to control" style="width:100%;display:block;"/>
+                <img src="assets/Alerts_CurrentState_Notifications.png" alt="Current Alert Settings dialog: Flash tab, Display control, Set focus to control" style="width:100%;height:300px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
                 <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">Redesigned</p>
-                <img src="assets/Alerts_CreateAlert_Single.png" alt="Redesigned Create Alert with Display settings and Sound settings sections" style="width:100%;display:block;"/>
+                <img src="assets/Alerts_v1-Create-Alert-Order.png" alt="Redesigned Create Alert with Display settings and Sound settings sections" style="width:100%;height:300px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
             </div>
           </div>
@@ -797,7 +755,7 @@
 
           <!-- Define: Alert Creation Single vs Group -->
           <div id="pf-define-alert-source" class="cs-subsection-block scroll-mt-24">
-            <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">03</span>Alert Creation: Single Order vs Group</h3>
+            <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">03</span>Alert Creation: Single Order vs Group of Orders</h3>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;margin-bottom:1.75rem;align-items:start;">
               <div>
                 <p class="font-label cs-decision-label" style="margin-bottom:0.5rem;">Hypothesis</p>
@@ -825,11 +783,11 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Single order</p>
-                <img src="assets/Alerts_CreateAlert_Single.png" alt="Create alert dialog for a single order, showing full order metadata" style="width:100%;display:block;"/>
+                <img src="assets/Alerts_v1-Create-Alert-Order.png" alt="Create alert dialog for a single order, showing full order metadata" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Group alert</p>
-                <img src="assets/Alerts_CreateAlert_Group.png" alt="Create alert dialog for a group, showing group name, filters, and order count" style="width:100%;display:block;"/>
+                <img src="assets/Alerts_v1-Create-Alert-Multi-Order.png" alt="Create alert dialog for a group, showing group name, filters, and order count" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
             </div>
           </div>
@@ -860,7 +818,7 @@
                 </div>
               </div>
             </div>
-            <img src="assets/Alerts_Order Blotter.png" alt="Order navigator with Alert column (bell icon) and Alert triggered time column" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1_v2_Order-Navigator.png" alt="Order navigator with Alert column (bell icon) and Alert triggered time column" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Define: Quick Alert Button -->
@@ -889,7 +847,7 @@
                 </div>
               </div>
             </div>
-            <img src="assets/Alerts_Quick alert.png" alt="Toolbar Builder showing alert button pre-configuration with trigger conditions and notification settings" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1-Create-Alert-From-Button.png" alt="Toolbar Builder showing alert button pre-configuration with trigger conditions and notification settings" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Define: Notifications Blotter -->
@@ -918,20 +876,14 @@
                 </div>
               </div>
             </div>
-            <img src="assets/Alerts_Notifications.png" alt="Notifications blotter with inline order detail panel and action buttons on row selection" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1-Notifications-Grid.png" alt="Notifications blotter with inline order detail panel and action buttons on row selection" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Scope 1 User Flow -->
           <div id="pf-scope1-flow" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Scope 1 User Flow</h3>
-            <div class="cs-wip">
-              <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-              <p>This user flow can also be swapped with the design decisions in the Develop section.</p>
-            </div>
-            <div style="width:100%;aspect-ratio:16/9;background:#e3e3de;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0.5rem;border-radius:4px;">
-              <span style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Image placeholder</span>
-              <span style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.06em;color:#9ca3af;max-width:32rem;text-align:center;">Note: annotate the alert creation flow to call out each of the design decisions -> Remove entire "design decisions" section.</span>
-            </div>
+            <p class="body-text" style="margin-top:1.75rem;">Staying within the existing architecture meant working with what was already there. Scope 1 added multi-order support and a threshold trigger library. Two surfaces anchored the system: the alert hub for creation and management, and the notifications window where triggered alerts land.</p>
+            <img src="assets/Alerts v1 Workflow.png" alt="Scope 1 user flow: alert creation paths from Order Navigator through Create Alert dialog to notification" style="width:100%;display:block;border-radius:4px;"/>
           </div>
 
         </div>
@@ -961,21 +913,13 @@
           <!-- Design Decisions group -->
           <div id="pf-develop-decisions" class="cs-subsection-block scroll-mt-24" style="padding-top:1.75rem;border-top:1px solid #e3e3de;">
             <h3 class="cs-subsection-title">Design Decisions</h3>
-            <div class="cs-wip" style="margin-bottom:0.75rem;">
-              <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-              <p>Content will be reduced and shown as inline annotations to design mockup.</p>
-            </div>
-            <div class="cs-wip">
-              <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-              <p>Images to be updated to modernized versions. Annotations will be added to each image to explain the design decisions in context.</p>
-            </div>
           </div>
 
           <!-- Layout Anatomy -->
           <div id="pf-layout-anatomy" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">01</span>Layout Anatomy</h3>
             <p class="body-text" style="margin-bottom:2rem;">The Create Alert dialog was structured into three distinct sections, each serving a different decision in the alert setup flow.</p>
-            <img src="assets/create-alert-annotated.png" alt="Create Alert dialog showing three sections: order details, trigger condition, and notification settings" style="width:100%;display:block;margin-bottom:2rem;"/>
+            <div style="padding:0 10%;margin-bottom:2rem;"><img src="assets/Alerts_Layout Anatomy.png" alt="Create Alert dialog showing three sections: order details, trigger condition, and notification settings" style="width:100%;display:block;"/></div>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
               <div class="cs-card">
                 <p class="font-label cs-card-label" style="margin-bottom:0.5rem;">Order details</p>
@@ -997,8 +941,8 @@
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">02</span>Trigger Conditions</h3>
             <p class="body-text" style="margin-bottom:2rem;">Curated dropdown of 8 order metadata fields in a three-part row (field / operator / value).</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-              <img src="assets/trigger-dropdown-open.png" alt="Trigger condition dropdown open showing curated field list" style="width:100%;display:block;"/>
-              <img src="assets/trigger-condition-filled.png" alt="Trigger condition filled: Fill percentage >= 50%" style="width:100%;display:block;"/>
+              <img src="assets/Alerts_v1-Create-Alert-Dropdown.png" alt="Trigger condition dropdown open showing curated field list" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
+              <img src="assets/Alerts_v1-Create-Alert-Dropdown-Filled.png" alt="Trigger condition filled: Fill percentage >= 50%" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
             </div>
           </div>
 
@@ -1006,7 +950,7 @@
           <div id="pf-notification-delivery" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">03</span>Notification Delivery</h3>
             <p class="body-text" style="margin-bottom:2rem;">Display location as a three-option radio group (Alerts toolbar button, Create new toolbar button, Notifications grid). Secondary options for set focus to grid and tab flash with configurable color. Sound off by default.</p>
-            <img src="assets/Alerts_CreateAlert_Single.png" alt="Redesigned notification settings: Display settings and Sound settings sections" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1-Create-Alert-Order.png" alt="Redesigned notification settings: Display settings and Sound settings sections" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Alert Source: Single Order vs Group -->
@@ -1016,11 +960,11 @@
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Single order</p>
-                <img src="assets/Alerts_CreateAlert_Single.png" alt="Create alert dialog for a single order" style="width:100%;display:block;"/>
+                <img src="assets/Alerts_v1-Create-Alert-Order.png" alt="Create alert dialog for a single order" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Group alert</p>
-                <img src="assets/Alerts_CreateAlert_Group.png" alt="Create alert dialog for a group" style="width:100%;display:block;"/>
+                <img src="assets/Alerts_v1-Create-Alert-Multi-Order.png" alt="Create alert dialog for a group" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
             </div>
           </div>
@@ -1029,24 +973,24 @@
           <div id="pf-alert-discovery" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">05</span>Alert Discovery on the Order Row</h3>
             <p class="body-text" style="margin-bottom:2rem;">Dedicated Alert column (bell icon) and Alert triggered time column on each order row. Status bar confirmation at creation.</p>
-            <img src="assets/Alerts_Order Blotter.png" alt="Order navigator with Alert and Alert triggered time columns" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1_v2_Order-Navigator.png" alt="Order navigator with Alert and Alert triggered time columns" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Quick Alert Button -->
           <div id="pf-quick-alert-button" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">06</span>Quick Alert Button</h3>
             <p class="body-text" style="margin-bottom:2rem;">Pre-configured defaults with full reconfigurability at time of use. Condition type, operator, and value are pre-filled from the button config but all fields remain editable before the alert is created.</p>
-            <img src="assets/Alerts_Quick alert.png" alt="Toolbar Builder with alert button pre-configuration panel" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1-Create-Alert-From-Button.png" alt="Toolbar Builder with alert button pre-configuration panel" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Notifications Blotter -->
           <div id="pf-notifications-blotter" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">07</span>Notifications</h3>
             <p class="body-text" style="margin-bottom:2rem;">Full triggered alert blotter with an inline detail panel. Order context and action buttons surface on row selection. No double-click required to open a separate order window.</p>
-            <img src="assets/Alerts_Notifications.png" alt="Notifications blotter with inline order detail panel" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1-Notifications-Grid.png" alt="Notifications blotter with inline order detail panel" style="width:100%;display:block;"/></div>
           </div>
 
-          <!-- Prototype -->
+          <!-- Prototype
           <div id="pf-prototype" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Prototype</h3>
             <div class="cs-wip">
@@ -1054,17 +998,17 @@
               <p>This section can be removed if we show the user flow in this section instead.</p>
             </div>
             <p class="body-text" style="margin-bottom:2rem;">Three prototype flows were created to test each of the defined requirements.</p>
-            <img src="assets/Alerts_%20ROUND%201.png" alt="Round 1: Order-level alert design" style="width:100%;display:block;"/>
-          </div>
+            <div style="padding:0 10%;"><img src="assets/Alerts_Additive Prototype.png" alt="Round 1: Order-level alert design" style="width:100%;display:block;"/></div>
+          </div> -->
 
-          <!-- User Research -->
+          <!-- User Validation -->
           <div id="pf-round1-research" class="cs-subsection-block scroll-mt-24">
-            <h3 class="cs-subsection-title">User Research</h3>
+            <h3 class="cs-subsection-title">User Validation</h3>
             <p class="body-text" style="margin-bottom:2rem;">Three workflows were tested with users across the prototype, covering the core alert use cases for each front office persona.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;align-items:start;">
-              <img src="assets/persona_1.png" alt="Persona 1" style="width:100%;display:block;"/>
-              <img src="assets/persona_2.png" alt="Persona 2" style="width:100%;display:block;"/>
-              <img src="assets/persona_3.png" alt="Persona 3" style="width:100%;display:block;"/>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem;align-items:start;">
+              <img src="assets/High Touch Sales PP.png" alt="Persona 1" style="width:calc(100% - 100px);height:240px;object-fit:contain;object-position:center top;display:block;margin:0 auto;"/>
+              <img src="assets/High Touch PP.png" alt="Persona 2" style="width:calc(100% - 100px);height:240px;object-fit:contain;object-position:center top;display:block;margin:0 auto;"/>
+              <img src="assets/Low Touch PP.png" alt="Persona 3" style="width:calc(100% - 100px);height:240px;object-fit:contain;object-position:center top;display:block;margin:0 auto;"/>
             </div>
           </div>
 
@@ -1072,7 +1016,7 @@
           <div id="pf-validation-synthesis" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Data Synthesis</h3>
             <p class="body-text" style="margin-bottom:2rem;">Insights from the usability study were mapped into an affinity diagram to surface recurring themes across sessions.</p>
-            <img src="assets/Alerts_%20ROUND%201%20Synthesis.png" alt="Round 1 validation feedback synthesis" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_%20ROUND%201%20Synthesis.png" alt="Round 1 validation feedback synthesis" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- Key Insights -->
@@ -1109,10 +1053,6 @@
           <h2 class="cs-section-title">Redefine</h2>
           <p class="section-subtitle">Round 1 confirmed demand. It didn't fix the root problem.</p>
           <p class="body-text mb-7">Round 1 confirmed the demand but exposed the limits of the timeline. 80% of users said it wasn't enough. Triggers were still limited to order metadata, alerting was still fragmented, and the prospective client contract still hadn't closed. That delay created room to push for the full redesign.</p>
-          <div class="cs-wip" style="margin-bottom:2rem;">
-            <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-            <p>I will add a design decision or user flow here, depending on what you decide above.</p>
-          </div>
           <div class="cs-grid-2 mb-8">
             <div class="cs-compare-original">
               <p class="font-label cs-compare-label">Round 1 scope</p>
@@ -1123,6 +1063,14 @@
               <p class="cs-quote">One unified alert hub: all alert types, all trigger types, all scopes consolidated.</p>
             </div>
           </div>
+
+          <!-- Scope 2 User Flow -->
+          <div id="pf-scope2-flow" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Scope 2 User Flow</h3>
+            <p class="body-text" style="margin-bottom:1.5rem;">Scope 2 builds on the foundation established in the first iteration, extending alert creation beyond individual orders. Traders can now set alerts across their entire book and against live market data, opening up a broader range of monitoring scenarios.</p>
+            <img src="assets/Alerts v2 Workflow.png" alt="Scope 2 user flow: alert creation and management paths through the redesigned Alert Hub" style="width:100%;display:block;border-radius:4px;"/>
+          </div>
+
         </div>
       </section>
 
@@ -1132,15 +1080,11 @@
           <p class="font-label cs-part-label">Part Six</p>
           <h2 class="cs-section-title">Redevelop</h2>
           <p class="section-subtitle">Three changes. One unified system.</p>
-          <p class="body-text" style="margin-bottom:1.5rem;">The full redesign extended alerting beyond individual orders to support three new scopes, expanded the trigger library to include market and time-based conditions, and consolidated all alerting into a single hub.</p>
+          <p class="body-text" style="margin-bottom:1.5rem;">The full redesign extended alerting beyond individual orders to support three new scopes, expanded the trigger library to include market and macro conditions, and consolidated all alerting into a single hub.</p>
 
           <!-- Design Decisions group -->
           <div id="pf-redevelop-decisions" class="cs-subsection-block scroll-mt-24" style="padding-top:1.75rem;border-top:1px solid #e3e3de;">
             <h3 class="cs-subsection-title">Design Decisions</h3>
-            <div class="cs-wip">
-              <i data-lucide="pencil-line" class="cs-wip-icon" style="width:1rem;height:1rem;"></i>
-              <p>Content will be reduced and shown as inline annotations to design mockup.</p>
-            </div>
           </div>
 
           <!-- 01: Alert Scope Expansion -->
@@ -1169,14 +1113,18 @@
                 </div>
               </div>
             </div>
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
               <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Security and all orders for security</p>
-                <img src="assets/Alert_Create Security Alert.png" alt="Create alert dialog with scope tabs: Order, All AAPL orders, AAPL security" style="width:100%;display:block;"/>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Single order</p>
+                <img src="assets/Alerts_v2-Create-Order-Alert.png" alt="Create alert dialog: Order tab showing single order scope" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Portfolio-level (all orders)</p>
-                <img src="assets/Alerts_Create All Orders Alert.png" alt="Create alert dialog for all orders with total portfolio exposure trigger" style="width:100%;display:block;"/>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">All orders for security</p>
+                <img src="assets/Alerts_v2-Create-AllAAPLOrders-Alert.png" alt="Create alert dialog: All AAPL Orders tab showing group scope" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Security-level</p>
+                <img src="assets/Alerts_v2-Create-Security-Alert.png" alt="Create alert dialog: AAPL Security tab showing security-level scope" style="width:100%;height:360px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
             </div>
           </div>
@@ -1188,7 +1136,7 @@
               <div>
                 <p class="font-label cs-decision-label" style="margin-bottom:0.5rem;">Hypothesis</p>
                 <div class="cs-decision">
-                  <p class="body-text-sm">Order metadata covered execution quality but left traders blind to market and time-based conditions. The expanded library needed to serve four scopes without creating four separate builders.</p>
+                  <p class="body-text-sm">Order metadata covered execution quality but left traders blind to market and macro conditions. The expanded library needed to serve four scopes without creating four separate builders.</p>
                 </div>
               </div>
               <div>
@@ -1206,7 +1154,24 @@
                 </div>
               </div>
             </div>
-            <img src="assets/Alerts_Condition Options.png" alt="Trigger field options across all four alert scopes" style="width:100%;display:block;"/>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1.5rem;">
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Order Level</p>
+                <img src="assets/Alerts_Order Dropdown.png" alt="Trigger dropdown: Order Level fields" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">All Orders of a Security</p>
+                <img src="assets/Alerts_Order Dropdown.png" alt="Trigger dropdown: All Orders of a Security fields" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">All Orders</p>
+                <img src="assets/Alerts_Order Dropdown.png" alt="Trigger dropdown: All Orders fields" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Market Level Security</p>
+                <img src="assets/Alerts_Market Level Dropdown.png" alt="Trigger dropdown: Market Level Security fields" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+              </div>
+            </div>
           </div>
 
           <!-- 03: Unified Alert Hub -->
@@ -1236,7 +1201,7 @@
                 </div>
               </div>
             </div>
-            <img src="assets/Alert_Round 2 Hub.png" alt="Unified alert hub: pre-defined and user-defined alerts with two-panel layout" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v2-Alert-Hub.png" alt="Unified alert hub: pre-defined and user-defined alerts with two-panel layout" style="width:100%;display:block;"/></div>
           </div>
 
           <!-- 04: Triggered Notifications Grid -->
@@ -1265,7 +1230,7 @@
                 </div>
               </div>
             </div>
-            <img src="assets/Alerts_Final Notifications Grid.png" alt="Triggered notifications grid with acknowledge, snooze, and manage actions and inline order detail" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_v1-Notifications-Grid.png" alt="Triggered notifications grid with acknowledge, snooze, and manage actions and inline order detail" style="width:100%;display:block;"/></div>
           </div>
         </div>
       </section>
@@ -1276,9 +1241,7 @@
           <h2 class="cs-section-title">
             Final Validation</h2>
           <p class="section-subtitle">
-            88% would actively use the new alert functionality. 25× more alerts created post-launch.</p>
-          <p class="body-text mb-8">
-            Round 1 answered to the timeline. Round 2 answered to the users.</p>
+            Round 1 answered the timeline. Round 2 answered the users.</p>
           <div class="cs-grid-2 mb-8">
             <div class="stat-block stat-block-lg">
               <span class="stat-number stat-number-lg" style="color:#1b1c19;">80%</span>
@@ -1332,15 +1295,15 @@
                 <p class="body-text-sm">
                   One unified alert configuration hub consolidating all alert types and all front office personas.</p>
                 <ul style="margin-top:0.5rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0.35rem;">
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Additive improvements</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Macro-level alerting</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Timing and macro triggers</li>
+                  <li class="cs-scope-item">&#8212;&nbsp; All additive improvements</li>
+                  <li class="cs-scope-item">&#8212;&nbsp; Macro-level alerting</li>
+                  <li class="cs-scope-item">&#8212;&nbsp; Macro triggers</li>
                 </ul>
               </div>
             </div>
           </div>
           <p class="body-text mb-8">
-            The additive release was designed to meet a client contract deadline. When the India team didn't sign, the timeline pressure lifted and the full redesign went to production.</p>
+            The additive release was designed to meet a client contract deadline. When the prospective clients didn't sign, the timeline pressure lifted and the full redesign went to production.</p>
           <div class="cs-grid-2">
             <div class="stat-block stat-block-lg">
               <span class="stat-number stat-number-lg">34×</span>
@@ -1360,24 +1323,52 @@
         </div>
       </section>
 
+      <!-- PF IMPACT -->
+      <section id="pf-impact" class="scroll-mt-24 section-grid">
+        <div>
+          <h2 class="cs-section-title">Impact</h2>
+          <p class="section-subtitle">Two deliverables. One that shipped, one that set the precedent.</p>
+          <p class="body-text" style="margin-bottom:2rem;">Two design deliverables: an additive release constrained by the initial client timeline, and a full hub redesign. When the prospective clients didn't sign and the timeline pressure lifted, the full redesign is what shipped.</p>
+
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+            <div>
+              <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Project Impact</p>
+              <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                <li class="body-text">34x increase in alerts created within 12 months, surpassing the 20x target set by the head of product</li>
+                <li class="body-text">600+ firms gained threshold alerting on par with alternative trading platforms, closing a capability gap that had been a consistent source of competitive frustration</li>
+                <li class="body-text">First UX-led project at Fidessa to ship, with developer collaboration throughout ensuring technical feasibility and establishing a process that subsequent projects followed</li>
+              </ul>
+            </div>
+            <div>
+              <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Organizational Influence</p>
+              <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                <li class="body-text">Research and validation established as a prerequisite for scope decisions, shifting the team from shipping without user input to a structured design process</li>
+                <li class="body-text">The full hub redesign shipped unprompted, turning user research findings into a live product rather than a scope compromise</li>
+                <li class="body-text">Consolidated alert architecture replaced alerting functionality scattered across multiple tools with a single entry point, reducing code duplication and giving the platform a maintainable foundation for future alert development</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- PF DOCUMENTATION -->
       <section id="pf-documentation" class="scroll-mt-24 section-grid">
         <div>
           <h2 class="cs-section-title">
             Documentation &amp; Handoff</h2>
           <p class="section-subtitle">
-            Designed for the developer who wasn't in the room.</p>
+            Every state covered. Every edge case documented.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
             <p class="body-text">
-              Developers were involved throughout the design process to pressure-test technical feasibility and surface constraints before they became blockers. The full redesign was documented end-to-end for engineering handoff.</p>
+              Developers joined design reviews throughout to catch feasibility issues early. The full redesign shipped with a complete engineering handoff package covering every state, input edge case, and component behavior.</p>
             <div class="cs-card">
               <p class="font-label cs-card-label">
                 Delivered to Developers</p>
               <ul style="display:flex;flex-direction:column;gap:0.5rem;">
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">— Annotated Figma spec with full state coverage</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">— Component behavior notes for the alert creation flow</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">— Edge case documentation for threshold inputs</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">— Developer Q&amp;A session prior to build start</li>
+                <li class="cs-scope-item">— Annotated Figma spec with full state coverage</li>
+                <li class="cs-scope-item">— Component behavior notes for the alert creation flow</li>
+                <li class="cs-scope-item">— Edge case documentation for threshold inputs</li>
+                <li class="cs-scope-item">— Developer Q&amp;A session prior to build start</li>
               </ul>
             </div>
           </div>
@@ -1400,7 +1391,7 @@
               <p class="cs-decision-title">
                 Instinct without evidence isn't enough to push back</p>
               <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Before design round 1, I had an inkling the scope was too narrow and raised it. Senior colleagues advised me to hold off. Without the research to back it, I didn't have the standing to push further. Once user interviews gave me something concrete, I pushed again and the scope changed. But that came a round later than it could have. Instinct tells you where to look. Evidence is what lets you push.</p>
+                Before design round 1, there was an inkling the scope was too narrow. Senior colleagues advised holding off. Without the research to back it, there wasn't standing to push further. Once user interviews gave something concrete, the scope changed. But that came a round later than it could have. Instinct tells you where to look. Evidence is what lets you push.</p>
             </div>
             <div class="cs-decision">
               <p class="font-label cs-decision-label">
@@ -1408,7 +1399,7 @@
               <p class="cs-decision-title">
                 Domain research time is design time</p>
               <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Month 1 was entirely knowledge transfer. On a fast-moving project that can feel like lost time. Here it was the opposite: understanding the full alert landscape across the platform was what made it possible to identify fragmentation as a possible root problem, not just missing features.</p>
+                Month 1 was entirely knowledge transfer. On a fast-moving project that can feel like lost time. Here it was the opposite. Understanding the full alert landscape across the platform was what made it possible to identify fragmentation as a possible root problem, not just missing features.</p>
             </div>
           </div>
         </div>
@@ -1449,7 +1440,7 @@
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#1b1c19;">
                   Senior High-Touch Trader</p>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">
-                  Buy-side institution</p>
+                  US Client Firm</p>
               </div>
             </div>
             <div style="background:#faf9f4;padding:2rem 2.25rem;">
@@ -1505,6 +1496,10 @@
           <span class="font-label cs-meta-value">
             Research, Strategy, Design, Handoff</span>
         </div>
+        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
+          <span class="font-label cs-meta-label">Status</span>
+          <span class="font-label tag tag-shipped" style="padding: 0.15rem 0.6rem;">Shipped</span>
+        </div>
       </div>
     </div>
   </header>
@@ -1553,7 +1548,7 @@
           <p class="body-text mb-5">
             User interviews killed the original scope. Single-order alerts wouldn't address the actual pain points: users needed alerts on multiple orders to match their fast-paced work style, and a single alerting hub to fix the discoverability problem caused by functionality scattered across tools.</p>
           <p class="body-text">
-            I led the project end-to-end as the sole designer, conducting knowledge transfer sessions, design iterations, and in-depth user interviews across all major personas. The project produced two design rounds: an additive release scoped to a client contract deadline, and a comprehensive redesign consolidating all alerting into a single hub. When the India team didn't sign and the timeline constraint lifted, the full redesign is what shipped.</p>
+            I led the project end-to-end as the sole designer, conducting knowledge transfer sessions, design iterations, and in-depth user interviews across all major personas. The project produced two design rounds: an additive release scoped to a client contract deadline, and a comprehensive redesign consolidating all alerting into a single hub. When the prospective clients didn't sign and the timeline constraint lifted, the full redesign is what shipped.</p>
           <!-- Timeline -->
           <div class="cs-timeline-box">
             <p class="font-label cs-timeline-header">
@@ -1651,7 +1646,7 @@
             Knowledge transfer sessions with SMEs produced a functionality map covering all alerting behavior and current state across the platform. In-depth user interviews across all three persona types followed, with research synthesis identifying shared needs, persona-specific needs, and gaps.</p>
           <p class="body-text mb-7">
             Key finding: many users weren't aware of the full range of alerting capabilities that already existed. The problem wasn't only missing functionality: the existing functionality was too fragmented to discover and configure reliably.</p>
-          <img src="assets/Alerts_Understanding the Domain.png" alt="Functionality map: alert landscape across Fidessa" style="width:100%;display:block;"/>
+          <div style="padding:0 10%;"><img src="assets/Alerts_Understanding the Domain.png" alt="Functionality map" style="width:100%;display:block;"/></div>
         </div>
       </section>
 
@@ -1692,7 +1687,7 @@
               <p class="font-label cs-card-label">
                 Sales Trader</p>
               <p class="body-text-sm">
-                Client-facing. Needs time-based alerts tied to specific client orders and execution windows.</p>
+                Client-facing. Needs fill progress alerts on client orders tied to execution windows.</p>
             </div>
             <div class="cs-card">
               <p class="font-label cs-card-label">
@@ -1704,7 +1699,7 @@
               <p class="font-label cs-card-label">
                 Low-Touch Trader</p>
               <p class="body-text-sm">
-                High volume, algorithmic execution. Needs apply-to-all and market movement, not time-based client alerts.</p>
+                High volume, algorithmic execution. Needs apply-to-all and market movement triggers, not fill progress alerts.</p>
             </div>
           </div>
         </div>
@@ -1718,7 +1713,7 @@
           <p class="section-subtitle">
             Additive improvements don't fix fragmentation.</p>
           <p class="body-text mb-7">
-            The original brief came with a commercial deadline: prospective clients in a new region required single-order alerts before they would sign. That constrained the first design round to an additive release. Research made clear it would only solve half the problem: users were asking for alerting functionality that already existed, and adding more types to a fragmented system wouldn't fix discoverability. I pushed for the full redesign. When the India team didn't sign and the timeline pressure lifted, that's what shipped.</p>
+            The original brief came with a commercial deadline: prospective clients in a new region required single-order alerts before they would sign. That constrained the first design round to an additive release. Research made clear it would only solve half the problem: users were asking for alerting functionality that already existed, and adding more types to a fragmented system wouldn't fix discoverability. The full redesign followed. When the prospective clients didn't sign and the timeline pressure lifted, that's what shipped.</p>
           <div class="cs-grid-2 mb-8">
             <div class="cs-compare-original">
               <p class="font-label cs-compare-label">
@@ -1748,7 +1743,7 @@
               Ideation</p>
             <p class="body-text mb-7">
               The original scope was shaped by development feasibility before any design work had started. Wireframing early was necessary, not to explore visual direction, but to give PMs and developers something concrete to react to. It reframed the conversation from "what can we build" to "what should we build and is it feasible."</p>
-            <img src="assets/Alerts_Wireframes.png" alt="Wireframes: alert configuration concepts" style="width:100%;display:block;"/>
+            <div style="padding:0 10%;"><img src="assets/Alerts_Wireframes.png" alt="Wireframes: alert configuration concepts" style="width:100%;display:block;"/></div>
           </div>
           <div class="cs-decisions">
             <div class="cs-decision-secondary">
@@ -1788,7 +1783,7 @@
                 <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Multi-order alerting &nbsp;&#8212;</li>
                 <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Macro-level alerting &nbsp;&#8212;</li>
                 <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Order metadata triggers &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Timing and macro triggers &nbsp;&#8212;</li>
+                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Macro triggers &nbsp;&#8212;</li>
               </ul>
             </div>
           </div>
@@ -1805,9 +1800,7 @@
           <h2 class="cs-section-title">
             Final Validation</h2>
           <p class="section-subtitle">
-            88% would actively use the new alert functionality. 25× more alerts created post-launch.</p>
-          <p class="body-text mb-8">
-            Round 1 answered to the timeline. Round 2 answered to the users.</p>
+            Round 1 answered the timeline. Round 2 answered the users.</p>
           <div class="cs-grid-2 mb-8">
             <div class="stat-block stat-block-lg">
               <span class="stat-number stat-number-lg" style="color:#ba1a1a;">80%</span>
@@ -1865,13 +1858,13 @@
                   <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Multi-order alerting</li>
                   <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Macro-level alerting</li>
                   <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Order metadata triggers</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Timing and macro triggers</li>
+                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Macro triggers</li>
                 </ul>
               </div>
             </div>
           </div>
           <p class="body-text mb-8">
-            The additive release was designed to meet a client contract deadline. When the India team didn't sign, the timeline pressure lifted and the full redesign is what went to production. Front office traders are known for slow adoption of new tooling. The 34× result reflects what happens when the system shipped is the one that actually matches how they work.</p>
+            The additive release was designed to meet a client contract deadline. When the prospective clients didn't sign, the timeline pressure lifted and the full redesign is what went to production. Front office traders are known for slow adoption of new tooling. The 34× result reflects what happens when the system shipped is the one that actually matches how they work.</p>
           <div class="cs-grid-2">
             <div class="stat-block stat-block-lg">
               <span class="stat-number stat-number-lg">34×</span>
@@ -1905,7 +1898,7 @@
               <p class="cs-decision-title">
                 Instinct without evidence isn't enough to push back</p>
               <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Before design round 1, I had an inkling the scope was too narrow and raised it. Senior colleagues advised me to hold off. Without the research to back it, I didn't have the standing to push further. Once user interviews gave me something concrete, I pushed again and the scope changed. But that came a round later than it could have. Instinct tells you where to look. Evidence is what lets you push.</p>
+                Before design round 1, there was an inkling the scope was too narrow. Senior colleagues advised holding off. Without the research to back it, there wasn't standing to push further. Once user interviews gave something concrete, the scope changed. But that came a round later than it could have. Instinct tells you where to look. Evidence is what lets you push.</p>
             </div>
             <div class="cs-decision-secondary">
               <p class="font-label cs-decision-label-secondary">
@@ -1913,7 +1906,7 @@
               <p class="cs-decision-title">
                 Domain research time is design time</p>
               <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Month 1 was entirely knowledge transfer. On a fast-moving project that can feel like lost time. Here it was the opposite: understanding the full alert landscape across the platform was what made it possible to identify fragmentation as a possible root problem, not just missing features.</p>
+                Month 1 was entirely knowledge transfer. On a fast-moving project that can feel like lost time. Here it was the opposite. Understanding the full alert landscape across the platform was what made it possible to identify fragmentation as a possible root problem, not just missing features.</p>
             </div>
           </div>
         </div>

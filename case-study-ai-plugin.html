@@ -132,15 +132,15 @@
           <!-- Context -->
           <div id="cs-context" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Context</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">Fidessa is an enterprise order management system used by 600+ trading firms across front and middle office. As the solo UX designer supporting a large product surface, moving efficiently on production-heavy work is not optional. It's what creates space for the design thinking that actually matters.</p>
-            <p class="body-text">Fidessa is built on data grids. Nearly every screen in the platform is organised around tables: order grids, allocation views, position summaries, depth-of-market panels. Designing these screens realistically, with correct component usage, accurate column widths, zebra striping, and tree hierarchies, is the baseline expectation before any stakeholder review or user testing.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">As the sole UX designer supporting a large product surface, moving efficiently on production-heavy work is not optional. It’s what creates space for the design thinking that actually matters.</p>
+            <p class="body-text">Fidessa is built on data grids. Nearly every screen in the platform is organized around tables: order grids, allocation views, position summaries, depth-of-market panels. Designing these screens realistically, with correct component usage, accurate column widths, zebra striping, and tree hierarchies, is the baseline expectation before any stakeholder review or user testing.</p>
           </div>
 
           <!-- The Problem -->
           <div id="cs-problem" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Problem</h3>
             <p class="body-text" style="margin-bottom:1.25rem;">A single data grid takes at least 15 minutes to build correctly by hand. A typical Fidessa screen has five or six. That is over an hour of time that competes directly with design thinking and iteration.</p>
-            <p class="body-text" style="margin-bottom:2rem;">Existing Figma plugins don't solve this. They are not designed around a specific design system's component variants, and they produce generic output that doesn't reflect how the product actually looks.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Existing Figma plugins don’t solve this. They are not designed around a specific design system’s component variants, and they produce generic output that doesn’t reflect how the product actually looks.</p>
 
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2rem;">
               <div style="background:#f4f4ef;padding:1.5rem;">
@@ -169,11 +169,11 @@
                 <div style="background:#faf9f4;padding:1.5rem;">
                   <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">Middle Office dashboard</p>
                   <p class="body-text-sm">17 different grid configurations, each representing a distinct way to surface the same allocation data. Every one needed to be realistic enough to support a stakeholder or user testing session.</p>
+                  <p class="body-text-sm">Building 17 grids by hand was not a viable approach. The time cost would have consumed the project.</p>
                 </div>
               </div>
             </div>
 
-            <p class="body-text">Building 17 grids by hand was not a viable approach. The time cost would have consumed the project.</p>
           </div>
 
           <!-- The Solution -->
@@ -182,7 +182,7 @@
             <p class="body-text" style="margin-bottom:2rem;">Component Companion is a Figma plugin that connects directly to the Fidessa component library and generates fully styled, realistic data tables from a simple configuration. The output is a standard Figma frame, fully editable and ready for prototyping.</p>
 
             <img src="assets/Plugin_Preview.png" alt="Component Companion Preview tab showing a live tree-nested table with hierarchical rows, parent leaf counters, and aggregated values" style="width:100%;display:block;margin-bottom:0.75rem;"/>
-            <p class="font-label cs-caption" style="margin-bottom:2rem;">The live preview tab — updates as columns, rows, and data are configured, before generating to the Figma canvas</p>
+            <p class="font-label cs-caption" style="margin-bottom:2rem;">The live preview tab, which updates as columns, rows, and data are configured, before generating to the Figma canvas</p>
 
             <p class="font-label cs-field-label" style="margin-bottom:1rem;">Key capabilities</p>
             <div class="feature-grid">
@@ -208,12 +208,12 @@
               </div>
               <div class="feature-item">
                 <p class="feature-label">Live preview</p>
-                <p class="body-text-sm">A preview updates as you configure columns, rows, and data. The generate button is locked until the preview reflects the current settings, preventing mismatched output.</p>
+                <p class="body-text-sm">A preview updates as columns, rows, and data are configured. The generate button is locked until the preview reflects the current settings, preventing mismatched output.</p>
               </div>
             </div>
 
             <img src="assets/Plugin_Saved List.png" alt="Component Companion Columns tab showing per-level content configuration with saved custom lists mapped to each indent level" style="width:100%;display:block;margin-bottom:0.75rem;"/>
-            <p class="font-label cs-caption">Per-level content configuration: each indent level maps to its own data source — saved lists, person names, company names, or securities</p>
+            <p class="font-label cs-caption">Per-level content configuration: each indent level maps to its own data source: saved lists, person names, company names, or securities</p>
           </div>
 
         </div>
@@ -228,7 +228,7 @@
           <!-- Working Process -->
           <div id="cs-process" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Working with Claude Code</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">This was my first Figma plugin. I have a coding background, but I had never worked with the Figma Plugin API or written a TypeScript/React application from scratch.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">The plugin required working with the Figma Plugin API and TypeScript/React, neither of which had been part of previous work. A coding background made it approachable; Claude Code handled the implementation.</p>
             <p class="body-text" style="margin-bottom:2rem;">The plugin was built concurrently with the Middle Office dashboard project. Rather than building in isolation and testing later, each new capability was validated against real design work as it was added. That feedback loop shaped every decision about what to build next.</p>
 
             <div class="cs-bg-deep cs-section-dark" style="margin-bottom:2rem;">
@@ -245,20 +245,20 @@
                   <span style="font-family:'Space Grotesk',sans-serif;font-size:0.65rem;letter-spacing:0.1em;color:#7fc4b8;flex-shrink:0;padding-top:0.2rem;">02</span>
                   <div>
                     <p class="body-text-sm" style="font-weight:600;color:#f0f9f7;margin-bottom:0.25rem;">Describe the feature</p>
-                    <p class="body-text-sm">Explain the expected behaviour in plain language. Claude Code generated the implementation and walked through its logic.</p>
+                    <p class="body-text-sm">Explain the expected behavior in plain language. Claude Code generated the implementation and walked through its logic.</p>
                   </div>
                 </div>
                 <div style="display:flex;gap:1.25rem;align-items:flex-start;">
                   <span style="font-family:'Space Grotesk',sans-serif;font-size:0.65rem;letter-spacing:0.1em;color:#7fc4b8;flex-shrink:0;padding-top:0.2rem;">03</span>
                   <div>
                     <p class="body-text-sm" style="font-weight:600;color:#f0f9f7;margin-bottom:0.25rem;">Review the output</p>
-                    <p class="body-text-sm">Test in Figma against real design work. Identify gaps, edge cases, or behaviours that didn't match the intent. Feed those back and iterate.</p>
+                    <p class="body-text-sm">Test in Figma against real design work. Identify gaps, edge cases, or behaviors that didn’t match the intent. Feed those back and iterate.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <p class="body-text" style="margin-bottom:2rem;">The UX judgment was always mine: deciding what features were necessary, what the right behaviour was, and when a capability was good enough to ship. Claude Code handled the translation from that intent into working TypeScript.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Each feature started with a design requirement: what the plugin needed to do and why. Claude Code handled the translation from that intent into working TypeScript. The output was tested against real design work before anything shipped.</p>
 
             <img src="assets/Plugin_Claude Chat.png" alt="Claude Code terminal session showing a conversation about refining the plugin todo list, with Claude asking clarifying questions and updating files" style="width:100%;display:block;margin-bottom:0.75rem;"/>
             <p class="font-label cs-caption">A typical Claude Code session: describing a feature, Claude Code asking clarifying questions, then updating the codebase</p>
@@ -267,7 +267,7 @@
           <!-- Hardest Part -->
           <div id="cs-hardest-part" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Hardest Part</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">Tree nesting was the most complex capability to get right. It wasn't one problem. It was four interacting problems that each needed to work correctly before the others could be validated.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">Tree nesting was the most complex capability to get right. It wasn’t one problem. It was four interacting problems that each needed to work correctly before the others could be validated.</p>
 
             <div style="display:flex;flex-direction:column;gap:1rem;margin-bottom:2rem;">
               <div class="cs-decision scroll-mt-24">
@@ -280,17 +280,17 @@
               </div>
               <div class="cs-decision scroll-mt-24">
                 <p class="font-label cs-decision-label" style="margin-bottom:0.4rem;">Leaf counters</p>
-                <p class="body-text-sm">Parent rows append a count of their leaf descendants to the first column label, for example "Asia Pacific (4)". That count is based on all descendant leaf rows, not just direct children, and updates correctly as rows are added, removed, or reindented.</p>
+                <p class="body-text-sm">Parent rows append a count of their leaf descendants to the first column label, for example “Asia Pacific (4)”. That count is based on all descendant leaf rows, not just direct children, and updates correctly as rows are added, removed, or reindented.</p>
               </div>
               <div class="cs-decision scroll-mt-24">
                 <p class="font-label cs-decision-label" style="margin-bottom:0.4rem;">Data aggregation</p>
                 <p class="body-text-sm">Number and percentage columns automatically aggregate children into parent rows. Buy/sell indicator columns aggregate upward: a parent shows Buy if all children are Buy, Sell if all are Sell, and Mixed otherwise. Each aggregation type has its own logic and interacts with the sort and level detection systems.</p>
               </div>
             </div>
-
-            <img src="assets/Plugin_Data.png" alt="Component Companion Data tab showing the editable data grid with tree indent controls, alongside the generated nested table on the Figma canvas" style="width:100%;display:block;margin-bottom:0.75rem;margin-top:0.5rem;"/>
-            <p class="font-label cs-caption" style="margin-bottom:2rem;">The Data tab: indent controls per row, the full data grid, and the resulting tree structure on the canvas</p>
-
+            <div style="width:50%;display:block;margin-bottom:0.75rem;margin-top:0.5rem;margin-left:auto;margin-right:auto">
+              <img src="assets/Plugin_Data.png" alt="Component Companion Data tab showing the editable data grid with tree indent controls, alongside the generated nested table on the Figma canvas" />
+              <p class="font-label cs-caption" style="margin-bottom:2rem;">The Data tab: indent controls per row, the full data grid, and the resulting tree structure on the canvas</p>
+            </div>
             <p class="body-text">Getting these right required more iteration than any other part of the plugin. Each fix surfaced the next edge case. The CHANGELOG has 30+ entries touching tree nesting alone.</p>
           </div>
 
@@ -327,7 +327,7 @@
 
             <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Beyond speed</p>
             <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2.5rem;">
-              <li class="body-text"><span style="font-weight:600;">Correctness by construction.</span> The plugin generates output directly from library components. There's no risk of a number that doesn't add up or a label that doesn't match. What goes into the prototype is correct.</li>
+              <li class="body-text"><span style="font-weight:600;">Correctness by construction.</span> The plugin generates output directly from library components. There’s no risk of a number that doesn’t add up or a label that doesn’t match. What goes into the prototype is correct.</li>
               <li class="body-text"><span style="font-weight:600;">Higher fidelity feedback.</span> Realistic grids, not generic placeholders, surface reactions closer to what users would feel in the live product. That changes the quality of the feedback.</li>
               <li class="body-text"><span style="font-weight:600;">Expanded scope.</span> The plugin was built for Fidessa Desktop. It was later extended to ION Web Components, making it available to the broader team. Setting up the ION profile took a fraction of the time the Fidessa profile required, because the architecture was already in place.</li>
             </ul>
@@ -347,7 +347,7 @@
             <div class="cs-subsection-block scroll-mt-24" style="margin-top:3rem;">
               <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">What's next</p>
               <p class="body-text" style="margin-bottom:1.25rem;">Component Companion is one of three internal tools in development. The others focus on design notes and stakeholder handoff. The pattern is the same: identify where time goes, build a tool that removes it, and redirect that time toward the work that requires design thinking.</p>
-              <p class="body-text">This is what it looks like when UX uses AI as a practical delivery tool rather than an experiment. The speed gain is real. The benefit is in what that speed makes possible.</p>
+              <!-- <p class="body-text">This is what it looks like when UX uses AI as a practical delivery tool rather than an experiment. The speed gain is real. The benefit is in what that speed makes possible.</p> -->
             </div>
           </div>
 

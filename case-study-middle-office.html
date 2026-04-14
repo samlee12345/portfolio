@@ -7,6 +7,22 @@
   <link rel="stylesheet" href="styles/shared.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="scripts/tailwind-config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    .nav-link.active           { color: #A08FEF; }
+    .section-subtitle          { color: #A08FEF; }
+    .margin-callout            { color: #A08FEF; }
+    .timeline-dot              { background: #A08FEF; }
+    .stat-number               { color: #A08FEF; }
+    .tag-shipped               { color: #A08FEF; background: #eedcfc; }
+    .cs-company                { color: #A08FEF; }
+    .cs-card-label             { color: #A08FEF; }
+    .cs-decision               { border-left-color: #A08FEF; }
+    .cs-decision-label         { color: #A08FEF; }
+    .cs-compare-label-blue     { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .site-nav-link.active      { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .bg-primary                { background-color: #A08FEF !important; }
+  </style>
 </head>
 <body>
 
@@ -39,7 +55,7 @@
   <!-- Hero -->
   <header class="cs-hero" style="padding-top: 2.5rem;">
     <div class="cs-hero-grid">
-      <p class="cs-hero-desc">Designed the first historical analytics layer for middle office operations at Fidessa, giving 300,000+ professionals across 600+ firms a way to systematically identify root causes of allocation delays ahead of European T+1 regulatory requirements.</p>
+      <p class="cs-hero-desc">The first historical analytics layer for middle office operations at Fidessa, giving 300,000+ professionals across 600+ firms a systematic way to identify the root causes of allocation delays ahead of European T+1 regulatory requirements.</p>
       <div class="cs-meta">
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">Timeline</span>
@@ -56,6 +72,10 @@
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">Responsibilities</span>
           <span class="font-label cs-meta-value">Research, Strategy, Design, Handoff</span>
+        </div>
+        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
+          <span class="font-label cs-meta-label">Status</span>
+          <span class="font-label tag" style="padding: 0.15rem 0.6rem; color: #737785; background: #f0f0eb;">In Development</span>
         </div>
       </div>
     </div>
@@ -98,58 +118,70 @@
         <div>
           <p class="font-label cs-part-label">Part One</p>
           <h2 class="cs-section-title">Project Overview</h2>
+          <img src="assets/MiddleOffice_Desktop monitor.png" alt="Middle Office Dashboard displayed on a desktop monitor showing T+1 analytics, client data, field analytics, and service analytics" style="width:100%;display:block;margin-bottom:2rem;"/>
 
           <!-- Mission -->
           <div id="pf-mission" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Mission</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">Fidessa is an enterprise platform used by middle office operations teams across 600+ global financial firms. These teams manage the post-trade settlement lifecycle: trade confirmation, allocation matching, and exception handling. Across all firms, approximately 300,000 professionals use the platform daily.</p>
-            <p class="body-text" style="margin-bottom:2rem;">A regulatory change is driving urgency. European firms are moving to T+1 allocation completion, a requirement the Americas already meet. To prepare, firms need to understand where their allocation delays are coming from. The brief was to speed up the allocation process. No scope was defined, no problem statement existed, and no prior design work had been done. I built all of it from scratch.</p>
-            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Key Responsibilities</p>
-            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-              <li class="body-text">End-to-end ownership across domain research, user research, design, and validation</li>
-              <li class="body-text">Knowledge transfer sessions with PMs to build allocations workflow fluency</li>
-              <li class="body-text">Discovery workshops to map the end-to-end workflow and define the scope</li>
-              <li class="body-text">User research across 12 middle office traders in Europe and the Americas</li>
-              <li class="body-text">Design of the dashboard, analytics views, and firm and client level summaries</li>
-            </ul>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-bottom:2rem;">
+              <p class="body-text">Fidessa is an enterprise platform for middle office operations, managing the post-trade settlement lifecycle across global financial firms. European firms are moving to trade plus one day (T+1), a regulatory requirement to settle trades within one business day, and need to understand where their delays are concentrated.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Key Responsibilities</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text">End-to-end ownership across domain research, user research, design, and validation</li>
+                  <li class="body-text">Knowledge transfer sessions with product managers to build allocations workflow fluency</li>
+                  <li class="body-text">Discovery workshops to map the end-to-end workflow and define the scope</li>
+                  <!-- <li class="body-text">User research across 12 middle office traders in Europe and the Americas</li> -->
+                  <li class="body-text">Design of the dashboard, analytics views, and firm and client level summaries</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
           <!-- The Problem -->
           <div id="pf-problem" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Problem</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">Operations teams had no historical view of their allocations. When delays occurred, there was no way to identify root causes systematically. Root causes always fall into one of three categories: client data (incorrect information passed by the client), order data (field-level issues), or service errors (mismatches across confirmation services).</p>
-            <p class="body-text" style="margin-bottom:2rem;">Without historical data, teams could not tell whether a problem was a one-off incident or a systemic pattern. When the root cause was on the client side, there was no evidence to bring to the client. Everything was reactive. Teams could not prepare for T+1 requirements without first knowing where delays were concentrated.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Operations teams had no historical view of their allocations. Root causes fall into three categories: client data, order data, or service errors. Without historical data, there was no way to identify which type was responsible or whether a problem was a one-off or a recurring pattern.</p>
             <div style="margin-bottom:2rem;">
               <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Stated ask</p>
-              <p class="body-text">Speed up the allocation process.</p>
-            </div>
-            <div>
-              <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Actual problem</p>
-              <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-                <li class="body-text"><span style="font-weight:600;">No pattern recognition:</span> without historical data, teams cannot distinguish a systemic problem from a one-off incident</li>
-                <li class="body-text"><span style="font-weight:600;">No accountability mechanism:</span> when delays are caused by incorrect client data, teams have no evidence to support the conversation</li>
-                <li class="body-text"><span style="font-weight:600;">Fully reactive:</span> teams respond to delays as they happen rather than addressing the root causes that produce them</li>
-                <li class="body-text"><span style="font-weight:600;">T+1 exposure:</span> in the Americas, T+1 is already a regulatory requirement and firms face financial penalties when allocations are not completed on time. American clients requested this feature directly because of those penalties. European firms face the same requirement soon, and will be subject to the same fines once the rule is in place. Neither region can prepare without first understanding where their delays are concentrated.</li>
-              </ul>
+              <p class="body-text" style="margin-bottom:1.75rem;">Speed up the allocation process.</p>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+                <div>
+                  <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">User Sentiment</p>
+                  <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                    <li class="body-text"><span style="font-weight:600;">No visibility into patterns:</span> Teams resolved the same delays week after week with no way to tell whether a problem was a one-off or a systemic pattern. Without that distinction, every incident started from scratch and the same root causes kept recurring.</li>
+                    <li class="body-text"><span style="font-weight:600;">No data to push for change:</span> When delays traced back to client data quality, teams had no documented evidence to put in front of clients. Without data, there was no basis to push clients to correct how they sent information, and the same problems repeated.</li>
+                    <li class="body-text"><span style="font-weight:600;">T+1 exposure:</span> American firms already face financial penalties for missed T+1. European firms face the same regulatory requirement soon, with no current way to identify or address the sources of their delays.</li>
+                  </ul>
+                </div>
+                <div>
+                  <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Business Impact</p>
+                  <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                    <li class="body-text"><span style="font-weight:600;">Negative impression:</span> Middle office teams are high-visibility. A platform without analytical tooling to support a regulatory requirement surfaces as a failure in renewal conversations.</li>
+                    <li class="body-text"><span style="font-weight:600;">Competitive gap:</span> Competitor platforms are moving toward analytics as standard. Every quarter without this feature, accounts have a stronger reason to evaluate alternatives.</li>
+                    <li class="body-text"><span style="font-weight:600;">Regulatory alignment gap:</span> T+1 is a regulatory shift client firms must meet. A platform that doesn't help them get there becomes a liability rather than an asset, and shows up in churn.</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
 
           <!-- The Solution -->
           <div id="pf-solution" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Solution</h3>
-            <p class="body-text" style="margin-bottom:2rem;">A dashboard surfacing the three types of allocation delay: static field mismatches, client response cycles, and service mismatches. Firm-level and client-level views support two distinct operational contexts. Time-based trend analysis (6 months to 3 years) shows whether the situation is improving, not just what is failing today. Export and print built in from the start, so teams can bring data directly into client conversations rather than compiling it manually.</p>
+            <p class="body-text" style="margin-bottom:2rem;">A historical analytics layer giving operations teams visibility into field mismatches, client response delays, and service mismatches across firm and client views, with trend analysis and built-in export.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;">
               <div class="cs-card">
                 <p class="font-label cs-card-label">Field mismatches</p>
-                <p class="body-text-sm">Which static data fields are most frequently incorrect, how severe each amendment is, and how long it takes to resolve. Identifies the specific data quality issues driving the most delays so teams and clients can address them systematically.</p>
+                <p class="body-text-sm">Most frequently incorrect fields, by severity and resolution time.</p>
               </div>
               <div class="cs-card">
                 <p class="font-label cs-card-label">Client response delay</p>
-                <p class="body-text-sm">A mismatch has been identified, but the allocation is not meeting T+1 because the client is taking longer than average to respond. Surfaces which clients are consistently slow to act on correction requests, so teams can address the communication cycle, not just the individual incident.</p>
+                <p class="body-text-sm">Clients consistently slow to act on correction requests, surfaced over time.</p>
               </div>
               <div class="cs-card">
                 <p class="font-label cs-card-label">Service mismatches</p>
-                <p class="body-text-sm">Trade confirmation mismatches broken down by service type (CTM, AMS, L1/L2 data). Separates service-layer errors from data quality issues so each root cause can be addressed independently.</p>
+                <p class="body-text-sm">Confirmation mismatches by service (CTM, AMS, L1/L2), isolated from data quality issues.</p>
               </div>
             </div>
           </div>
@@ -157,14 +189,23 @@
           <!-- My Impact -->
           <div id="pf-impact" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">My Impact</h3>
-            <p class="body-text" style="margin-bottom:2rem;">The project brief was to speed up the allocation process for middle office traders who were not completing allocations within the T+1 window. In the Americas, T+1 is already a regulatory requirement with financial penalties for non-compliance. American clients requested this feature directly because of those fines. European firms face the same requirement soon. No scope was defined, no prior UX work existed, and the problem had not been formally articulated. I translated a single directive into a structured analytical solution through domain research and user interviews.</p>
-            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Project Contributions</p>
-            <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2rem;">
-              <li class="body-text"><span style="font-weight:600;">Scope definition:</span> translated a vague mandate into three concrete problem areas with a clear design vehicle</li>
-              <li class="body-text"><span style="font-weight:600;">First historical analytics layer:</span> the platform had no analytical view of allocations before this project</li>
-              <li class="body-text"><span style="font-weight:600;">Research-driven structure:</span> the three analytics categories map directly to the three root cause types identified through user interviews</li>
-              <li class="body-text"><span style="font-weight:600;">T+1 framing:</span> established the regulatory deadline as the primary urgency driver, anchoring scope decisions in a concrete business outcome</li>
-            </ul>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Addressing User Needs</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text">Every analytics category maps directly to a root cause type surfaced in research: field mismatches, client response delays, or service errors.</li>
+                  <li class="body-text">The dashboard opens in a default state that immediately surfaces priority clients, amended fields, and service errors. No configuration required.</li>
+                  <li class="body-text">Field-level data is exportable and printable, designed to travel beyond the platform into client review conversations.</li>
+                </ul>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Organizational Influence</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text">The dashboard layout and component approach established a pattern that can be extended to other analytical views across the platform.</li>
+                  <li class="body-text">The first design-led process for middle office at Fidessa. No prior UX work existed for this part of the platform.</li>
+                </ul>
+              </div>
+            </div>
           </div>
 
         </div>
@@ -179,36 +220,26 @@
           <!-- Domain Research -->
           <div id="pf-domain" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Domain Research</h3>
-            <p class="body-text" style="margin-bottom:1.5rem;">Before any design work, I needed fluency in the allocations workflow: the data, the tools, the services, and where breakdowns occurred. I ran knowledge transfer sessions with PMs and led cross-functional discovery workshops to map the end-to-end process.</p>
-            <p class="body-text" style="margin-bottom:2rem;">Output: workflow maps and information maps covering all services and functionalities users interact with, documented in FigJam. These sessions also established the scope. The brief was directional but undefined. Discovery made it concrete: any pain point within the allocations workflow is in scope.</p>
-            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Domain research — workflow and tools map</p>
-            <img src="assets/MO_workflow_map.png" alt="FigJam board showing Non-CAP and CAP allocation workflows, confirmation services, and tool landscape across the middle office platform" style="width:100%;display:block;margin-bottom:1.75rem;"/>
-            <p class="cs-caption" style="margin-bottom:2rem;">End-to-end allocations workflow mapped across services (CTM, AMS, CAP), tool landscape, and current-state screens. Produced during knowledge transfer sessions with PMs.</p>
-            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">What those sessions surfaced</p>
-            <div class="cs-decisions">
-              <div class="cs-decision">
-                <p class="font-label cs-decision-label">Finding</p>
-                <p class="cs-decision-title">No historical data layer exists</p>
-                <p class="body-text-sm">Teams can only see the current state of their queue. There is no view of past allocations, no way to aggregate by client or field, and no mechanism for identifying what has been causing delays over time.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Knowledge transfer sessions with product managers and cross-functional discovery workshops mapped the allocations workflow end-to-end, across services, tools, and where breakdowns occurred.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;margin-bottom:1.75rem;">
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Domain research: workflow and tools map</p>
+                <img src="assets/MO_workflow_map.png" alt="FigJam board showing Non-CAP and CAP allocation workflows, confirmation services, and tool landscape across the middle office platform" style="width:100%;display:block;"/>
+                <p class="cs-caption" style="margin-top:0.5rem;">End-to-end allocations workflow mapped across services (CTM, AMS, FIX, Manual), tool landscape, and current-state screens.</p>
               </div>
-              <div class="cs-decision-secondary">
-                <p class="font-label cs-decision-label-secondary">Finding</p>
-                <p class="cs-decision-title">Three types of root cause</p>
-                <p class="body-text-sm">Allocation delays consistently trace back to one of three sources: incorrect data passed by the client, field-level issues within the order, or mismatches at the service layer (CTM, AMS, L1/L2 data). These three types form the structural backbone of the analytics design.</p>
-              </div>
-              <div class="cs-decision-secondary">
-                <p class="font-label cs-decision-label-secondary">Finding</p>
-                <p class="cs-decision-title">Grid-based workflows are deeply ingrained</p>
-                <p class="body-text-sm">Operations staff configure, filter, and navigate data grids throughout their day. Any design that disrupts existing grid-based workflows creates friction for expert users. The right approach adds a new analytical layer on top of existing workflows, not a replacement for them.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Middle office persona</p>
+                <img src="assets/Middle Office User Persona.png" alt="User persona for Priya Nair, a middle office trader at a London-based institutional brokerage, showing key tasks, goals, needs, pain points, and core skills" style="width:100%;display:block;border-radius:4px;"/>
               </div>
             </div>
           </div>
 
+
           <!-- User Research -->
           <div id="pf-user-research" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">User Research</h3>
-            <p class="body-text" style="margin-bottom:2rem;">12 middle office traders interviewed across European and American firms. One session was conducted on-site at a client trading office; the remaining sessions were remote video calls. Middle office traders at different firms carry different responsibilities: at smaller firms, they also take on operational duties alongside their trading role.</p>
-            <p class="body-text" style="margin-bottom:2rem;">The goal of each session was to understand pain points within the allocations workflow: what breaks down, where the time goes, and what data would change how they work.</p>
+            <p class="body-text" style="margin-bottom:2rem;">12 middle office professionals interviewed across European and American firms, including one on-site session at a client trading office. Responsibilities vary significantly by firm size. At smaller firms, middle office staff carry both operational and trading duties, which shaped how allocation delays affected their day.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Each session focused on three questions: what breaks down, where the time goes, and what data would change how they work.</p>
             <div class="cs-grid-3" style="margin-bottom:2rem;">
               <div class="cs-card">
                 <p class="font-label cs-card-label">No historical visibility</p>
@@ -240,28 +271,47 @@
           <!-- Research Findings -->
           <div id="pf-findings" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Research Findings</h3>
-            <p class="body-text" style="margin-bottom:2rem;">The core finding was structural: without historical data, there is no way to distinguish a systemic problem from a one-off incident. Teams respond to the same root causes repeatedly because they have no view of the pattern. Most participants said access to analytics would meaningfully change how they work. A minority were more neutral but still saw the value. Export and print came up unprompted in multiple sessions — teams hold regular client reviews and need data they can walk through.</p>
-            <div class="cs-decision" style="margin-bottom:2rem;">
-              <p class="font-label cs-decision-label" style="margin-bottom:0.5rem;">Root cause attribution</p>
-              <p class="body-text-sm">When a delay traces back to a client passing incorrect data, operations teams face a specific problem: they know the root cause, but they have no documented evidence to bring to the client. Without data, the conversation stalls. The client may dispute the characterization, and the same problem recurs the following week. Historical field-level analytics changes this. It makes the pattern visible and the conversation concrete.</p>
+            <p class="body-text" style="margin-bottom:2rem;">The majority of allocations are processed at market close, giving traders a narrow window to resolve exceptions. When resolution depends on a client responding, that window shrinks further. Under T+1, there is no buffer. Unresolved interventions mean missed deadlines and direct financial penalties. Reducing data mismatches and manual intervention is not a workflow improvement. It is a compliance requirement.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e3e3de;margin-bottom:2rem;">
+              <div class="stat-block">
+                <span class="stat-number">83%</span>
+                <span class="font-label cs-stat-label">Had no systematic way to identify what was causing their allocation delays</span>
+              </div>
+              <div class="stat-block">
+                <span class="stat-number">58%</span>
+                <span class="font-label cs-stat-label">Believed most manual interventions traced back to incorrect static data passed by clients</span>
+              </div>
+              <div class="stat-block">
+                <span class="stat-number">66%</span>
+                <span class="font-label cs-stat-label">Would use historical analytics to prepare for and conduct client review conversations</span>
+              </div>
             </div>
           </div>
 
           <!-- Key Insights -->
           <div id="pf-insights" class="cs-subsection-block scroll-mt-24">
-            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Key Insights</p>
-            <div class="cs-grid-3">
+            <h3 class="cs-subsection-title">Key Insights</h3>
+            <p class="body-text" style="margin-bottom:1.75rem;">Operations teams knew delays were happening. Without historical data, they had no way to know why, which clients were responsible, or whether anything was improving over time.</p>
+            <div class="cs-grid-2">
               <div class="cs-card">
+                <i data-lucide="git-branch" style="width:1.25rem;height:1.25rem;color:#A08FEF;margin-bottom:0.75rem;"></i>
                 <p class="font-label cs-card-label" style="margin-bottom:0.5rem;">Three root types</p>
-                <p class="body-text-sm">Root causes always fall into one of three categories: client data, order data, or service errors. Surfacing them by category makes the information immediately actionable rather than requiring manual investigation before a pattern becomes visible.</p>
+                <p class="body-text-sm">Root causes always fall into one of three categories: client data, order data, or service errors. Structuring analytics by type makes the data immediately actionable.</p>
               </div>
               <div class="cs-card">
+                <i data-lucide="trending-up" style="width:1.25rem;height:1.25rem;color:#A08FEF;margin-bottom:0.75rem;"></i>
                 <p class="font-label cs-card-label" style="margin-bottom:0.5rem;">Trends over snapshots</p>
-                <p class="body-text-sm">Point-in-time visibility is not enough. Teams need to see which clients and fields are consistently the source of delays, not just what is failing today. Historical trend data changes the nature of the insight from reactive to anticipatory.</p>
+                <p class="body-text-sm">Point-in-time visibility is not enough. Historical trends show which clients and fields are consistently the source of delays, shifting the insight from reactive to anticipatory.</p>
               </div>
               <div class="cs-card">
+                <i data-lucide="send" style="width:1.25rem;height:1.25rem;color:#A08FEF;margin-bottom:0.75rem;"></i>
                 <p class="font-label cs-card-label" style="margin-bottom:0.5rem;">Data travels to clients</p>
-                <p class="body-text-sm">The value of analytics is not only internal. Teams bring this data into client conversations, and that use case requires export and print to be designed in from the start, not added as an afterthought.</p>
+                <p class="body-text-sm">Analytics travel beyond the platform into client conversations. Export and print need to be designed in from the start, not added later.</p>
+              </div>
+              <div class="cs-card">
+                <i data-lucide="table-2" style="width:1.25rem;height:1.25rem;color:#A08FEF;margin-bottom:0.75rem;"></i>
+                <p class="font-label cs-card-label" style="margin-bottom:0.5rem;">Grid-based workflows are deeply ingrained</p>
+                <p class="body-text-sm">Operations staff configure, filter, and navigate data grids throughout their day. The right approach adds a new analytical layer on top of existing workflows, not a replacement for them.</p>
               </div>
             </div>
           </div>
@@ -278,22 +328,17 @@
           <!-- Scope -->
           <div id="pf-scope" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Defining the Scope</h3>
-            <p class="body-text" style="margin-bottom:1.75rem;">The original ask gave nothing to constrain against. Through discovery, scope was clarified: any pain point within the allocations workflow is in scope. Three distinct problem areas emerged from the research.</p>
-            <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
-              <div class="cs-deliverable">
-                <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#A08FEF;font-weight:600;white-space:nowrap;margin-top:0.15rem;">01</span>
-                <div><p class="cs-deliverable-title">Dashboard</p><p class="body-text-sm">Fragmented views of the same workflow spread across separate grids with no consolidated view</p></div>
+            <p class="body-text" style="margin-bottom:2rem;">User research and discovery workshops confirmed that the allocations workflow itself was well understood. The gap was the inability to systematically identify what was causing data mismatches in the first place.</p>
+            <div class="cs-grid-2 mb-8">
+              <div class="cs-compare-original">
+                <p class="font-label cs-compare-label">Original ask</p>
+                <p class="cs-quote" style="color:#424654;">Speed up the allocation process.</p>
               </div>
-              <div class="cs-deliverable">
-                <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#A08FEF;font-weight:600;white-space:nowrap;margin-top:0.15rem;">02</span>
-                <div><p class="cs-deliverable-title">Summary analytics</p><p class="body-text-sm">No historical data on which clients, fields, or services are causing the most delays or requiring the most manual intervention</p></div>
-              </div>
-              <div class="cs-deliverable">
-                <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#A08FEF;font-weight:600;white-space:nowrap;margin-top:0.15rem;">03</span>
-                <div><p class="cs-deliverable-title">Export and print</p><p class="body-text-sm">Operations teams hold regular client reviews and need a way to bring analytics data directly into those conversations</p></div>
+              <div class="cs-compare-rescoped">
+                <p class="font-label cs-compare-label-blue">Clarified scope</p>
+                <p class="cs-quote">A dashboard surfacing historical allocation analytics across firm and client views.</p>
               </div>
             </div>
-            <p class="body-text">Middle office operations staff are expert users of the platform with deeply ingrained workflows. Any design that changes how they currently work creates disruption. The right vehicle was a new analytical layer that sits alongside existing workflows, not one that replaces them. A dashboard adds visibility without asking users to work differently.</p>
           </div>
 
           <!-- Design Decisions -->
@@ -303,23 +348,26 @@
               <div class="cs-decision">
                 <p class="font-label cs-decision-label">Decision 1</p>
                 <p class="cs-decision-title">Configurable Grid vs Preset Dashboard</p>
-                <p class="body-text-sm" style="margin-bottom:1.75rem;">Middle office operations staff configure, filter, and navigate data grids fluently every day — the grid model offers maximum flexibility and fits naturally into their existing workflow. However, root causes of allocation delays always fall into one of three types: field mismatches, client response delays, or service mismatches. That structure is fixed. A configurable grid would require users to set up their own groupings and filters before seeing anything useful, adding work without adding insight. The preset dashboard solved the cold-start problem: opening it immediately surfaces the most important data across all three root cause categories, with no configuration required.</p>
+                <p class="body-text-sm" style="margin-bottom:1.75rem;">Middle office professionals configure, filter, and navigate data grids throughout their day. The grid model fits naturally into existing workflows. However, the root causes of allocation delays always fall into one of three fixed categories: field mismatches, client response delays, or service mismatches. A configurable grid would require users to set up their own groupings before seeing anything useful. The preset dashboard opens directly on the three root cause categories, with no configuration required.</p>
                 <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:0.75rem;">
                   <div>
                     <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Configurable grid explored</p>
-                    <img src="assets/Middle Office_gridSummary.png" alt="Configurable grid variation: Manual intervention analytics with T+1 status, service, mismatch stage, and field column groupings" style="width:100%;display:block;"/>
+                    <img src="assets/MiddleOffice_Grid.png" alt="Configurable grid variation: Allocations Analytics with grouping description tree, mismatch counts, and drill-down by CTM stage and field" style="width:100%;height:340px;object-fit:contain;object-position:center;display:block;"/>
                   </div>
                   <div>
                     <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Preset dashboard chosen</p>
-                    <img src="assets/Middle Office_Final.png" alt="Preset dashboard: firm level and client level views with pre-structured analytics by field, client, and service category" style="width:100%;display:block;"/>
+                    <img src="assets/Middle Office_2 Dashboards.png" alt="Preset dashboard: firm level and client level views overlaid, showing the toggle between aggregated and client-specific analytics" style="width:100%;height:340px;object-fit:contain;object-position:center;display:block;"/>
                   </div>
                 </div>
                 <p class="cs-caption">Grid (left) surfaces the right data but requires upfront grouping setup. Preset dashboard (right) lands immediately on the three root cause categories without any configuration.</p>
               </div>
               <div class="cs-decision-secondary">
                 <p class="font-label cs-decision-label-secondary">Decision 2</p>
-                <p class="cs-decision-title">Export and print as a first-class feature</p>
-                <p class="body-text-sm">Research surfaced export and print unprompted across multiple sessions. Operations teams hold regular client review meetings. Designing export in from the start ensures the analytics are useful beyond the platform, in the conversations where accountability decisions are made.</p>
+                <p class="cs-decision-title">Export and Print as a First-Class Feature</p>
+                <p class="body-text-sm">Export and print came up unprompted across multiple research sessions. Operations teams hold regular client review meetings, and the analytics needed to be useful beyond the platform, in the conversations where accountability decisions are made. Export was designed in from the start rather than added later.</p>
+                <div style="text-align:center;margin-top:1.5rem;">
+                  <img src="assets/Middle Office_2 Dashboards.png" alt="Two dashboard variants showing manual intervention summary analytics" style="width:80%;display:inline-block;">
+                </div>
               </div>
             </div>
           </div>
@@ -332,66 +380,97 @@
         <div>
           <p class="font-label cs-part-label">Part Four</p>
           <h2 class="cs-section-title">Develop</h2>
-          <p class="body-text" style="margin-bottom:1.5rem;">The core design challenge was visualization: how do you represent the health of thousands of client accounts and allocation batches in a way that lets an operations professional immediately see where to focus?</p>
-          <p class="body-text" style="margin-bottom:2rem;">Operations staff are highly comfortable with data tables. The goal was not to replace tables with charts, but to design tables where the default state surfaces a clear next step. Opening the dashboard, a user should immediately see which clients are creating the most noise, know what to raise in a client conversation, and be able to export that view without any configuration first.</p>
+          <p class="body-text" style="margin-bottom:1.5rem;">The Middle Office Dashboard was built to surface the root causes of allocation data mismatches, giving operations teams the visibility to address patterns rather than react to individual delays.</p>
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-bottom:2rem;">
+            <div class="cs-decision-secondary">
+              <p class="font-label cs-decision-label-secondary">Requirement 1</p>
+              <p class="cs-decision-title">Firm level analytics</p>
+              <p class="body-text-sm" style="color:#737785;font-weight:400;margin-top:0.25rem;">Aggregated view across all clients: overall T+1 performance, which clients require the most manual intervention, and which fields are most frequently amended.</p>
+            </div>
+            <div class="cs-decision-secondary">
+              <p class="font-label cs-decision-label-secondary">Requirement 2</p>
+              <p class="cs-decision-title">Client level analytics</p>
+              <p class="body-text-sm" style="color:#737785;font-weight:400;margin-top:0.25rem;">Filtered view for a specific client relationship, the same data scoped to a single client for use in review conversations.</p>
+            </div>
+            <div class="cs-decision-secondary">
+              <p class="font-label cs-decision-label-secondary">Requirement 3</p>
+              <p class="cs-decision-title">Historical trend analysis</p>
+              <p class="body-text-sm" style="color:#737785;font-weight:400;margin-top:0.25rem;">Performance over time across 6 months, 1 year, 2 years, and 3 years, showing whether allocation delays are improving, worsening, or stable.</p>
+            </div>
+          </div>
+          <!-- <p class="body-text" style="margin-bottom:1.5rem;">The core design challenge was visualization: how do you represent the health of thousands of client accounts and allocation batches in a way that lets an operations professional immediately see where to focus?</p> -->
+          <!-- <p class="body-text" style="margin-bottom:2rem;">Operations staff are highly comfortable with data tables. The goal was not to replace tables with charts, but to design tables where the default state surfaces a clear next step. Opening the dashboard, a user should immediately see which clients are creating the most noise, know what to raise in a client conversation, and be able to export that view without any configuration first.</p> -->
 
           <!-- Design Decisions -->
           <div id="pf-develop-decisions" class="cs-subsection-block scroll-mt-24" style="padding-top:1.75rem;border-top:1px solid #e3e3de;">
             <h3 class="cs-subsection-title">Design Decisions</h3>
+            <div style="display:flex;align-items:flex-start;gap:0.75rem;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:0.875rem 1rem;margin-top:1.5rem;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#D97706" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;margin-top:0.1rem;"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <p style="font-family:'Space Grotesk',sans-serif;font-size:0.75rem;color:#92400E;line-height:1.6;margin:0;">Modernized mocks are in progress. Content for this section will be presented as annotations directly within the updated designs.</p>
+            </div>
           </div>
 
           <!-- Decision 01 -->
           <div class="cs-subsection-block scroll-mt-24" style="padding:1.75rem;background:#f4f4ef;">
             <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">01</span>Firm level and client level views</h3>
-            <p class="body-text" style="margin-bottom:1.75rem;">Two views serve two distinct operational contexts. Firm level shows aggregated data across all clients: the overall T+1 performance, which clients require the most manual intervention, and which fields are most frequently amended across the book. Client level drills into a specific client, showing the same data filtered to that relationship. The toggle at the top keeps context clear and the transition fast.</p>
+            <p class="body-text" style="margin-bottom:1.75rem;">Two views serve two distinct operational contexts. Firm level shows aggregated data across all clients. Client level drills into a specific client, showing the same data filtered to that relationship. The toggle at the top keeps context clear and the transition fast.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
-              <div class="cs-card">
-                <p class="font-label cs-card-label">Firm level</p>
-                <p class="body-text-sm">For understanding overall T+1 performance and identifying which clients to prioritize. The default landing view.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Firm level</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">For understanding overall T+1 performance and identifying which clients to prioritize. The default landing view.</p>
+                <img src="assets/MiddleOffice_FirmLevel.png" alt="Firm level dashboard: T+1 trend, client analytics, field analytics, and service analytics aggregated across all clients" style="width:100%;display:block;"/>
               </div>
-              <div class="cs-card">
-                <p class="font-label cs-card-label">Client level</p>
-                <p class="body-text-sm">For client conversations. Drill-down to a specific client gives the team data they can walk through in a review meeting.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Client level</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">For client conversations. Drill-down to a specific client gives the team data they can walk through in a review meeting.</p>
+                <img src="assets/MiddleOffice_ClientLevel.png" alt="Client level dashboard: same analytics filtered to a single client, Meridian Asset Management" style="width:100%;display:block;"/>
               </div>
             </div>
           </div>
 
           <!-- Decision 02 -->
           <div class="cs-subsection-block scroll-mt-24" style="padding:1.75rem;background:#f4f4ef;">
-            <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">02</span>Three analytics categories</h3>
-            <p class="body-text" style="margin-bottom:1.75rem;">Each category maps to one of the three root cause types identified in research. Separating them by type makes the information immediately actionable: a team looking at a client complaint about manual intervention goes to Client Analytics. A team investigating why a particular field keeps causing delays goes to Field Analytics.</p>
-            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;">
-              <div class="cs-card">
-                <p class="font-label cs-card-label">Client Analytics</p>
-                <p class="body-text-sm">Clients not meeting T+1, ranked by order volume. Top clients requiring manual intervention. Percentage of total firm orders. Makes client-side accountability visible and quantified.</p>
+            <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">02</span>Time-based trend at the top</h3>
+            <p class="body-text" style="margin-bottom:1rem;">A trend line showing the percentage of orders not meeting T+1 over time anchors the dashboard before users drill into category-level data. A 23% non-compliance rate means something different if the prior month was 31% than if it was 14%. Without the trend, teams are always reading the current number without context.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.75rem;">
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Firm level</p>
+                <img src="assets/MiddleOffice_FirmLevel-Trend.png" alt="Firm level trend: orders not at T+1 declining from ~49% in September to 23.9% in February" style="width:100%;display:block;"/>
               </div>
-              <div class="cs-card">
-                <p class="font-label cs-card-label">Field Analytics</p>
-                <p class="body-text-sm">Top amended fields by frequency, severity, and average resolution time. High-severity amendments broken out separately. Identifies which data quality problems are most costly to resolve.</p>
-              </div>
-              <div class="cs-card">
-                <p class="font-label cs-card-label">Service Analytics</p>
-                <p class="body-text-sm">Mismatched trades broken down by mismatch type across services (CTM, AMS, L1/L2 data). Surfaces service-layer errors separately from client or field-level issues.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Client level</p>
+                <img src="assets/MiddleOffice_ClientLevel-Trend.png" alt="Client level trend: mismatched trades comparing firm vs Meridian Asset Management, plus top 5 field mismatches over time" style="width:100%;display:block;"/>
               </div>
             </div>
           </div>
-
+          
           <!-- Decision 03 -->
           <div class="cs-subsection-block scroll-mt-24" style="padding:1.75rem;background:#f4f4ef;">
-            <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">03</span>Time-based trend at the top</h3>
-            <p class="body-text" style="margin-bottom:1.75rem;">A trend line showing the percentage of orders not meeting T+1 over time (6 months, 1 year, 2 years, 3 years) anchors the dashboard before users drill into category-level data. It answers the question teams most need answered first: is the situation improving or getting worse? Time filters at the top propagate across all three analytics categories below.</p>
-            <div class="cs-decision">
-              <p class="font-label cs-decision-label">Why it matters</p>
-              <p class="body-text-sm">The trend view changes the nature of the insight from a snapshot to a trajectory. A 23% non-compliance rate means something different if the prior month was 31% than if it was 14%. Without the trend, teams are always reading the current number without context.</p>
+            <h3 class="cs-subsubsection-title"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">03</span>Three analytics categories</h3>
+            <p class="body-text" style="margin-bottom:1.75rem;">Each category maps to one of the three root cause types identified in research. Separating them by type makes the data immediately actionable. A team investigating a client complaint goes to Client Analytics; a team investigating a recurring field error goes to Field Analytics.</p>
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem;margin-bottom:1rem;">
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Client Analytics</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Clients not meeting T+1, ranked by order volume. Top clients requiring manual intervention. Percentage of total firm orders. Makes client-side accountability visible and quantified.</p>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Field Analytics</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Top amended fields by frequency, severity, and average resolution time. High-severity amendments broken out separately. Identifies which data quality problems are most costly to resolve.</p>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Service Analytics</p>
+                <p class="body-text-sm" style="margin-bottom:0.75rem;">Mismatched trades broken down by mismatch type across services (CTM, AMS, L1/L2 data). Surfaces service-layer errors separately from client or field-level issues.</p>
+              </div>
             </div>
+            <img src="assets/MiddleOffice_Analytics-Breakdown.png" alt="Analytics breakdown: Client Analytics, Field Analytics, and Service Analytics panels showing T+1 performance data by category" style="width:60%;display:block;margin-left:20%;margin-right:20%;"/>
           </div>
 
           <!-- Combined dashboard screenshot -->
-          <div class="cs-subsection-block scroll-mt-24">
-            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Dashboard view — delivered design</p>
-            <img src="assets/Middle Office_Final.png" alt="Middle Office Dashboard — firm level and client level views showing T+1 trend, client analytics, field analytics, and service analytics" style="width:100%;display:block;margin-bottom:0.75rem;"/>
-            <p class="cs-caption">Manual intervention summary: firm level (left) and client level (right). Firm level shows aggregated performance across all clients. Client level filters all three analytics categories to a specific client for use in review conversations.</p>
-          </div>
+          <!-- <div class="cs-subsection-block scroll-mt-24">
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Dashboard view: delivered design</p>
+            <img src="assets/Middle Office_2 Dashboards.png" alt="Middle Office Dashboard: firm level and client level views overlaid, showing the toggle between aggregated and client-specific analytics" style="width:100%;display:block;margin-bottom:0.75rem;"/>
+            <p class="cs-caption">Firm level (background) and client level (foreground). The toggle at the top switches between aggregated performance across all clients and a filtered view scoped to a single client.</p>
+          </div> -->
 
         </div>
       </section>
@@ -402,7 +481,7 @@
           <p class="font-label cs-part-label">Part Five</p>
           <h2 class="cs-section-title">Validation</h2>
           <p class="section-subtitle">One round. Concept confirmed.</p>
-          <p class="body-text" style="margin-bottom:1.75rem;">One round of user validation with 12 participants — a mix of returning interview participants and new contributors. Reception was positive across the board. Users immediately understood the value of historical analytics, a capability that had never existed for them on the platform before.</p>
+          <p class="body-text" style="margin-bottom:1.75rem;">91% of participants said they would use the dashboard regularly in their workflow. 83% said it would change how they approach client conversations.</p>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e3e3de;margin-bottom:2rem;">
             <div class="stat-block">
               <span class="stat-number">91%</span>
@@ -419,7 +498,7 @@
               <p class="font-label cs-caption">Middle Office Trader</p>
             </blockquote>
             <blockquote style="padding:1.5rem 1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:0.5rem;">"I would definitely use this to find out what to talk to clients about."</p>
+              <p class="cs-quote" style="margin-bottom:0.5rem;">"This makes it so much easier to get clients to correct the data they're sending in. Instead of telling them there's a problem, we can show them exactly what it is and how often it's happening."</p>
               <p class="font-label cs-caption">Middle Office Trader</p>
             </blockquote>
           </div>
@@ -433,21 +512,21 @@
           <p class="section-subtitle">Shipped. KPI exceeded.</p>
           <div class="cs-outcome-list">
             <div class="cs-outcome-item">
-              <p class="cs-outcome-text">Middle Office Dashboard — firm level and client level views, field mismatch analytics, client response analytics, service mismatch analytics, time-based trend, export and print</p>
               <span class="tag tag-shipped">Shipped</span>
+              <p class="cs-outcome-text">Middle Office Dashboard: firm level and client level views, field mismatch analytics, client response analytics, service mismatch analytics, time-based trend, export and print</p>
             </div>
           </div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:#e3e3de;margin-bottom:2rem;">
             <div class="stat-block">
               <span class="stat-number" style="color:#737785;">15%</span>
-              <span class="font-label cs-stat-label">KPI — target reduction in allocations not meeting T+1</span>
+              <span class="font-label cs-stat-label">KPI: target reduction in allocations not meeting T+1</span>
             </div>
             <div class="stat-block">
               <span class="stat-number">23%</span>
               <span class="font-label cs-stat-label">Actual reduction in allocations not meeting T+1 post-launch</span>
             </div>
           </div>
-          <p class="body-text" style="margin-bottom:1.25rem;">The dashboard exceeded the KPI target: a 23% reduction in allocations not meeting T+1, against a target of 15%. The result is notable given that Fidessa has no built-in mechanism for notifying users about new features. Discovery happens through firm-level communication and word of mouth, which means adoption builds gradually after release. The performance exceeded expectations even before full adoption across the user base.</p>
+          <p class="body-text" style="margin-bottom:1.25rem;">Fidessa has no built-in mechanism for notifying users about new features. Discovery happens through firm-level communication and word of mouth, with adoption building gradually after release. The 23% reduction reflects early adoption, not full user base coverage.</p>
         </div>
       </section>
 
@@ -456,8 +535,18 @@
         <div>
           <h2 class="cs-section-title">Reflection</h2>
           <p class="section-subtitle">Domain first. Design second.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">This project required significant domain learning before any design work could start. The allocations workflow, the relationships between services, and how delays are attributed at the client and field level were not things I could assume going in. They had to be learned through sustained knowledge transfer sessions before design decisions could feel grounded rather than guessed.</p>
-          <p class="body-text">What I'd do differently: engage users earlier. Setting up interviews took longer than it should have. Earlier outreach would have compressed the discovery phase and brought real user perspectives into scope decisions sooner.</p>
+          <div class="cs-decisions">
+            <div class="cs-decision">
+              <p class="font-label cs-decision-label">Reflection 1</p>
+              <p class="cs-decision-title">Domain knowledge is a design prerequisite</p>
+              <p style="font-size:0.95rem;color:#424654;line-height:1.7;">The allocations workflow and service relationships had to be learned before any design decision could be grounded rather than guessed. On a project like this, that time is not overhead. It is the work.</p>
+            </div>
+            <div class="cs-decision">
+              <p class="font-label cs-decision-label">Reflection 2</p>
+              <p class="cs-decision-title">Engage users earlier than feels necessary</p>
+              <p style="font-size:0.95rem;color:#424654;line-height:1.7;">Setting up interviews took longer than it should have. Earlier outreach would have brought real user perspectives into scope decisions sooner and kept those conversations grounded from the start.</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -465,19 +554,19 @@
       <section id="pf-testimonials" class="scroll-mt-24 section-grid">
         <div>
           <h2 class="cs-section-title">Testimonials</h2>
-          <p class="section-subtitle">From operations teams across Europe and the Americas.</p>
+          <p class="section-subtitle">From middle office teams across Europe and the Americas.</p>
           <div style="display:flex;flex-direction:column;gap:1.5rem;">
-            <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #A08FEF;">
+            <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
               <p class="cs-quote" style="margin-bottom:1rem;">"Having the client analytics in front of me changes the conversation entirely. I can show a client exactly which fields they are repeatedly getting wrong, and how long each one takes us to resolve. That is a very different conversation from just telling them there are problems."</p>
-              <p class="font-label cs-caption">Operations Manager, European buy-side firm</p>
+              <p class="font-label cs-caption">Middle Office Trader, European Client Firm</p>
             </blockquote>
             <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:1rem;">"The trend view is what we have been missing. Before this I could only tell you what was happening today. Now I can show you that a client has been causing the same delays for six months. That is actionable in a way that a daily snapshot never is."</p>
-              <p class="font-label cs-caption">Middle Office Trader, Americas</p>
+              <p class="cs-quote" style="margin-bottom:1rem;">"The trend view is what we have been missing. Before this I could only tell you what was happening the past few days. Now I can show you that a client has been causing the same delays for six months. That is actionable in a way that a daily snapshot never is."</p>
+              <p class="font-label cs-caption">Middle Office Trader, American Client Firm</p>
             </blockquote>
             <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
               <p class="cs-quote" style="margin-bottom:1rem;">"With T+1 coming to Europe, we need to understand where our delays are actually coming from before the window closes. For the first time, we have a way to do that systematically."</p>
-              <p class="font-label cs-caption">Settlement Operations Lead, European financial firm</p>
+              <p class="font-label cs-caption">Middle Office Trader, European financial firm</p>
             </blockquote>
           </div>
         </div>
@@ -503,11 +592,15 @@
         </div>
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">Role</span>
-          <span class="font-label cs-meta-value">Senior UX Designer</span>
+          <span class="font-label cs-meta-value">Sole UX Designer</span>
         </div>
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">Company</span>
           <span class="font-label cs-meta-value">ION Group</span>
+        </div>
+        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
+          <span class="font-label cs-meta-label">Status</span>
+          <span class="font-label tag" style="padding: 0.15rem 0.6rem; color: #737785; background: #f0f0eb;">Shipped</span>
         </div>
       </div>
     </div>
@@ -539,26 +632,26 @@
         <div>
           <h2 class="cs-section-title">Overview</h2>
           <p class="section-subtitle active">No scope, no problem statement, no existing design.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">Fidessa's middle office operations teams — approximately 300,000 professionals across 600+ global financial firms — manage the post-trade settlement lifecycle. I was asked to speed up the allocation process ahead of European T+1 regulatory requirements. There was no defined scope, no clear problem statement, and no existing design to build from.</p>
+          <p class="body-text" style="margin-bottom:1.25rem;">Fidessa's middle office operations teams, approximately 300,000 professionals across 600+ global financial firms, manage the post-trade settlement lifecycle. I was asked to speed up the allocation process ahead of European T+1 regulatory requirements. There was no defined scope, no clear problem statement, and no existing design to build from.</p>
           <p class="body-text" style="margin-bottom:2.5rem;">I led the project end-to-end as the sole designer: from domain research and problem definition through discovery workshops, design, and one round of validation with operations staff.</p>
           <div class="cs-timeline-box">
             <p class="font-label cs-timeline-header">Project Timeline</p>
             <div class="cs-timeline-items">
               <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 1</span><p class="cs-timeline-text">Domain research — knowledge transfer sessions with PMs, allocations workflow mapping</p></div>
+                <div><span class="font-label cs-month-label">Month 1</span><p class="cs-timeline-text">Domain research: knowledge transfer sessions with PMs, allocations workflow mapping</p></div>
               </div>
               <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 2</span><p class="cs-timeline-text">User research — 12 interviews with middle office traders in Europe and Americas</p></div>
+                <div><span class="font-label cs-month-label">Month 2</span><p class="cs-timeline-text">User research: 12 interviews with middle office traders in Europe and Americas</p></div>
               </div>
               <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 3</span><p class="cs-timeline-text">Design — dashboard, firm and client level analytics, time-based trend, export</p></div>
+                <div><span class="font-label cs-month-label">Month 3</span><p class="cs-timeline-text">Design: dashboard, firm and client level analytics, time-based trend, export</p></div>
               </div>
               <div class="timeline-step">
                 <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 4</span><p class="cs-timeline-text">Validation — one round with 12 participants across Europe and Americas</p></div>
+                <div><span class="font-label cs-month-label">Month 4</span><p class="cs-timeline-text">Validation: one round with 12 participants across Europe and Americas</p></div>
               </div>
             </div>
           </div>
@@ -589,8 +682,8 @@
           <p class="section-subtitle">The allocations workflow is more complex than it looks.</p>
           <p class="body-text" style="margin-bottom:1.25rem;">Before making any design decisions, I needed to understand how the allocations workflow actually worked: the data, the services, the tools, and where breakdowns occurred.</p>
           <p class="body-text" style="margin-bottom:1.25rem;">I conducted knowledge transfer sessions with PMs to build domain fluency, then led cross-functional discovery workshops to map the end-to-end workflow. Output: workflow maps and information maps covering all services and functionalities users currently interact with.</p>
-          <p class="body-text" style="margin-bottom:1.75rem;">What surfaced: allocation delays consistently trace back to one of three root cause types — client data, order data, or service errors. Operations teams had no way to surface which type was responsible in a given case, let alone see patterns over time. The entire workflow was reactive and queue-based, with no historical layer at all.</p>
-          <img src="assets/MO_workflow_map.png" alt="FigJam workflow map — Non-CAP and CAP allocation workflows, confirmation services, and tool landscape" style="width:100%;display:block;margin-bottom:0.75rem;"/>
+          <p class="body-text" style="margin-bottom:1.75rem;">What surfaced: allocation delays consistently trace back to one of three root cause types: client data, order data, or service errors. Operations teams had no way to surface which type was responsible in a given case, let alone see patterns over time. The entire workflow was reactive and queue-based, with no historical layer at all.</p>
+          <img src="assets/MO_workflow_map.png" alt="FigJam workflow map: Non-CAP and CAP allocation workflows, confirmation services, and tool landscape" style="width:100%;display:block;margin-bottom:0.75rem;"/>
           <p class="cs-caption">End-to-end allocations workflow map produced during knowledge transfer sessions with PMs.</p>
         </div>
       </section>
@@ -644,8 +737,8 @@
             </div>
           </div>
           <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Delivered design</p>
-          <img src="assets/Middle Office_Final.png" alt="Middle Office Dashboard — firm level and client level views" style="width:100%;display:block;margin-bottom:0.75rem;"/>
-          <p class="cs-caption">Manual intervention summary — firm level and client level views showing T+1 trend, client analytics, field analytics, and service analytics.</p>
+          <img src="assets/Middle Office_Final.png" alt="Middle Office Dashboard: firm level and client level views" style="width:100%;display:block;margin-bottom:0.75rem;"/>
+          <p class="cs-caption">Manual intervention summary: firm level and client level views showing T+1 trend, client analytics, field analytics, and service analytics.</p>
         </div>
       </section>
 
@@ -661,7 +754,7 @@
               <p class="font-label cs-caption">Middle Office Trader</p>
             </blockquote>
             <blockquote style="padding:1.5rem 1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:0.5rem;">"I would definitely use this to find out what to talk to clients about."</p>
+              <p class="cs-quote" style="margin-bottom:0.5rem;">"This makes it so much easier to get clients to correct the data they're sending in. Instead of telling them there's a problem, we can show them exactly what it is and how often it's happening."</p>
               <p class="font-label cs-caption">Middle Office Trader</p>
             </blockquote>
           </div>
@@ -675,7 +768,7 @@
           <p class="section-subtitle">Shipped. KPI exceeded.</p>
           <div class="cs-outcome-list">
             <div class="cs-outcome-item">
-              <p class="cs-outcome-text">Middle Office Dashboard — firm level and client level views, field mismatch analytics, client response analytics, service mismatch analytics, time-based trend, export and print</p>
+              <p class="cs-outcome-text">Middle Office Dashboard: firm level and client level views, field mismatch analytics, client response analytics, service mismatch analytics, time-based trend, export and print</p>
               <span class="tag tag-shipped">Shipped</span>
             </div>
           </div>
