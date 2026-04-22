@@ -9,26 +9,30 @@
   <script src="scripts/tailwind-config.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
-    /* Accent: #0056c5 (blue) → #A08FEF (amethyst) — migration page only */
-    /* Blue (#0056c5) reserved for clickable links only */
-    .nav-link.active              { color: #A08FEF; }
-    .section-subtitle             { color: #A08FEF; }
-    .section-subtitle.active      { color: #A08FEF; }
-    .margin-callout               { color: #A08FEF; }
-    .margin-callout.active        { color: #A08FEF; }
-    .timeline-dot                 { background: #A08FEF; }
-    .stat-number                  { color: #A08FEF; }
-    .tag-shipped                  { color: #A08FEF; background: #eedcfc; }
-    .tag-dev                      { border-left-color: #A08FEF; }
-    .cs-company                   { color: #A08FEF; }
-    .cs-card-label                { color: #A08FEF; }
-    .cs-compare-label-blue        { color: #A08FEF; border-bottom-color: #A08FEF; }
-    .cs-decision                  { border-left-color: #A08FEF; }
-    .cs-decision-label            { color: #A08FEF; }
-    .cs-validation                { border-left: 2px solid #A08FEF; border-right: none; padding-left: 1.5rem; padding-right: 0; text-align: left; }
-    .cs-validation-label          { color: #A08FEF; }
-    .site-nav-link.active         { color: #A08FEF; border-bottom-color: #A08FEF; }
-    .bg-primary                   { background-color: #A08FEF !important; }
+    .nav-link.active           { color: #A08FEF; }
+    .section-subtitle.active   { color: #A08FEF; }
+    .margin-callout.active     { color: #A08FEF; }
+    .timeline-dot              { background: #A08FEF; }
+    .stat-number               { color: #A08FEF; }
+    .tag-shipped               { color: #A08FEF; background: #eedcfc; }
+    .cs-company                { color: #A08FEF; }
+    .cs-card-label             { color: #A08FEF; }
+    .cs-compare-label-blue     { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .cs-decision               { border-left-color: #A08FEF; }
+    .cs-decision-label         { color: #A08FEF; }
+    .site-nav-link.active      { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .bg-primary                { background-color: #A08FEF !important; }
+
+    @media (max-width: 900px) {
+      header[style*="padding: 5rem"] { padding: 3rem 0 0 !important; }
+    }
+    @media (max-width: 640px) {
+      header[style*="padding: 5rem"] { padding: 2rem 0 0 !important; }
+      [style*="grid-template-columns:1fr 1fr"]   { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr"]  { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:7rem 1fr 7rem"] { grid-template-columns: 1fr !important; }
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
   </style>
 </head>
 <body>
@@ -36,13 +40,15 @@
 <div id="site-nav" data-active="work"></div>
 <script src="components/nav.js"></script>
 
+<!-- Shared Header + View Toggle -->
 <div class="cs-main">
-
-  <!-- Hero title -->
   <header style="padding: 5rem 0 0;">
     <span class="font-label cs-company">ION Group / Fidessa</span>
     <h1 class="cs-hero-title">Platform<br>Migration.</h1>
   </header>
+</div>
+
+<div class="cs-main">
 
   <!-- Hero meta -->
   <header class="cs-hero" style="padding-top: 2.5rem;">
@@ -428,7 +434,7 @@
         <div>
           <p class="font-label cs-part-label">Part Five</p>
           <h2 class="cs-section-title">Design</h2>
-          <p class="section-subtitle active">Two workstreams: push for resolution where possible, set expectations where not.</p>
+          <p class="section-subtitle">Two workstreams: push for resolution where possible, set expectations where not.</p>
 
           <!-- Onboarding Flow -->
           <div id="onboarding" class="cs-subsection-block scroll-mt-24">
@@ -460,7 +466,7 @@
         <div>
           <p class="font-label cs-part-label">Part Six</p>
           <h2 class="cs-section-title">Develop</h2>
-          <p class="section-subtitle active">A forced migration of 3 million users. Gradual rollout across 6,500+ global financial firms, tied to each client firm's update cycle.</p>
+          <p class="section-subtitle">A forced migration of 3 million users. Gradual rollout across 6,500+ global financial firms, tied to each client firm's update cycle.</p>
 
           <div id="what-shipped" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">What Shipped</h3>

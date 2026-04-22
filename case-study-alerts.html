@@ -26,36 +26,25 @@
     .cs-validation-label            { color: #A08FEF; }
     .site-nav-link.active           { color: #A08FEF; border-bottom-color: #A08FEF; }
     .bg-primary                     { background-color: #A08FEF !important; }
-    /* Tertiary → primary: inactive section subtitles and margin callouts */
-    .section-subtitle               { color: #A08FEF; }
-    .margin-callout                 { color: #A08FEF; }
-
-    /* Develop section colored backgrounds */
-    .cs-bg-deep  { background: #352C63; }
-    .cs-bg-soft  { background: #DFD8FD; }
-    .cs-bg-mist  { background: #F3F0FF; }
-    .cs-section-bg  { padding: 1.75rem; border-radius: 12px; }
-    .cs-section-dark { padding: 1.75rem; border-radius: 12px; }
-    .cs-section-dark .cs-subsection-title { color: #f5f0f9; }
-    .cs-section-dark .cs-subsubsection-title { color: #f5f0f9; }
-    .cs-section-dark .body-text,
-    .cs-section-dark .body-text-sm { color: #ede6f5; }
-    .cs-section-dark li             { color: #ede6f5; }
-    .cs-section-dark .cs-field-label,
-    .cs-section-dark .cs-compare-label   { color: #c8b6dc; }
-    .cs-section-dark .cs-decision-label,
-    .cs-section-dark .cs-validation-label,
-    .cs-section-dark .cs-card-label,
-    .cs-section-dark .cs-compare-label-blue { color: #c8b6dc; }
-    .cs-section-dark .cs-card .body-text,
-    .cs-section-dark .cs-card .body-text-sm { color: #424654; }
-    .cs-section-dark .cs-card li    { color: #424654; }
-    .cs-section-dark .cs-card .cs-card-label { color: #A08FEF; }
     .cs-scope-item { font-family:'Space Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785; }
     .cs-wip { display:flex;align-items:flex-start;gap:0.75rem;background:#FFFBEB;border:1px solid #FDE68A;border-radius:8px;padding:0.875rem 1rem;margin-bottom:1.75rem; }
     .cs-wip-icon { color:#D97706;flex-shrink:0;margin-top:0.1rem; }
     .cs-wip p { font-family:'Space Grotesk',sans-serif;font-size:0.75rem;color:#92400E;line-height:1.6;margin:0; }
     .timeline-group:not(:last-child) .timeline-step:last-child::before { display:block; }
+
+    @media (max-width: 900px) {
+      header[style*="padding: 5rem"] { padding: 3rem 0 0 !important; }
+    }
+    @media (max-width: 768px) {
+      [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+      [style*="grid-template-columns:1fr 1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      header[style*="padding: 5rem"] { padding: 2rem 0 0 !important; }
+      [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
   </style>
 </head>
 <body>
@@ -68,29 +57,19 @@
   <header style="padding: 5rem 0 0;">
     <span class="font-label cs-company">ION Group / Fidessa</span>
     <h1 class="cs-hero-title">Front Office Alerts Redesign</h1>
-    <div class="flex justify-center items-center py-8">
-      <div class="inline-flex p-1 bg-surface-container-low rounded-full border border-outline/10">
-        <button id="toggle-portfolio" onclick="setView('portfolio')" class="px-8 py-2 rounded-full font-label text-[10px] uppercase tracking-widest text-outline hover:text-on-surface transition-all duration-300">
-          Design Process
-        </button>
-        <button id="toggle-case-study" onclick="setView('case-study')" class="px-8 py-2 rounded-full font-label text-[10px] uppercase tracking-widest bg-primary text-white shadow-sm transition-all duration-300">
-          Case Study
-        </button>
-      </div>
-    </div>
   </header>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- PORTFOLIO VIEW                                                  -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<div id="portfolio-view" style="display:none;" class="cs-main">
+<div class="cs-main">
 
   <!-- Hero -->
   <header class="cs-hero" style="padding-top: 2.5rem;">
     <div class="cs-hero-grid">
       <p class="cs-hero-desc">
-        Redesigned order-level alerting for front office traders at Fidessa. Adoption was at 13%. Triggers were limited to order state changes, not the performance fields traders actually watch. Within 12 months of launch, alerts created across the platform increased 34x.</p>
+        Redesigned order-level alerting for front office traders at Fidessa. Adoption was at 13%. Triggers were limited to order state changes, not the performance fields traders actually watch. Within 12 months of launch, alerts created across the platform increased <span style="color:#A08FEF;font-weight:600;">34x</span>.</p>
       <div class="cs-meta">
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">
@@ -424,16 +403,16 @@
                 <img src="assets/Alerts_Landscape.png" alt="Functionality map: alert landscape across Fidessa" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Low Touch Trader</p>
-                <img src="assets/Low Touch User Persona.png" alt="Low Touch Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">High Touch Sales Trader</p>
+                <img src="assets/High Touch Sales User Persona.png" alt="High Touch Sales Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
                 <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">High Touch Trader</p>
                 <img src="assets/High Touch User Persona.png" alt="High Touch Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
               <div>
-                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">High Touch Sales Trader</p>
-                <img src="assets/High Touch Sales User Persona.png" alt="High Touch Sales Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
+                <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Low Touch Trader</p>
+                <img src="assets/Low Touch User Persona.png" alt="Low Touch Trader persona" style="width:100%;height:280px;object-fit:contain;object-position:center top;display:block;"/>
               </div>
             </div>
           </div>
@@ -1423,7 +1402,7 @@
                   ION Group / Fidessa</p>
               </div>
             </div>
-            <div style="background:#faf9f4;padding:2rem 2.25rem;">
+            <div style="background:#f4f4ef;padding:2rem 2.25rem;">
               <p class="cs-quote" style="margin-bottom:1.25rem;">
                 "The handoff docs for the additive release were some of the cleanest I've worked from. Edge cases annotated, all states covered, questions answered before I thought to ask them."</p>
               <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -1443,7 +1422,7 @@
                   US Client Firm</p>
               </div>
             </div>
-            <div style="background:#faf9f4;padding:2rem 2.25rem;">
+            <div style="background:#f4f4ef;padding:2rem 2.25rem;">
               <p class="cs-quote" style="margin-bottom:1.25rem;">
                 "The two-round structure (ship what we can now, design what we should) gave us something concrete to act on immediately and a clear north star for the roadmap. It de-risked both decisions."</p>
               <div style="display:flex;justify-content:space-between;align-items:center;">
@@ -1461,495 +1440,11 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- CASE STUDY VIEW (original)                                      -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<main id="case-study-view" class="cs-main">
-
-  <!-- Hero -->
-  <header class="cs-hero" style="padding-top: 2.5rem;">
-    <div class="cs-hero-grid">
-      <p class="cs-hero-desc">
-        Only 13% of traders were using the alerts system. The ask was to add single-order alerts with the ability to trigger on order-level thresholds. The real problem was fragmentation: alerting was scattered across the platform in ways a new feature alone couldn't fix.</p>
-      <div class="cs-meta">
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">
-            Timeline</span>
-          <span class="font-label cs-meta-value">
-            6 Months</span>
-        </div>
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">
-            Role</span>
-          <span class="font-label cs-meta-value">
-            Sole UX Designer</span>
-        </div>
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">
-            Company</span>
-          <span class="font-label cs-meta-value">
-            ION Group</span>
-        </div>
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">
-            Responsibilities</span>
-          <span class="font-label cs-meta-value">
-            Research, Strategy, Design, Handoff</span>
-        </div>
-        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
-          <span class="font-label cs-meta-label">Status</span>
-          <span class="font-label tag tag-shipped" style="padding: 0.15rem 0.6rem;">Shipped</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Body -->
-  <div class="cs-layout">
-
-    <!-- Left: sticky side nav -->
-    <aside class="cs-sidenav">
-      <p class="font-label cs-sidenav-title">
-        Alerts Upgrade</p>
-      <nav class="cs-sidenav-links">
-        <a href="#overview" class="nav-link active">
-          Overview</a>
-        <a href="#problem" class="nav-link">
-          The Problem</a>
-        <a href="#domain" class="nav-link">
-          Domain</a>
-        <a href="#findings" class="nav-link">
-          Findings</a>
-        <a href="#scope" class="nav-link">
-          Scope</a>
-        <a href="#process" class="nav-link">
-          Design Decisions</a>
-        <a href="#validation" class="nav-link">
-          Final Validation</a>
-        <a href="#outcome" class="nav-link">
-          Outcome</a>
-        <a href="#reflection" class="nav-link">
-          Reflection</a>
-      </nav>
-    </aside>
-
-    <!-- Content -->
-    <div class="cs-content">
-
-      <!-- OVERVIEW -->
-      <section id="overview" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Overview</h2>
-          <p class="section-subtitle active">
-            Brief pushback. A narrow brief, a misframed problem. The brief: alert on a single order. The reality: users needed alerts on multiple orders, and couldn't discover functionality that already existed.</p>
-          <p class="body-text mb-5">
-            Fidessa's alerting functionality serves front office traders across the platform: sales traders, high-touch traders, and low-touch traders. I was tasked to extend alerting from filter grids to individual orders.</p>
-          <p class="body-text mb-5">
-            User interviews killed the original scope. Single-order alerts wouldn't address the actual pain points: users needed alerts on multiple orders to match their fast-paced work style, and a single alerting hub to fix the discoverability problem caused by functionality scattered across tools.</p>
-          <p class="body-text">
-            I led the project end-to-end as the sole designer, conducting knowledge transfer sessions, design iterations, and in-depth user interviews across all major personas. The project produced two design rounds: an additive release scoped to a client contract deadline, and a comprehensive redesign consolidating all alerting into a single hub. When the prospective clients didn't sign and the timeline constraint lifted, the full redesign is what shipped.</p>
-          <!-- Timeline -->
-          <div class="cs-timeline-box">
-            <p class="font-label cs-timeline-header">
-              Project Timeline</p>
-            <div class="cs-timeline-items">
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div>
-                  <span class="font-label cs-month-label">
-                    Month 1</span>
-                  <p class="cs-timeline-text">
-                    Knowledge transfer: SME sessions, functionality mapping</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div>
-                  <span class="font-label cs-month-label">
-                    Month 2</span>
-                  <p class="cs-timeline-text">
-                    User interviews: baseline data across all front office personas</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div>
-                  <span class="font-label cs-month-label">
-                    Month 3</span>
-                  <p class="cs-timeline-text">
-                    Design round 1: single &amp; multiple order alerts</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div>
-                  <span class="font-label cs-month-label">
-                    Month 4</span>
-                  <p class="cs-timeline-text">
-                    Validation round 1: single &amp; multiple order alerts</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div>
-                  <span class="font-label cs-month-label">
-                    Month 5</span>
-                  <p class="cs-timeline-text">
-                    Design round 2: alerting hub</p>
-                </div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div>
-                  <span class="font-label cs-month-label">
-                    Month 6</span>
-                  <p class="cs-timeline-text">
-                    Validation round 2: alerting hub</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- THE PROBLEM -->
-      <section id="problem" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            The Problem</h2>
-          <p class="section-subtitle">
-            The brief was too narrow. The real problem was structural.</p>
-          <div class="mb-7">
-            <p class="font-label cs-field-label">
-              Current state</p>
-            <p class="body-text">
-              Alerts were set on filtered grids. Filtering was limited to order states (assigned person, outlier state, status), not performance thresholds. Only 13% of users were actively using alerting.</p>
-          </div>
-          <div class="mb-7">
-            <p class="font-label cs-field-label">
-              Original ask</p>
-            <p class="body-text">
-              Allow users to create alerts at the single-order level with the ability to trigger on order-level thresholds (fill percentage, price level, order volume done).</p>
-          </div>
-        </div>
-      </section>
-
-      <!-- DOMAIN -->
-      <section id="domain" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Understanding the Domain</h2>
-          <p class="section-subtitle">
-            Every persona. Every workflow stage. The domain research had to cover both depth and breadth.</p>
-          <p class="body-text mb-5">
-            Knowledge transfer sessions with SMEs produced a functionality map covering all alerting behavior and current state across the platform. In-depth user interviews across all three persona types followed, with research synthesis identifying shared needs, persona-specific needs, and gaps.</p>
-          <p class="body-text mb-7">
-            Key finding: many users weren't aware of the full range of alerting capabilities that already existed. The problem wasn't only missing functionality: the existing functionality was too fragmented to discover and configure reliably.</p>
-          <div style="padding:0 10%;"><img src="assets/Alerts_Understanding the Domain.png" alt="Functionality map" style="width:100%;display:block;"/></div>
-        </div>
-      </section>
-
-      <!-- RESEARCH FINDINGS -->
-      <section id="findings" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Research Findings</h2>
-          <p class="section-subtitle">
-            Low adoption wasn't disinterest. It was a system that didn't fit how traders work.</p>
-          <div class="mb-7">
-            <p class="font-label cs-field-label">
-              Actual problem</p>
-            <p class="body-text">
-              The original scope was narrow enough to ship, but it wasn't addressing why so few users engaged with alerts in the first place. User interviews across all three persona types surfaced a consistent pattern: traders weren't avoiding alerts by choice. The trigger conditions were limited to order state changes, which didn't map to how traders actually monitor their work. The deeper issue was twofold: the one-order-at-a-time model couldn't keep up with the volume of orders traders monitor, and alerting functionality was spread across tools with no single place to manage it, leaving most users unaware of what the platform already offered, including timing and macro triggers (time-based and market movement) that already existed but couldn't be found.</p>
-          </div>
-          <div class="cs-grid-3 mb-7">
-            <div class="stat-block">
-              <span class="stat-number" style="color:#ba1a1a;">13%</span>
-              <span class="font-label cs-stat-label">
-                Actively using alerts</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-number" style="color:#1b1c19;">66%</span>
-              <span class="font-label cs-stat-label">
-                Wanted more, didn't know functionalities already existed</span>
-            </div>
-            <div class="stat-block">
-              <span class="stat-number" style="color:#1b1c19;">79%</span>
-              <span class="font-label cs-stat-label">
-                Didn't use alerts because existing triggers were too limited</span>
-            </div>
-          </div>
-          <p class="body-text mb-8">
-            Why it matters: for front office traders, a well-configured alert replaces manual monitoring. State-based alerts tell you what already happened. Traders need signals earlier. Fill rate and volume done tell them whether to rework a strategy before an order reaches a problem state. The 13% active usage rate was the evidence.</p>
-          <div class="cs-grid-3 mb-8">
-            <div class="cs-card">
-              <p class="font-label cs-card-label">
-                Sales Trader</p>
-              <p class="body-text-sm">
-                Client-facing. Needs fill progress alerts on client orders tied to execution windows.</p>
-            </div>
-            <div class="cs-card">
-              <p class="font-label cs-card-label">
-                High-Touch Trader</p>
-              <p class="body-text-sm">
-                Manages individual orders with direct client involvement. Alert on individual order metadata.</p>
-            </div>
-            <div class="cs-card">
-              <p class="font-label cs-card-label">
-                Low-Touch Trader</p>
-              <p class="body-text-sm">
-                High volume, algorithmic execution. Needs apply-to-all and market movement triggers, not fill progress alerts.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- SCOPE -->
-      <section id="scope" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Redefining the Scope</h2>
-          <p class="section-subtitle">
-            Additive improvements don't fix fragmentation.</p>
-          <p class="body-text mb-7">
-            The original brief came with a commercial deadline: prospective clients in a new region required single-order alerts before they would sign. That constrained the first design round to an additive release. Research made clear it would only solve half the problem: users were asking for alerting functionality that already existed, and adding more types to a fragmented system wouldn't fix discoverability. The full redesign followed. When the prospective clients didn't sign and the timeline pressure lifted, that's what shipped.</p>
-          <div class="cs-grid-2 mb-8">
-            <div class="cs-compare-original">
-              <p class="font-label cs-compare-label">
-                Original ask</p>
-              <p class="cs-quote" style="color:#424654;">
-                Add single-order alerts with threshold triggers within the existing architecture.</p>
-            </div>
-            <div class="cs-compare-rescoped">
-              <p class="font-label cs-compare-label-blue">
-                Rescoped to</p>
-              <p class="cs-quote">
-                One unified alert hub: all alert types, all trigger types, consolidated.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- PROCESS -->
-      <section id="process" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Design Decisions</h2>
-          <p class="section-subtitle">
-            Constraints shaped the first version. Evidence shaped the second.</p>
-          <div style="margin-bottom:3rem;">
-            <p class="font-label cs-field-label">
-              Ideation</p>
-            <p class="body-text mb-7">
-              The original scope was shaped by development feasibility before any design work had started. Wireframing early was necessary, not to explore visual direction, but to give PMs and developers something concrete to react to. It reframed the conversation from "what can we build" to "what should we build and is it feasible."</p>
-            <div style="padding:0 10%;"><img src="assets/Alerts_Wireframes.png" alt="Wireframes: alert configuration concepts" style="width:100%;display:block;"/></div>
-          </div>
-          <div class="cs-decisions">
-            <div class="cs-decision-secondary">
-              <p class="font-label cs-decision-label-secondary">
-                Decision 1</p>
-              <p class="cs-decision-title">
-                Single-order alerts wouldn't solve the problem</p>
-              <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Knowledge transfer sessions established the mismatch early: front office traders monitor too many orders simultaneously for alerting on single-order level to be useful. The development deadline narrowed the options. Multi-order alerting was the only change that could address the actual workflow constraint within the timeline.</p>
-            </div>
-            <div class="cs-validation-red">
-              <p class="font-label cs-validation-label-red">
-                Validation 1</p>
-              <p class="cs-decision-title" style="text-align:right;">
-                Still not enough</p>
-              <ul style="margin-top:0.25rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0.35rem;text-align:right;">
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Single-order alerting &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Multi-order alerting &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Order metadata triggers &nbsp;&#8212;</li>
-              </ul>
-            </div>
-            <div class="cs-decision-secondary">
-              <p class="font-label cs-decision-label-secondary">
-                Decision 2</p>
-              <p class="cs-decision-title">
-                Consolidate fragmented alerting and add macro-level triggers</p>
-              <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                The first prototype made concessions to development feasibility and timeline. The expectation was that the improvements would still move the needle. Validation proved otherwise: users confirmed the added functionality helped, but the core problems (discoverability and limited trigger types) weren't fixed. That feedback made the case for a wider scope: a unified hub consolidating all alert types and macro-level triggers. When the prospective client contract fell through and the timeline pressure lifted, development proceeded with the full redesign.</p>
-            </div>
-            <div class="cs-validation">
-              <p class="font-label cs-validation-label">
-                Validation 2</p>
-              <p class="cs-decision-title" style="text-align:right;">
-                The demand was there</p>
-              <ul style="margin-top:0.25rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0.35rem;text-align:right;">
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Single-order alerting &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Multi-order alerting &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Macro-level alerting &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Order metadata triggers &nbsp;&#8212;</li>
-                <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">Macro triggers &nbsp;&#8212;</li>
-              </ul>
-            </div>
-          </div>
-          <div class="cs-grid-2">
-            <img src="assets/Alerts_ ROUND 1.png" alt="Round 1: Order-level alert design" style="width:100%;display:block;padding:15px;box-sizing:border-box;"/>
-            <img src="assets/Alerts_ROUND 2.png" alt="Round 2: Unified alert hub" style="width:100%;display:block;padding:15px;box-sizing:border-box;"/>
-          </div>
-        </div>
-      </section>
-
-      <!-- FINAL VALIDATION -->
-      <section id="validation" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Final Validation</h2>
-          <p class="section-subtitle">
-            Round 1 answered the timeline. Round 2 answered the users.</p>
-          <div class="cs-grid-2 mb-8">
-            <div class="stat-block stat-block-lg">
-              <span class="stat-number stat-number-lg" style="color:#ba1a1a;">80%</span>
-              <p class="font-label cs-stat-label mb-1">
-                Round 1 interviews</p>
-              <p class="body-text-sm">
-                confirmed the approach was going the right direction, but wasn't enough</p>
-            </div>
-            <div class="stat-block stat-block-lg">
-              <span class="stat-number stat-number-lg">88%</span>
-              <p class="font-label cs-stat-label mb-1">
-                Round 2 interviews</p>
-              <p class="body-text-sm">
-                said they would actively use the new alert functionality</p>
-            </div>
-          </div>
-          <p class="body-text">
-            The baseline was 13% active usage. That number reflects a ceiling imposed by a broken system, not a ceiling on demand. The validation data confirmed the demand was there.</p>
-        </div>
-      </section>
-
-      <!-- OUTCOME -->
-      <section id="outcome" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Outcome</h2>
-          <p class="section-subtitle">
-            The full redesign shipped.</p>
-          <div class="cs-deliverables mb-7">
-            <div class="cs-deliverable">
-              <span class="tag tag-backlog" style="margin-top:0.1rem;min-width:5rem;text-align:center;">
-                Archived</span>
-              <div>
-                <p class="cs-deliverable-title">
-                  Additive version</p>
-                <p class="body-text-sm">
-                  Delivered within the existing architecture and timeline scope.</p>
-                <ul style="margin-top:0.5rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0.35rem;">
-                  <li class="cs-scope-item">&#8212;&nbsp; Single-order alerting</li>
-                  <li class="cs-scope-item">&#8212;&nbsp; Multi-order alerting</li>
-                  <li class="cs-scope-item">&#8212;&nbsp; Order metadata triggers</li>
-                </ul>
-              </div>
-            </div>
-            <div class="cs-deliverable">
-              <span class="tag tag-shipped" style="margin-top:0.1rem;min-width:5rem;text-align:center;">
-                Shipped</span>
-              <div>
-                <p class="cs-deliverable-title">
-                  Full redesign</p>
-                <p class="body-text-sm">
-                  One unified alert configuration hub consolidating all alert types and all front office personas.</p>
-                <ul style="margin-top:0.5rem;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0.35rem;">
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Single-order alerting</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Multi-order alerting</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Macro-level alerting</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Order metadata triggers</li>
-                  <li style="font-family:'Space Grotesk',sans-serif;font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">&#8212;&nbsp; Macro triggers</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <p class="body-text mb-8">
-            The additive release was designed to meet a client contract deadline. When the prospective clients didn't sign, the timeline pressure lifted and the full redesign is what went to production. Front office traders are known for slow adoption of new tooling. The 34× result reflects what happens when the system shipped is the one that actually matches how they work.</p>
-          <div class="cs-grid-2">
-            <div class="stat-block stat-block-lg">
-              <span class="stat-number stat-number-lg">34×</span>
-              <p class="font-label cs-stat-label mb-1">
-                Within 12 months</p>
-              <p class="body-text-sm">
-                increase in alerts created across the platform</p>
-            </div>
-            <div class="stat-block stat-block-lg">
-              <span class="stat-number stat-number-lg" style="color:#737785;">20×</span>
-              <p class="font-label cs-stat-label mb-1">
-                Expected KPI</p>
-              <p class="body-text-sm">
-                projected increase in alerts created, set by head of product</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- REFLECTION -->
-      <section id="reflection" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">
-            Reflection</h2>
-          <p class="section-subtitle">
-            A hunch without evidence doesn't win the argument.</p>
-          <div class="cs-decisions">
-            <div class="cs-decision">
-              <p class="font-label cs-decision-label">
-                Reflection 1</p>
-              <p class="cs-decision-title">
-                Instinct without evidence isn't enough to push back</p>
-              <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Before design round 1, there was an inkling the scope was too narrow. Senior colleagues advised holding off. Without the research to back it, there wasn't standing to push further. Once user interviews gave something concrete, the scope changed. But that came a round later than it could have. Instinct tells you where to look. Evidence is what lets you push.</p>
-            </div>
-            <div class="cs-decision-secondary">
-              <p class="font-label cs-decision-label-secondary">
-                Reflection 2</p>
-              <p class="cs-decision-title">
-                Domain research time is design time</p>
-              <p style="font-size:0.95rem;color:#424654;line-height:1.7;">
-                Month 1 was entirely knowledge transfer. On a fast-moving project that can feel like lost time. Here it was the opposite. Understanding the full alert landscape across the platform was what made it possible to identify fragmentation as a possible root problem, not just missing features.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </div>
-  </div>
-</main>
 
 <div id="site-footer"></div>
 <script src="components/footer.js"></script>
 <script src="scripts/scroll-observer.js"></script>
 <script>
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('view') === 'portfolio') setView('portfolio');
-
-  function setView(view) {
-    const portfolioView = document.getElementById('portfolio-view');
-    const caseStudyView = document.getElementById('case-study-view');
-    const portfolioBtn = document.getElementById('toggle-portfolio');
-    const caseStudyBtn = document.getElementById('toggle-case-study');
-    const activeClasses = ['bg-primary', 'text-white', 'shadow-sm'];
-    const inactiveClasses = ['text-outline', 'hover:text-on-surface'];
-    if (view === 'portfolio') {
-      portfolioView.style.display = 'block';
-      caseStudyView.style.display = 'none';
-      portfolioBtn.classList.add(...activeClasses);
-      portfolioBtn.classList.remove(...inactiveClasses);
-      caseStudyBtn.classList.remove(...activeClasses);
-      caseStudyBtn.classList.add(...inactiveClasses);
-      initCollapsibleNav();
-      // Re-run after IntersectionObserver has had a frame to fire for newly visible sections
-      requestAnimationFrame(() => navSyncVisibility?.());
-    } else {
-      portfolioView.style.display = 'none';
-      caseStudyView.style.display = 'block';
-      caseStudyBtn.classList.add(...activeClasses);
-      caseStudyBtn.classList.remove(...inactiveClasses);
-      portfolioBtn.classList.remove(...activeClasses);
-      portfolioBtn.classList.add(...inactiveClasses);
-    }
-  }
-
   let navInitialised = false;
   let navSyncVisibility = null;
 
@@ -1957,48 +1452,90 @@
     if (navInitialised) return;
     navInitialised = true;
 
-    const nav = document.querySelector('#portfolio-view .cs-sidenav-links');
+    const nav = document.querySelector('.cs-sidenav-links');
     if (!nav) return;
 
     const links = Array.from(nav.querySelectorAll('.nav-link'));
 
-    // Group: each top-level nav-link owns the sub/sub-sub links that follow it
-    const groups = [];
-    let current = null;
+    // Level 1: top-level nav-link owns nav-link-sub children (not sub-sub)
+    const level1Groups = [];
+    let current1 = null;
     links.forEach(link => {
-      const isSub = link.classList.contains('nav-link-sub') ||
-                    link.classList.contains('nav-link-sub-sub');
-      if (!isSub) {
-        current = { parent: link, children: [] };
-        groups.push(current);
-      } else if (current) {
-        current.children.push(link);
+      const isSub = link.classList.contains('nav-link-sub');
+      const isSubSub = link.classList.contains('nav-link-sub-sub');
+      if (!isSub && !isSubSub) {
+        current1 = { parent: link, children: [] };
+        level1Groups.push(current1);
+      } else if (isSub && !isSubSub && current1) {
+        current1.children.push(link);
       }
     });
 
-    // Hide all sub-links initially
-    groups.forEach(({ children }) => {
+    // Level 2: nav-link-sub owns nav-link-sub-sub children
+    const level2Groups = [];
+    let current2 = null;
+    links.forEach(link => {
+      const isSub = link.classList.contains('nav-link-sub');
+      const isSubSub = link.classList.contains('nav-link-sub-sub');
+      if (isSub && !isSubSub) {
+        current2 = { parent: link, children: [] };
+        level2Groups.push(current2);
+      } else if (isSubSub && current2) {
+        current2.children.push(link);
+      }
+    });
+
+    // Hide all sub and sub-sub links initially
+    level1Groups.forEach(({ children }) => {
+      children.forEach(child => { child.style.display = 'none'; });
+    });
+    level2Groups.forEach(({ children }) => {
       children.forEach(child => { child.style.display = 'none'; });
     });
 
-    // Show children whose parent is active (or any child is active), hide the rest
+    // Level 1: show sub items when top-level parent is active
     function syncVisibility() {
-      groups.forEach(({ parent, children }) => {
+      level1Groups.forEach(({ parent, children }) => {
         const show = parent.classList.contains('active') ||
                      children.some(c => c.classList.contains('active'));
         children.forEach(child => { child.style.display = show ? '' : 'none'; });
       });
     }
 
-    // Expose so setView can re-trigger after IntersectionObserver fires
     navSyncVisibility = syncVisibility;
 
-    // Watch every nav-link for class changes set by the scroll-observer
     const mo = new MutationObserver(syncVisibility);
     links.forEach(link => mo.observe(link, { attributes: true, attributeFilter: ['class'] }));
 
     syncVisibility();
+
+    // Level 2: hover on nav-link-sub to reveal its nav-link-sub-sub children
+    level2Groups.forEach(({ parent, children }) => {
+      if (children.length === 0) return;
+
+      let leaveTimer = null;
+
+      const showChildren = () => {
+        clearTimeout(leaveTimer);
+        children.forEach(c => { c.style.display = ''; });
+      };
+
+      const hideChildren = () => {
+        leaveTimer = setTimeout(() => {
+          children.forEach(c => { c.style.display = 'none'; });
+        }, 150);
+      };
+
+      parent.addEventListener('mouseenter', showChildren);
+      parent.addEventListener('mouseleave', hideChildren);
+      children.forEach(c => {
+        c.addEventListener('mouseenter', () => clearTimeout(leaveTimer));
+        c.addEventListener('mouseleave', hideChildren);
+      });
+    });
   }
+
+  initCollapsibleNav();
 </script>
 
 <script>lucide.createIcons();</script>

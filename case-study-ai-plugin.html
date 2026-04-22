@@ -15,18 +15,13 @@
     .timeline-dot                  { background: #3D9E88; }
     .stat-number                   { color: #3D9E88; }
     .tag-shipped                   { color: #3D9E88; background: #d4ede9; }
-    .tag-dev                       { border-left-color: #3D9E88; }
     .cs-company                    { color: #3D9E88; }
     .cs-card-label                 { color: #3D9E88; }
     .cs-compare-label-blue         { color: #3D9E88; border-bottom-color: #3D9E88; }
     .cs-decision                   { border-left-color: #3D9E88; }
-    .cs-validation                 { border-left: 2px solid #3D9E88; border-right: none; padding-left: 1.5rem; padding-right: 0; text-align: left; }
     .cs-decision-label             { color: #3D9E88; }
-    .cs-validation-label           { color: #3D9E88; }
     .site-nav-link.active          { color: #3D9E88; border-bottom-color: #3D9E88; }
     .bg-primary                    { background-color: #3D9E88 !important; }
-    .section-subtitle              { color: #3D9E88; }
-    .margin-callout                { color: #3D9E88; }
 
     /* Build section colored backgrounds */
     .cs-bg-deep  { background: #1A3330; }
@@ -53,6 +48,18 @@
     .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: #e3e3de; margin-bottom: 2rem; }
     .feature-item { background: #f4f4ef; padding: 1.5rem; }
     .feature-label { font-family: 'Space Grotesk', sans-serif; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; color: #3D9E88; margin-bottom: 0.5rem; }
+
+    @media (max-width: 900px) {
+      header[style*="padding: 5rem"] { padding: 3rem 0 0 !important; }
+    }
+    @media (max-width: 768px) {
+      .feature-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      header[style*="padding: 5rem"] { padding: 2rem 0 0 !important; }
+      [style*="grid-template-columns:1fr 1fr"]  { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
@@ -361,6 +368,45 @@
 <div id="site-footer"></div>
 <script src="components/footer.js"></script>
 <script src="scripts/scroll-observer.js"></script>
+<script>
+  (function () {
+    const nav = document.querySelector('.cs-sidenav-links');
+    if (!nav) return;
+
+    const links = Array.from(nav.querySelectorAll('.nav-link'));
+
+    const groups = [];
+    let current = null;
+    links.forEach(link => {
+      const isSub = link.classList.contains('nav-link-sub') ||
+                    link.classList.contains('nav-link-sub-sub');
+      if (!isSub) {
+        current = { parent: link, children: [] };
+        groups.push(current);
+      } else if (current) {
+        current.children.push(link);
+      }
+    });
+
+    groups.forEach(({ children }) => {
+      children.forEach(child => { child.style.display = 'none'; });
+    });
+
+    function syncVisibility() {
+      groups.forEach(({ parent, children }) => {
+        const show = parent.classList.contains('active') ||
+                     children.some(c => c.classList.contains('active'));
+        children.forEach(child => { child.style.display = show ? '' : 'none'; });
+      });
+    }
+
+    const mo = new MutationObserver(syncVisibility);
+    links.forEach(link => mo.observe(link, { attributes: true, attributeFilter: ['class'] }));
+
+    syncVisibility();
+    requestAnimationFrame(syncVisibility);
+  })();
+</script>
 
 </body>
 </html>

@@ -7,6 +7,83 @@
   <link rel="stylesheet" href="styles/shared.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
   <script src="scripts/tailwind-config.js"></script>
+  <style>
+    /* ── Scroll reveal ─────────────────────────────────────── */
+    section[id^="case-"] {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.55s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.22s ease;
+    }
+    section[id^="case-"].is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Hover state ───────────────────────────────────────── */
+    section[id^="case-"].is-visible:hover {
+      transform: translateY(-3px);
+      box-shadow: inset 4px 0 0 #A08FEF, 0 16px 48px rgba(0,0,0,0.07);
+    }
+    #case-ai-companion.is-visible:hover {
+      box-shadow: inset 4px 0 0 #3D9E88, 0 16px 48px rgba(0,0,0,0.07);
+    }
+
+    /* ── CTA arrow ─────────────────────────────────────────── */
+    .cta-arrow {
+      display: inline-block;
+      margin-left: 0.3em;
+      transition: transform 0.2s ease;
+    }
+    section[id^="case-"].is-visible:hover .cta-arrow {
+      transform: translateX(5px);
+    }
+
+    /* ── Project numbering ─────────────────────────────────── */
+    main { counter-reset: card-counter; }
+    section[id^="case-"] { counter-increment: card-counter; }
+    section[id^="case-"]::before {
+      content: counter(card-counter, decimal-leading-zero);
+      position: absolute;
+      bottom: 0.75rem;
+      right: 2rem;
+      font-family: 'Newsreader', serif;
+      font-style: italic;
+      font-size: 7rem;
+      line-height: 1;
+      color: rgba(27,28,25,0.045);
+      letter-spacing: -0.04em;
+      pointer-events: none;
+      user-select: none;
+    }
+
+    /* ── Image column: wider + shadow ──────────────────────── */
+    [style*="grid-template-columns:1fr clamp(180px,22%,280px)"] {
+      grid-template-columns: 1fr clamp(200px, 26%, 300px) !important;
+    }
+    section[id^="case-"] > div > div:last-child {
+      box-shadow: 0 3px 18px rgba(0,0,0,0.09);
+    }
+
+    /* ── Responsive ────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      main { padding: 0 1.5rem !important; }
+      header { padding: 4rem 0 3rem !important; }
+      section[id^="case-"] { padding: 2rem 2rem !important; }
+      section[id^="case-"]::before { font-size: 5rem; }
+    }
+    @media (max-width: 768px) {
+      [style*="grid-template-columns:1fr clamp"] { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      main  { padding: 0 1rem !important; }
+      header { padding: 2.5rem 0 2rem !important; }
+      section[id^="case-"] { padding: 1.5rem 1rem !important; }
+      section[id^="case-"] [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      section[id^="case-"]::before { display: none; }
+    }
+  </style>
 </head>
 <body>
 
@@ -25,6 +102,12 @@
   <!-- Cards -->
   <div style="padding-bottom:8rem;">
 
+      <!-- Section label -->
+      <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;">
+        <span class="font-label" style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#9ca3af;white-space:nowrap;">Selected Work</span>
+        <div style="flex:1;height:1px;background:rgba(194,198,214,0.45);"></div>
+      </div>
+
       <!-- Card 1: General Alerts -->
       <section id="case-alerts" style="background:#ffffff;padding:3rem 3.5rem;margin-bottom:1.5rem;position:relative;">
         <div style="display:grid;grid-template-columns:1fr clamp(180px,22%,280px);gap:3rem;align-items:center;">
@@ -42,7 +125,7 @@
               </div>
             </div>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-alerts.html?view=portfolio" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process</a>
+              <a href="case-study-alerts.html?view=portfolio" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 6 months</span>
             </div>
           </div>
@@ -70,7 +153,7 @@
               </div>
             </div>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-middle-office.html?view=portfolio" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process</a>
+              <a href="case-study-middle-office.html?view=portfolio" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 4 months</span>
             </div>
           </div>
@@ -98,7 +181,7 @@
               </div>
             </div>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-migration.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process</a>
+              <a href="case-study-migration.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 9 months</span>
             </div>
           </div>
@@ -126,7 +209,7 @@
               </div>
             </div>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-ai-plugin.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#3D9E88;text-decoration:none;font-weight:600;border-bottom:1.5px solid #3D9E88;padding-bottom:2px;">Read Design Process</a>
+              <a href="case-study-ai-plugin.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#3D9E88;text-decoration:none;font-weight:600;border-bottom:1.5px solid #3D9E88;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 2025</span>
             </div>
           </div>
@@ -144,6 +227,25 @@
 <div id="site-footer"></div>
 <script src="components/footer.js"></script>
 <script src="scripts/scroll-observer.js"></script>
+
+<script>
+  (function () {
+    const cards = document.querySelectorAll('section[id^="case-"]');
+
+    const observer = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        const i = Array.prototype.indexOf.call(cards, entry.target);
+        setTimeout(function () {
+          entry.target.classList.add('is-visible');
+        }, i * 90);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.08 });
+
+    cards.forEach(function (card) { observer.observe(card); });
+  })();
+</script>
 
 </body>
 </html>

@@ -10,8 +10,8 @@
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
   <style>
     .nav-link.active           { color: #A08FEF; }
-    .section-subtitle          { color: #A08FEF; }
-    .margin-callout            { color: #A08FEF; }
+    .section-subtitle.active   { color: #A08FEF; }
+    .margin-callout.active     { color: #A08FEF; }
     .timeline-dot              { background: #A08FEF; }
     .stat-number               { color: #A08FEF; }
     .tag-shipped               { color: #A08FEF; background: #eedcfc; }
@@ -22,6 +22,19 @@
     .cs-compare-label-blue     { color: #A08FEF; border-bottom-color: #A08FEF; }
     .site-nav-link.active      { color: #A08FEF; border-bottom-color: #A08FEF; }
     .bg-primary                { background-color: #A08FEF !important; }
+
+    @media (max-width: 900px) {
+      header[style*="padding: 5rem"] { padding: 3rem 0 0 !important; }
+    }
+    @media (max-width: 768px) {
+      [style*="grid-template-columns:1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+      [style*="grid-template-columns:1fr 1fr 1fr 1fr"] { grid-template-columns: 1fr 1fr !important; }
+    }
+    @media (max-width: 640px) {
+      header[style*="padding: 5rem"] { padding: 2rem 0 0 !important; }
+      [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr"] { grid-template-columns: 1fr !important; }
+    }
   </style>
 </head>
 <body>
@@ -34,28 +47,18 @@
   <header style="padding: 5rem 0 0;">
     <span class="font-label cs-company">ION Group / Fidessa</span>
     <h1 class="cs-hero-title">Middle Office<br>Dashboard.</h1>
-    <div class="flex justify-center items-center py-8">
-      <div class="inline-flex p-1 bg-surface-container-low rounded-full border border-outline/10">
-        <button id="toggle-portfolio" onclick="setView('portfolio')" class="px-8 py-2 rounded-full font-label text-[10px] uppercase tracking-widest text-outline hover:text-on-surface transition-all duration-300">
-          Design Process
-        </button>
-        <button id="toggle-case-study" onclick="setView('case-study')" class="px-8 py-2 rounded-full font-label text-[10px] uppercase tracking-widest bg-primary text-white shadow-sm transition-all duration-300">
-          Case Study
-        </button>
-      </div>
-    </div>
   </header>
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════════ -->
 <!-- DESIGN PROCESS VIEW                                             -->
 <!-- ═══════════════════════════════════════════════════════════════ -->
-<div id="portfolio-view" style="display:none;" class="cs-main">
+<div class="cs-main">
 
   <!-- Hero -->
   <header class="cs-hero" style="padding-top: 2.5rem;">
     <div class="cs-hero-grid">
-      <p class="cs-hero-desc">The first historical analytics layer for middle office operations at Fidessa, giving operations professionals across 6,500+ firms a systematic way to identify the root causes of allocation delays ahead of European T+1 regulatory requirements.</p>
+      <p class="cs-hero-desc">The first historical analytics layer for middle office operations at Fidessa, giving operations professionals across 6,500+ firms a systematic way to identify the root causes of allocation delays ahead of European T+1 regulatory requirements. Within months of launch, allocations missing T+1 dropped by <span style="color:#A08FEF;font-weight:600;">23%</span>, exceeding the 15% target.</p>
       <div class="cs-meta">
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">Timeline</span>
@@ -493,14 +496,14 @@
             </div>
           </div>
           <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.75rem;">
-            <blockquote style="padding:1.5rem 1.75rem;background:#f4f4ef;border-left:2px solid #A08FEF;">
+            <div style="background:#f4f4ef;padding:1.5rem 1.75rem;">
               <p class="cs-quote" style="margin-bottom:0.5rem;">"This is great! We've been waiting for a way to get historical analytical data about our allocations."</p>
               <p class="font-label cs-caption">Middle Office Trader</p>
-            </blockquote>
-            <blockquote style="padding:1.5rem 1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
+            </div>
+            <div style="background:#f4f4ef;padding:1.5rem 1.75rem;">
               <p class="cs-quote" style="margin-bottom:0.5rem;">"This makes it so much easier to get clients to correct the data they're sending in. Instead of telling them there's a problem, we can show them exactly what it is and how often it's happening."</p>
               <p class="font-label cs-caption">Middle Office Trader</p>
-            </blockquote>
+            </div>
           </div>
         </div>
       </section>
@@ -556,18 +559,27 @@
           <h2 class="cs-section-title">Testimonials</h2>
           <p class="section-subtitle">From middle office teams across Europe and the Americas.</p>
           <div style="display:flex;flex-direction:column;gap:1.5rem;">
-            <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:1rem;">"Having the client analytics in front of me changes the conversation entirely. I can show a client exactly which fields they are repeatedly getting wrong, and how long each one takes us to resolve. That is a very different conversation from just telling them there are problems."</p>
-              <p class="font-label cs-caption">Middle Office Trader, European Client Firm</p>
-            </blockquote>
-            <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:1rem;">"The trend view is what we have been missing. Before this I could only tell you what was happening the past few days. Now I can show you that a client has been causing the same delays for six months. That is actionable in a way that a daily snapshot never is."</p>
-              <p class="font-label cs-caption">Middle Office Trader, American Client Firm</p>
-            </blockquote>
-            <blockquote style="padding:1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:1rem;">"With T+1 coming to Europe, we need to understand where our delays are actually coming from before the window closes. For the first time, we have a way to do that systematically."</p>
-              <p class="font-label cs-caption">Middle Office Trader, European financial firm</p>
-            </blockquote>
+            <div style="background:#f4f4ef;padding:2rem 2.25rem;">
+              <p class="cs-quote" style="margin-bottom:1.25rem;">"Having the client analytics in front of me changes the conversation entirely. I can show a client exactly which fields they are repeatedly getting wrong, and how long each one takes us to resolve. That is a very different conversation from just telling them there are problems."</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#1b1c19;">Middle Office Trader</p>
+                <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">European Client Firm</p>
+              </div>
+            </div>
+            <div style="background:#f4f4ef;padding:2rem 2.25rem;">
+              <p class="cs-quote" style="margin-bottom:1.25rem;">"The trend view is what we have been missing. Before this I could only tell you what was happening the past few days. Now I can show you that a client has been causing the same delays for six months. That is actionable in a way that a daily snapshot never is."</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#1b1c19;">Middle Office Trader</p>
+                <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">American Client Firm</p>
+              </div>
+            </div>
+            <div style="background:#f4f4ef;padding:2rem 2.25rem;">
+              <p class="cs-quote" style="margin-bottom:1.25rem;">"With T+1 coming to Europe, we need to understand where our delays are actually coming from before the window closes. For the first time, we have a way to do that systematically."</p>
+              <div style="display:flex;justify-content:space-between;align-items:center;">
+                <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#1b1c19;">Middle Office Trader</p>
+                <p class="font-label" style="font-size:0.6rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">European Financial Firm</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -576,303 +588,61 @@
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<!-- CASE STUDY VIEW                                                  -->
-<!-- ═══════════════════════════════════════════════════════════════ -->
-<main id="case-study-view" class="cs-main">
-
-  <!-- Hero -->
-  <header class="cs-hero">
-    <div class="cs-hero-grid">
-      <p class="cs-hero-desc">Operations teams managing the post-trade allocations lifecycle had no historical data. When allocations were delayed, there was no way to see patterns: which clients caused them, how often, or why. The brief was to speed up the allocation process. I built the scope from scratch.</p>
-      <div class="cs-meta">
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">Timeline</span>
-          <span class="font-label cs-meta-value">4 Months</span>
-        </div>
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">Role</span>
-          <span class="font-label cs-meta-value">Sole UX Designer</span>
-        </div>
-        <div class="cs-meta-row">
-          <span class="font-label cs-meta-label">Company</span>
-          <span class="font-label cs-meta-value">ION Group</span>
-        </div>
-        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
-          <span class="font-label cs-meta-label">Status</span>
-          <span class="font-label tag" style="padding: 0.15rem 0.6rem; color: #737785; background: #f0f0eb;">Shipped</span>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Body -->
-  <div class="cs-layout">
-
-    <!-- Sticky side nav -->
-    <aside class="cs-sidenav">
-      <p class="font-label cs-sidenav-title">Middle Office<br>Dashboard</p>
-      <nav class="cs-sidenav-links">
-        <a href="#overview" class="nav-link active">Overview</a>
-        <a href="#problem" class="nav-link">The Problem</a>
-        <a href="#domain" class="nav-link">Domain</a>
-        <a href="#scope" class="nav-link">Scope</a>
-        <a href="#process" class="nav-link">Process</a>
-        <a href="#validation" class="nav-link">Validation</a>
-        <a href="#outcome" class="nav-link">Outcome</a>
-        <a href="#reflection" class="nav-link">Reflection</a>
-      </nav>
-    </aside>
-
-    <!-- Content -->
-    <div class="cs-content">
-
-      <!-- OVERVIEW -->
-      <section id="overview" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Overview</h2>
-          <p class="section-subtitle active">No scope, no problem statement, no existing design.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">Fidessa's middle office operations teams across 6,500+ global financial firms manage the post-trade settlement lifecycle. I was asked to speed up the allocation process ahead of European T+1 regulatory requirements. There was no defined scope, no clear problem statement, and no existing design to build from.</p>
-          <p class="body-text" style="margin-bottom:2.5rem;">I led the project end-to-end as the sole designer: from domain research and problem definition through discovery workshops, design, and one round of validation with operations staff.</p>
-          <div class="cs-timeline-box">
-            <p class="font-label cs-timeline-header">Project Timeline</p>
-            <div class="cs-timeline-items">
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 1</span><p class="cs-timeline-text">Domain research: knowledge transfer sessions with PMs, allocations workflow mapping</p></div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 2</span><p class="cs-timeline-text">User research: 12 interviews with middle office traders in Europe and Americas</p></div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 3</span><p class="cs-timeline-text">Design: dashboard, firm and client level analytics, time-based trend, export</p></div>
-              </div>
-              <div class="timeline-step">
-                <div class="timeline-dot"></div>
-                <div><span class="font-label cs-month-label">Month 4</span><p class="cs-timeline-text">Validation: one round with 12 participants across Europe and Americas</p></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- THE PROBLEM -->
-      <section id="problem" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">The Problem</h2>
-          <p class="section-subtitle">No brief. No data. No way to be proactive.</p>
-          <div style="margin-bottom:1.75rem;">
-            <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Stated ask</p>
-            <p class="body-text">Speed up the allocation process.</p>
-          </div>
-          <div style="margin-bottom:2rem;">
-            <p class="font-label cs-field-label" style="margin-bottom:0.5rem;">Actual problem</p>
-            <p class="body-text">Operations teams had no historical or analytical view of their allocations. When delays occurred, there was no data to help staff identify patterns. Which clients were causing delays, how often, or why. Without that visibility, teams couldn't be proactive: they couldn't address root causes, and they couldn't tell clients to correct how they were sending information. Everything was reactive.</p>
-          </div>
-          <p class="body-text">Why it matters: a regulatory change is driving urgency. European firms are moving to T+1 allocation completion, a requirement the Americas already meet. Teams that cannot identify and address sources of delays before that transition will be directly exposed to compliance risk.</p>
-        </div>
-      </section>
-
-      <!-- DOMAIN -->
-      <section id="domain" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Understanding the Domain</h2>
-          <p class="section-subtitle">The allocations workflow is more complex than it looks.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">Before making any design decisions, I needed to understand how the allocations workflow actually worked: the data, the services, the tools, and where breakdowns occurred.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">I conducted knowledge transfer sessions with PMs to build domain fluency, then led cross-functional discovery workshops to map the end-to-end workflow. Output: workflow maps and information maps covering all services and functionalities users currently interact with.</p>
-          <p class="body-text" style="margin-bottom:1.75rem;">What surfaced: allocation delays consistently trace back to one of three root cause types: client data, order data, or service errors. Operations teams had no way to surface which type was responsible in a given case, let alone see patterns over time. The entire workflow was reactive and queue-based, with no historical layer at all.</p>
-          <img src="assets/MO_workflow_map.png" alt="FigJam workflow map: Non-CAP and CAP allocation workflows, confirmation services, and tool landscape" style="width:100%;display:block;margin-bottom:0.75rem;"/>
-          <p class="cs-caption">End-to-end allocations workflow map produced during knowledge transfer sessions with PMs.</p>
-        </div>
-      </section>
-
-      <!-- SCOPE -->
-      <section id="scope" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Defining the Scope</h2>
-          <p class="section-subtitle">Three problem areas. One design vehicle.</p>
-          <p class="body-text" style="margin-bottom:1.75rem;">The original ask gave nothing to constrain against. Through discovery and user research, three distinct problem areas emerged.</p>
-          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:2rem;">
-            <div class="cs-deliverable">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#A08FEF;font-weight:600;white-space:nowrap;margin-top:0.15rem;">01</span>
-              <div><p class="cs-deliverable-title">Dashboard</p><p class="body-text-sm">Fragmented views of the same workflow displayed across separate grids with no consolidated analytical layer</p></div>
-            </div>
-            <div class="cs-deliverable">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#A08FEF;font-weight:600;white-space:nowrap;margin-top:0.15rem;">02</span>
-              <div><p class="cs-deliverable-title">Summary analytics</p><p class="body-text-sm">No data on which clients, fields, or services generate the most delays or require the most manual intervention</p></div>
-            </div>
-            <div class="cs-deliverable">
-              <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;color:#A08FEF;font-weight:600;white-space:nowrap;margin-top:0.15rem;">03</span>
-              <div><p class="cs-deliverable-title">Export and print</p><p class="body-text-sm">Operations teams hold regular client reviews and need a way to bring analytics data into those conversations</p></div>
-            </div>
-          </div>
-          <p class="body-text">Middle office operations staff are expert users with deeply ingrained workflows. Any changes to how they currently work would create significant disruption. The dashboard approach added a new analytical layer without forcing changes to existing workflows, surfacing the information they needed without asking them to work differently.</p>
-        </div>
-      </section>
-
-      <!-- PROCESS -->
-      <section id="process" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Design Process</h2>
-          <p class="section-subtitle">Tables, not charts. Default state, not configuration.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">The core design challenge was visualization: how do you represent the health of thousands of client accounts and allocation batches in a way that lets an operations professional immediately see where to focus?</p>
-          <p class="body-text" style="margin-bottom:2rem;">Operations staff are highly comfortable with data tables. The goal was not to replace tables with charts, but to design tables where the default state surfaces a clear next step. Opening the dashboard, a user should immediately see which clients are creating the most noise and know what to raise in a client conversation, without configuring anything first.</p>
-          <div class="cs-decisions" style="margin-bottom:2.5rem;">
-            <div class="cs-decision">
-              <p class="font-label cs-decision-label">Decision 1</p>
-              <p class="cs-decision-title">Preset grids structured around the three root cause categories</p>
-              <p class="body-text-sm">Root causes always fall into one of three types: client data, order data, or service errors. Preset grids for each category let users arrive at the relevant data without any setup. Firm level and client level views serve two distinct operational contexts: one for internal prioritization, one for client conversations.</p>
-            </div>
-            <div class="cs-decision-secondary">
-              <p class="font-label cs-decision-label-secondary">Decision 2</p>
-              <p class="cs-decision-title">Surfacing data at the client and field level over time</p>
-              <p class="body-text-sm">To enable proactive management, the dashboard presents aggregate data historically. Time filters (6 months to 3 years) let teams see trends: which clients are repeatedly causing delays, which fields are consistently amended, and whether the overall situation is improving or worsening.</p>
-            </div>
-            <div class="cs-decision-secondary">
-              <p class="font-label cs-decision-label-secondary">Decision 3</p>
-              <p class="cs-decision-title">Export and print as a first-class feature</p>
-              <p class="body-text-sm">Research surfaced export and print unprompted across multiple sessions. Teams hold regular client reviews. Designing for export from the start ensures the analytics are useful beyond the platform, in the conversations where accountability decisions are made.</p>
-            </div>
-          </div>
-          <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Delivered design</p>
-          <img src="assets/Middle Office_Final.png" alt="Middle Office Dashboard: firm level and client level views" style="width:100%;display:block;margin-bottom:0.75rem;"/>
-          <p class="cs-caption">Manual intervention summary: firm level and client level views showing T+1 trend, client analytics, field analytics, and service analytics.</p>
-        </div>
-      </section>
-
-      <!-- VALIDATION -->
-      <section id="validation" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Validation</h2>
-          <p class="section-subtitle">One round. Concept confirmed.</p>
-          <p class="body-text" style="margin-bottom:1.75rem;">One round of user validation with 12 participants, a mix of returning research contributors and new participants. Reception was positive across the board. Users immediately understood the value of historical analytics: a capability that had never existed for them on the platform before.</p>
-          <div style="display:flex;flex-direction:column;gap:0.75rem;margin-bottom:1.75rem;">
-            <blockquote style="padding:1.5rem 1.75rem;background:#f4f4ef;border-left:2px solid #A08FEF;">
-              <p class="cs-quote" style="margin-bottom:0.5rem;">"This is great! We've been waiting for a way to get historical analytical data about our allocations."</p>
-              <p class="font-label cs-caption">Middle Office Trader</p>
-            </blockquote>
-            <blockquote style="padding:1.5rem 1.75rem;background:#f4f4ef;border-left:2px solid #c2c6d6;">
-              <p class="cs-quote" style="margin-bottom:0.5rem;">"This makes it so much easier to get clients to correct the data they're sending in. Instead of telling them there's a problem, we can show them exactly what it is and how often it's happening."</p>
-              <p class="font-label cs-caption">Middle Office Trader</p>
-            </blockquote>
-          </div>
-        </div>
-      </section>
-
-      <!-- OUTCOME -->
-      <section id="outcome" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Outcome</h2>
-          <p class="section-subtitle">Shipped. KPI exceeded.</p>
-          <div class="cs-outcome-list">
-            <div class="cs-outcome-item">
-              <p class="cs-outcome-text">Middle Office Dashboard: firm level and client level views, field mismatch analytics, client response analytics, service mismatch analytics, time-based trend, export and print</p>
-              <span class="tag tag-shipped">Shipped</span>
-            </div>
-          </div>
-          <p class="body-text" style="margin-bottom:1.25rem;">KPI target was a 15% reduction in allocations not meeting T+1. Post-launch result: 23% reduction. The result is notable given that Fidessa has no built-in mechanism for notifying users about new features, so adoption builds gradually after release.</p>
-        </div>
-      </section>
-
-      <!-- REFLECTION -->
-      <section id="reflection" class="scroll-mt-24 section-grid">
-        <div>
-          <h2 class="cs-section-title">Reflection</h2>
-          <p class="section-subtitle">Domain first. Design second.</p>
-          <p class="body-text" style="margin-bottom:1.25rem;">This project required significant domain learning before any design work could start. The allocations workflow, the relationships between services, and how delays are attributed at the client and field level were not things I could assume going in. They had to be learned from the ground up through knowledge transfer and workshop facilitation.</p>
-          <p class="body-text">What I'd do differently: engage users earlier. Setting up interviews took longer than it should have. Earlier outreach would have compressed the discovery phase and brought real user perspectives into scope decisions sooner.</p>
-        </div>
-      </section>
-
-    </div>
-  </div>
-</main>
-
 <div id="site-footer"></div>
 <script src="components/footer.js"></script>
 <script src="scripts/scroll-observer.js"></script>
 <script>
   let navInitialised = false;
+  let navSyncVisibility = null;
 
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.get('view') === 'portfolio') setView('portfolio');
-
-  function setView(view) {
-    const portfolioView = document.getElementById('portfolio-view');
-    const caseStudyView = document.getElementById('case-study-view');
-    const portfolioBtn = document.getElementById('toggle-portfolio');
-    const caseStudyBtn = document.getElementById('toggle-case-study');
-    const activeClasses = ['bg-primary', 'text-white', 'shadow-sm'];
-    const inactiveClasses = ['text-outline', 'hover:text-on-surface'];
-    if (view === 'portfolio') {
-      portfolioView.style.display = 'block';
-      caseStudyView.style.display = 'none';
-      portfolioBtn.classList.add(...activeClasses);
-      portfolioBtn.classList.remove(...inactiveClasses);
-      caseStudyBtn.classList.remove(...activeClasses);
-      caseStudyBtn.classList.add(...inactiveClasses);
-      initCollapsibleNav();
-    } else {
-      portfolioView.style.display = 'none';
-      caseStudyView.style.display = 'block';
-      caseStudyBtn.classList.add(...activeClasses);
-      caseStudyBtn.classList.remove(...inactiveClasses);
-      portfolioBtn.classList.remove(...activeClasses);
-      portfolioBtn.classList.add(...inactiveClasses);
-    }
-  }
-
-  // Collapsible side nav for Design Process view
-  // Sub-links are hidden until their parent section is active
   function initCollapsibleNav() {
     if (navInitialised) return;
     navInitialised = true;
 
-    const nav = document.querySelector('#portfolio-view .cs-sidenav-links');
+    const nav = document.querySelector('.cs-sidenav-links');
     if (!nav) return;
 
     const links = Array.from(nav.querySelectorAll('.nav-link'));
 
-    // Build groups: each top-level link + its following sub-links
-    const groups = [];
-    let currentGroup = null;
+    // Level 1: top-level nav-link owns nav-link-sub children
+    const level1Groups = [];
+    let current1 = null;
     links.forEach(link => {
-      const isSub = link.classList.contains('nav-link-sub') || link.classList.contains('nav-link-sub-sub');
-      if (!isSub) {
-        currentGroup = { parent: link, children: [] };
-        groups.push(currentGroup);
-      } else if (currentGroup) {
-        currentGroup.children.push(link);
+      const isSub = link.classList.contains('nav-link-sub');
+      const isSubSub = link.classList.contains('nav-link-sub-sub');
+      if (!isSub && !isSubSub) {
+        current1 = { parent: link, children: [] };
+        level1Groups.push(current1);
+      } else if (isSub && !isSubSub && current1) {
+        current1.children.push(link);
       }
     });
 
-    function updateVisibility() {
-      groups.forEach(group => {
-        const groupActive = group.parent.classList.contains('active') ||
-          group.children.some(c => c.classList.contains('active'));
-        group.children.forEach(child => {
-          child.style.display = groupActive ? '' : 'none';
-        });
+    // Hide all sub-links initially
+    level1Groups.forEach(({ children }) => {
+      children.forEach(child => { child.style.display = 'none'; });
+    });
+
+    function syncVisibility() {
+      level1Groups.forEach(({ parent, children }) => {
+        const show = parent.classList.contains('active') ||
+                     children.some(c => c.classList.contains('active'));
+        children.forEach(child => { child.style.display = show ? '' : 'none'; });
       });
     }
 
-    // Hide all sub-links initially
-    groups.forEach(g => g.children.forEach(c => { c.style.display = 'none'; }));
-    // Show active group straight away
-    updateVisibility();
+    navSyncVisibility = syncVisibility;
 
-    // Re-run whenever any nav link's class changes (driven by scroll-observer)
-    const mo = new MutationObserver(updateVisibility);
+    const mo = new MutationObserver(syncVisibility);
     links.forEach(link => mo.observe(link, { attributes: true, attributeFilter: ['class'] }));
+
+    syncVisibility();
   }
 
-  // If the page loads directly on the portfolio view, init after DOM is ready
+  initCollapsibleNav();
+
   document.addEventListener('DOMContentLoaded', () => {
-    if (document.getElementById('portfolio-view').style.display !== 'none') {
-      initCollapsibleNav();
-    }
+    initCollapsibleNav();
   });
 </script>
 
