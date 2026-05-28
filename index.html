@@ -82,6 +82,7 @@
       section[id^="case-"] { padding: 1.5rem 1rem !important; }
       section[id^="case-"] [style*="grid-template-columns:1fr 1fr"] { grid-template-columns: 1fr !important; }
       section[id^="case-"]::before { display: none; }
+      .hero-svg { display: none; }
     }
   </style>
 </head>
@@ -93,39 +94,59 @@
 <main style="max-width:1400px;margin:0 auto;padding:0 3rem;">
 
   <!-- Hero -->
-  <header style="padding:6rem 0 5rem;">
-    <h1 style="font-size:clamp(1.75rem,5.15vw,5.125rem);line-height:1.05;color:#1b1c19;letter-spacing:-0.02em;margin-bottom:2rem;">Senior UX Designer.<br><span style="font-style:italic;color:#A08FEF;">8 years</span> designing complex enterprise systems.</h1>
-    <p style="font-size:1.2rem;color:#424654;line-height:1.65;max-width:580px;">Deep domain acquisition - understanding how complex enterprise systems actually work before designing anything.</p>
-    <p style="font-size:1.05rem;color:#737785;line-height:1.65;max-width:580px;margin-top:1rem;">First and only UX hire at Fidessa. Each project here is evidence of how UX gets established inside a financial services firm where it didn't exist before. Framing design as business risk, advocating without formal research processes, and building domain knowledge deep enough to move stakeholders.</p>
+  <header style="padding:7rem 0 5rem;position:relative;overflow:hidden;">
+
+    <!-- Topographic texture (decorative) -->
+    <svg class="hero-svg" aria-hidden="true" focusable="false" overflow="visible" style="position:absolute;top:0;right:0;width:40%;height:100%;pointer-events:none;z-index:0;" viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-20 62 C30 55, 85 70, 140 63 C195 56, 248 68, 300 60 C352 52, 385 65, 430 58" fill="none" stroke="#1b1c19" stroke-width="1" stroke-linecap="round" opacity="0.04"/>
+      <path d="M-20 148 C25 140, 80 155, 135 146 C190 137, 245 152, 298 143 C351 134, 388 148, 430 141" fill="none" stroke="#1b1c19" stroke-width="1" stroke-linecap="round" opacity="0.04"/>
+      <path d="M-20 232 C35 224, 88 238, 142 229 C196 220, 250 235, 304 226 C358 217, 392 231, 430 223" fill="none" stroke="#1b1c19" stroke-width="1" stroke-linecap="round" opacity="0.04"/>
+      <path d="M-20 318 C28 309, 83 324, 138 315 C193 306, 248 320, 302 311 C356 302, 391 316, 430 308" fill="none" stroke="#1b1c19" stroke-width="1" stroke-linecap="round" opacity="0.04"/>
+      <path d="M-20 406 C32 397, 87 412, 143 402 C199 392, 253 407, 307 398 C361 389, 394 403, 430 395" fill="none" stroke="#1b1c19" stroke-width="1" stroke-linecap="round" opacity="0.04"/>
+    </svg>
+
+    <!-- Hero content -->
+    <div style="position:relative;z-index:1;">
+      <h1 style="font-family:'Newsreader',serif;font-style:italic;font-size:clamp(2.25rem,5vw,5rem);line-height:1.05;color:#1b1c19;letter-spacing:-0.02em;margin-bottom:1.5rem;">I navigate complexity until it becomes clarity.</h1>
+      <p style="font-family:'Space Grotesk',sans-serif;font-size:1rem;color:#737785;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:2.5rem;">Senior Interaction Designer · <span style="color:#A08FEF;font-weight:700;">8 years</span> in high-stakes data-heavy systems.</p>
+      <p style="font-family:'Work Sans',sans-serif;font-size:1.1rem;color:#424654;line-height:1.7;max-width:560px;margin-bottom:1rem;">First and only UX hire at Fidessa. Every project required earning the room, reframing the brief, and making design legible as business risk.</p>
+      <p style="font-family:'Newsreader',serif;font-style:italic;font-size:1rem;color:#737785;line-height:1.6;max-width:480px;margin-bottom:3rem;">Outside of work, I bikepack. Same instincts: read the terrain, reframe the route, keep moving.</p>
+      <div style="display:flex;align-items:center;gap:2.5rem;">
+        <a href="#work" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;border-bottom:1.5px solid #A08FEF;text-decoration:none;padding-bottom:2px;">View selected work ↓</a>
+        <a href="resume.pdf" style="font-family:'Space Grotesk',sans-serif;font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;border-bottom:1.5px solid rgba(194,198,214,0.6);text-decoration:none;padding-bottom:2px;">Download resume</a>
+      </div>
+    </div>
   </header>
 
   <!-- Cards -->
-  <div style="padding-bottom:8rem;">
+  <div id="work" style="padding-bottom:1.5rem;">
 
       <!-- Section label -->
       <div style="display:flex;align-items:center;gap:1.5rem;margin-bottom:2.5rem;">
-        <span class="font-label" style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#9ca3af;white-space:nowrap;">Selected Work</span>
+        <span class="font-label" style="font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;color:#9ca3af;white-space:nowrap;">Selected Work · 2022–2025</span>
         <div style="flex:1;height:1px;background:rgba(194,198,214,0.45);"></div>
       </div>
 
-      <!-- Card 1: General Alerts -->
+      <!-- Card 1: Alerts -->
       <section id="case-alerts" style="background:#ffffff;padding:3rem 3.5rem;margin-bottom:1.5rem;position:relative;">
         <div style="display:grid;grid-template-columns:1fr clamp(180px,22%,280px);gap:3rem;align-items:center;">
           <div>
-            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;display:block;margin-bottom:1rem;">Multi-persona Research &amp; Scope Advocacy</span>
+            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;display:block;margin-bottom:1rem;">Reframe the brief · Research · Scope advocacy</span>
             <h2 style="font-size:2.5rem;font-style:italic;color:#1b1c19;line-height:1.1;margin-bottom:2.5rem;">Alerts Upgrade</h2>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;">
               <div>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.6rem;">Challenge</p>
-                <p style="font-size:0.95rem;color:#424654;line-height:1.7;">13% of traders used alerts, user research across 3 personas pushed the brief, redirected scope to multi-order threshold alerts, and drove a 34x increase in alerts created post-launch.</p>
+                <p style="font-size:0.95rem;color:#424654;line-height:1.7;">13% of traders used alerts. The real problem wasn't the feature. It was the system.</p>
               </div>
               <div>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.6rem;">Outcome</p>
-                <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">Pushed back on scope, delivered two versions. First shipped. 34× increase in alerts created post-launch.</p>
+                <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">34× increase in alerts created post-launch. Pushed back on scope, delivered a system, not a feature.</p>
               </div>
             </div>
+            <hr style="border:none;border-top:1px solid rgba(194,198,214,0.3);margin:1.25rem 0;"/>
+            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:1.25rem;">Key moment: PM rejected findings. Reframed as revenue risk. It moved.</p>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-alerts.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
+              <a href="case-study-alerts.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read case study<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 6 months</span>
             </div>
           </div>
@@ -140,20 +161,22 @@
       <section id="case-middle-office" style="background:#ffffff;padding:3rem 3.5rem;margin-bottom:1.5rem;position:relative;">
         <div style="display:grid;grid-template-columns:1fr clamp(180px,22%,280px);gap:3rem;align-items:center;">
           <div>
-            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;display:block;margin-bottom:1rem;">Discovery &amp; Problem Definition</span>
+            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;display:block;margin-bottom:1rem;">Discovery · Problem definition · Domain acquisition</span>
             <h2 style="font-size:2.5rem;font-style:italic;color:#1b1c19;line-height:1.1;margin-bottom:2.5rem;">Middle Office Dashboard</h2>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;">
               <div>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.6rem;">Challenge</p>
-                <p style="font-size:0.95rem;color:#424654;line-height:1.7;">Operations teams had no historical view of their allocations. No defined scope, no problem statement, no existing design.</p>
+                <p style="font-size:0.95rem;color:#424654;line-height:1.7;">Operations teams had no way to review their own allocation history. There was no brief, no prior design, and no clear owner.</p>
               </div>
               <div>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.6rem;">Outcome</p>
                 <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">First-ever analytical dashboard for operations professionals across 6,500+ firms. Shipped.</p>
               </div>
             </div>
+            <hr style="border:none;border-top:1px solid rgba(194,198,214,0.3);margin:1.25rem 0;"/>
+            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:1.25rem;">Key moment: No brief existed. Defined the problem before designing anything.</p>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-middle-office.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
+              <a href="case-study-middle-office.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read case study<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 4 months</span>
             </div>
           </div>
@@ -168,7 +191,7 @@
       <section id="case-migration" style="background:#ffffff;padding:3rem 3.5rem;margin-bottom:1.5rem;position:relative;">
         <div style="display:grid;grid-template-columns:1fr clamp(180px,22%,280px);gap:3rem;align-items:center;">
           <div>
-            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;display:block;margin-bottom:1rem;">Constraint Analysis &amp; Stakeholder Advocacy</span>
+            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#A08FEF;display:block;margin-bottom:1rem;">Constraint analysis · Risk mitigation · Stakeholder advocacy</span>
             <h2 style="font-size:2.5rem;font-style:italic;color:#1b1c19;line-height:1.1;margin-bottom:2.5rem;">Platform Migration</h2>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;">
               <div>
@@ -177,11 +200,13 @@
               </div>
               <div>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.6rem;">Outcome</p>
-                <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">7 critical blockers identified through systematic research. 5 resolved before launch. Unresolvable concerns disclosed to clients before go-live.</p>
+                <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">5 of 7 critical blockers resolved before go-live. Remaining risks disclosed to clients before launch.</p>
               </div>
             </div>
+            <hr style="border:none;border-top:1px solid rgba(194,198,214,0.3);margin:1.25rem 0;"/>
+            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:1.25rem;">Key moment: Self-directed. No one asked. Identified the risk and drove resolution.</p>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-migration.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
+              <a href="case-study-migration.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#A08FEF;text-decoration:none;font-weight:600;border-bottom:1.5px solid #A08FEF;padding-bottom:2px;">Read case study<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 9 months</span>
             </div>
           </div>
@@ -196,7 +221,7 @@
       <section id="case-ai-companion" style="background:#ffffff;padding:3rem 3.5rem;margin-bottom:1.5rem;position:relative;">
         <div style="display:grid;grid-template-columns:1fr clamp(180px,22%,280px);gap:3rem;align-items:center;">
           <div>
-            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#3D9E88;display:block;margin-bottom:1rem;">Self-Initiated AI Tooling</span>
+            <span class="font-label" style="font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;color:#3D9E88;display:block;margin-bottom:1rem;">Self-initiated · AI tooling · Process innovation</span>
             <h2 style="font-size:2.5rem;font-style:italic;color:#1b1c19;line-height:1.1;margin-bottom:2.5rem;">Component Companion</h2>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2.5rem;">
               <div>
@@ -205,11 +230,13 @@
               </div>
               <div>
                 <p class="font-label" style="font-size:0.6rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin-bottom:0.6rem;">Outcome</p>
-                <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">Built a custom Figma plugin with Claude Code. 80% reduction in data grid setup time. 17 grid configurations on one project alone. Expanded to ION Web Components.</p>
+                <p style="font-size:0.95rem;color:#1b1c19;line-height:1.7;">80% reduction in data grid setup time. Built outside job scope. Expanded across the team.</p>
               </div>
             </div>
+            <hr style="border:none;border-top:1px solid rgba(194,198,214,0.3);margin:1.25rem 0;"/>
+            <p class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;margin-bottom:1.25rem;">Key moment: Built the tool that didn't exist. Shared it with the wider team.</p>
             <div style="display:flex;gap:2.5rem;align-items:center;">
-              <a href="case-study-ai-plugin.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#3D9E88;text-decoration:none;font-weight:600;border-bottom:1.5px solid #3D9E88;padding-bottom:2px;">Read Design Process<span class="cta-arrow">→</span></a>
+              <a href="case-study-ai-plugin.html" class="font-label stretched-link" style="font-size:0.7rem;letter-spacing:0.12em;text-transform:uppercase;color:#3D9E88;text-decoration:none;font-weight:600;border-bottom:1.5px solid #3D9E88;padding-bottom:2px;">Read case study<span class="cta-arrow">→</span></a>
               <span class="font-label" style="font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:#737785;">ION Group · 2025</span>
             </div>
           </div>
@@ -220,6 +247,13 @@
         </div>
       </section>
 
+  </div>
+
+  <!-- Closing block -->
+  <div style="padding:3rem 0 5rem;text-align:center;">
+    <hr style="border:none;border-top:1px solid rgba(194,198,214,0.3);margin-bottom:3rem;"/>
+    <p style="font-family:'Newsreader',serif;font-style:italic;font-size:1.1rem;color:#737785;line-height:1.6;margin:0 0 0.5rem;">The full deck is available on request.</p>
+    <p style="font-family:'Space Grotesk',sans-serif;font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#737785;margin:0.5rem 0 0;">samlee616@gmail.com</p>
   </div>
 
 </main>
@@ -247,5 +281,6 @@
   })();
 </script>
 
+<script src="components/notes-tool.js"></script>
 </body>
 </html>

@@ -18,8 +18,8 @@
   const links = ['Work', 'Resume', 'Contact'].map(label => {
     const key = label.toLowerCase();
     const isActive = key === activePage;
-    const href = key === 'work' ? 'index.html' : key === 'resume' ? 'resume.pdf' : key + '.html';
-    const target = key === 'resume' ? ' target="_blank"' : '';
+    const href = key === 'work' ? 'index.html' : key === 'resume' ? 'resume.pdf' : 'mailto:samlee616@gmail.com';
+    const target = (key === 'resume' || key === 'contact') ? ' target="_blank"' : '';
     return `<a href="${href}"${target}
       class="site-nav-link${isActive ? ' active' : ''}">${label}</a>`;
   }).join('');
