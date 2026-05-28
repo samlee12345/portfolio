@@ -6,40 +6,7 @@
   <title>Component Companion | Samantha Lee</title>
   <link rel="stylesheet" href="styles/shared.css"/>
   <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  <script>
-tailwind.config = {
-  theme: {
-    extend: {
-      colors: {
-        "primary": "#A08FEF",
-        "primary-container": "#2d6fe4",
-        "on-surface": "#1b1c19",
-        "on-surface-variant": "#424654",
-        "surface": "#faf9f4",
-        "surface-bright": "#faf9f4",
-        "surface-container-low": "#f4f4ef",
-        "surface-container": "#efeee9",
-        "surface-container-high": "#e9e8e3",
-        "surface-container-highest": "#e3e3de",
-        "outline": "#737785",
-        "outline-variant": "#c2c6d6",
-        "on-background": "#1b1c19",
-        "error": "#ba1a1a",
-      },
-      fontFamily: {
-        "headline": ["Newsreader"],
-        "body": ["Work Sans"],
-        "label": ["Space Grotesk"]
-      },
-      borderRadius: {
-        "DEFAULT": "0.125rem",
-        "lg": "0.25rem",
-        "xl": "0.5rem"
-      },
-    }
-  }
-}
-  </script>
+  <script src="scripts/tailwind-config.js"></script>
   <style>
     /* Accent color: #3D9E88 (teal) — this case study only */
     .nav-link.active               { color: #3D9E88; }
@@ -98,39 +65,7 @@ tailwind.config = {
 <body>
 
 <div id="site-nav" data-active="work"></div>
-<script>
-(function () {
-  var gtagScript = document.createElement('script');
-  gtagScript.async = true;
-  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QGB963KK9R';
-  document.head.appendChild(gtagScript);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QGB963KK9R');
-
-  const placeholder = document.getElementById('site-nav');
-  if (!placeholder) return;
-
-  const activePage = placeholder.getAttribute('data-active') || 'work';
-
-  const links = ['Work', 'Resume', 'Contact'].map(label => {
-    const key = label.toLowerCase();
-    const isActive = key === activePage;
-    const href = key === 'work' ? 'index.html' : key === 'resume' ? 'resume.pdf' : key + '.html';
-    const target = key === 'resume' ? ' target="_blank"' : '';
-    return `<a href="${href}"${target} class="site-nav-link${isActive ? ' active' : ''}">${label}</a>`;
-  }).join('');
-
-  placeholder.outerHTML = `
-    <nav class="site-nav">
-      <div class="site-nav-inner">
-        <a href="index.html" class="site-nav-logo">Samantha Lee</a>
-        <div class="site-nav-links">${links}</div>
-      </div>
-    </nav>`;
-})();
-</script>
+<script src="components/nav.js"></script>
 
 <div class="cs-main">
   <header style="padding: 5rem 0 0;">
@@ -205,7 +140,7 @@ tailwind.config = {
           <div id="cs-context" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Context</h3>
             <p class="body-text" style="margin-bottom:1.25rem;">As the sole UX designer supporting a large product surface, moving efficiently on production-heavy work is not optional. It’s what creates space for the design thinking that actually matters.</p>
-            <p class="body-text">Fidessa is built on data grids. Nearly every screen in the platform is organized around tables: order grids, allocation views, position summaries, depth-of-market panels. Designing these screens realistically, with correct component usage, accurate column widths, zebra striping, and tree hierarchies (rows with collapsible parent-child relationships), is the baseline expectation before any stakeholder review or user testing.</p>
+            <p class="body-text">Fidessa is built on data grids. Nearly every screen in the platform is organized around tables: order grids, allocation views, position summaries, depth-of-market panels. Designing these screens realistically, with correct component usage, accurate column widths, zebra striping, and tree hierarchies, is the baseline expectation before any stakeholder review or user testing.</p>
           </div>
 
           <!-- The Problem -->
@@ -295,14 +230,13 @@ tailwind.config = {
       <section id="cs-build" class="scroll-mt-24 section-grid">
         <div>
           <p class="font-label cs-part-label">Part Two</p>
-          <p style="font-family:'Newsreader',serif;font-style:italic;font-size:0.95rem;color:#737785;margin:1.5rem 0;">I didn't wait for the right gear. I made it.</p>
           <h2 class="cs-section-title">The Build</h2>
 
           <!-- Working Process -->
           <div id="cs-process" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Working with Claude Code</h3>
-            <p class="body-text" style="margin-bottom:1.25rem;">Building the plugin required learning the Figma Plugin API and TypeScript/React. My coding background made it approachable; Claude Code handled the implementation.</p>
-            <p class="body-text" style="margin-bottom:2rem;">I built the plugin concurrently with the Middle Office dashboard. Rather than building in isolation, I validated each new capability against real design work as I added it. That feedback loop shaped every decision about what to build next.</p>
+            <p class="body-text" style="margin-bottom:1.25rem;">The plugin required working with the Figma Plugin API and TypeScript/React, neither of which had been part of previous work. A coding background made it approachable; Claude Code handled the implementation.</p>
+            <p class="body-text" style="margin-bottom:2rem;">The plugin was built concurrently with the Middle Office dashboard project. Rather than building in isolation and testing later, each new capability was validated against real design work as it was added. That feedback loop shaped every decision about what to build next.</p>
 
             <div class="cs-bg-deep cs-section-dark" style="margin-bottom:2rem;">
               <p class="font-label cs-field-label" style="margin-bottom:1.25rem;">How Claude Code was used</p>
@@ -331,8 +265,7 @@ tailwind.config = {
               </div>
             </div>
 
-            <p class="body-text" style="margin-bottom:1.25rem;">I started each feature with a design requirement: what the plugin needed to do and why. Claude Code translated that intent into working TypeScript. I tested every output against real design work before shipping.</p>
-            <p class="cs-quote" style="max-width:44rem;margin-top:2rem;border-left:2px solid #3D9E88;padding-left:1.5rem;">No one asked for this. I built it because the time cost was real and because removing it would make better design possible.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Each feature started with a design requirement: what the plugin needed to do and why. Claude Code handled the translation from that intent into working TypeScript. The output was tested against real design work before anything shipped.</p>
 
             <img src="assets/Plugin_Claude Chat.png" alt="Claude Code terminal session showing a conversation about refining the plugin todo list, with Claude asking clarifying questions and updating files" style="width:100%;display:block;margin-bottom:0.75rem;"/>
             <p class="font-label cs-caption">A typical Claude Code session: describing a feature, Claude Code asking clarifying questions, then updating the codebase</p>
@@ -378,6 +311,7 @@ tailwind.config = {
           <h2 class="cs-section-title">Impact</h2>
 
           <div class="cs-subsection-block scroll-mt-24">
+            <p class="body-text" style="margin-bottom:2.5rem;">On the Middle Office dashboard, working through 17 grid configurations would have consumed the project. The plugin made it a tractable part of the work instead of the bottleneck.</p>
 
             <!-- Stats -->
             <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:#e3e3de;margin-bottom:2.5rem;">
@@ -402,7 +336,7 @@ tailwind.config = {
             <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;margin-bottom:2.5rem;">
               <li class="body-text"><span style="font-weight:600;">Correctness by construction.</span> The plugin generates output directly from library components. There’s no risk of a number that doesn’t add up or a label that doesn’t match. What goes into the prototype is correct.</li>
               <li class="body-text"><span style="font-weight:600;">Higher fidelity feedback.</span> Realistic grids, not generic placeholders, surface reactions closer to what users would feel in the live product. That changes the quality of the feedback.</li>
-              <li class="body-text"><span style="font-weight:600;">Expanded scope.</span> I built the plugin for Fidessa Desktop. I later extended it to ION Web Components (Fidessa's web-based component library), making it available to the broader team. Setting up the ION profile took a fraction of the time the Fidessa profile required, because the architecture was already in place.</li>
+              <li class="body-text"><span style="font-weight:600;">Expanded scope.</span> The plugin was built for Fidessa Desktop. It was later extended to ION Web Components, making it available to the broader team. Setting up the ION profile took a fraction of the time the Fidessa profile required, because the architecture was already in place.</li>
             </ul>
 
             <img src="assets/Plugin_Column.png" alt="Component Companion Columns tab showing column configuration for the Middle Office allocations table with per-level content and four indent levels mapped to Fidessa data categories" style="width:100%;display:block;margin-bottom:0.75rem;margin-top:1rem;"/>
@@ -432,62 +366,8 @@ tailwind.config = {
 </div>
 
 <div id="site-footer"></div>
-<script>
-(function () {
-  const placeholder = document.getElementById('site-footer');
-  if (!placeholder) return;
-  placeholder.outerHTML = `
-    <footer class="site-footer">
-      <p class="site-footer-name">Samantha Lee</p>
-      <div class="site-footer-links">
-        <a href="https://www.linkedin.com/in/samlee616/" class="site-footer-link" target="_blank">LinkedIn</a>
-        <a href="mailto:samlee616@gmail.com" class="site-footer-link">Email</a>
-        <a href="resume.pdf" class="site-footer-link">Resume</a>
-      </div>
-    </footer>`;
-})();
-</script>
-<script>
-(function () {
-  const targets = document.querySelectorAll('section[id], .cs-subsection-block[id]');
-  const sections = document.querySelectorAll('section[id]');
-  const navLinks = document.querySelectorAll('.nav-link');
-  const callouts = document.querySelectorAll('.section-subtitle');
-  const sectionIds = Array.from(sections).map(s => s.id);
-
-  function collapseNav() {
-    const sidenav = document.querySelector('.cs-sidenav-links');
-    if (!sidenav) return;
-    let currentTopLink = null;
-    Array.from(sidenav.children).forEach(link => {
-      const isSub = link.classList.contains('nav-link-sub') || link.classList.contains('nav-link-sub-sub');
-      if (!isSub) { currentTopLink = link; }
-      else if (currentTopLink) { link.style.display = currentTopLink.classList.contains('active') ? '' : 'none'; }
-    });
-  }
-
-  collapseNav();
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (!entry.isIntersecting) return;
-      const id = entry.target.id;
-      const idx = sectionIds.indexOf(id);
-      navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        const isMatch = href === '#' + id;
-        const parentSection = entry.target.closest('section[id]');
-        const isParent = parentSection && href === '#' + parentSection.id && !link.classList.contains('nav-link-sub');
-        link.classList.toggle('active', isMatch || isParent);
-      });
-      collapseNav();
-      if (idx !== -1) { callouts.forEach((callout, i) => { callout.classList.toggle('active', i === idx); }); }
-    });
-  }, { rootMargin: '-20% 0px -60% 0px', threshold: 0 });
-
-  targets.forEach(t => observer.observe(t));
-})();
-</script>
+<script src="components/footer.js"></script>
+<script src="scripts/scroll-observer.js"></script>
 <script>
   (function () {
     const nav = document.querySelector('.cs-sidenav-links');
@@ -528,6 +408,5 @@ tailwind.config = {
   })();
 </script>
 
-<script src="components/notes-tool.js"></script>
 </body>
 </html>

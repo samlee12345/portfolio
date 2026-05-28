@@ -1,963 +1,565 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="scroll-smooth" lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Platform Migration — Case Study</title>
-<link rel="stylesheet" href="styles/shared.css" />
-<link rel="stylesheet" href="styles/fullscreen.css" />
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Platform Migration | Samantha Lee</title>
+  <link rel="stylesheet" href="styles/shared.css"/>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script src="scripts/tailwind-config.js"></script>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    .nav-link.active           { color: #A08FEF; }
+    .section-subtitle.active   { color: #A08FEF; }
+    .margin-callout.active     { color: #A08FEF; }
+    .timeline-dot              { background: #A08FEF; }
+    .stat-number               { color: #A08FEF; }
+    .tag-shipped               { color: #A08FEF; background: #eedcfc; }
+    .cs-company                { color: #A08FEF; }
+    .cs-card-label             { color: #A08FEF; }
+    .cs-compare-label-blue     { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .cs-decision               { border-left-color: #A08FEF; }
+    .cs-decision-label         { color: #A08FEF; }
+    .site-nav-link.active      { color: #A08FEF; border-bottom-color: #A08FEF; }
+    .bg-primary                { background-color: #A08FEF !important; }
 
-<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
-<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
-
-<style>
-  /* Tweakable scale */
-  body.density-tight   { font-size: 14.5px; }
-  body.density-default { font-size: 16px; }
-  body.density-airy    { font-size: 17.5px; }
-
-  /* Nav style variants */
-  body[data-nav="side"] .fs-rail { display: none; }
-  body[data-nav="minimal"] .fs-rail { display: none; }
-  body[data-nav="minimal"] .fs-sidenav { display: none; }
-
-  /* Side nav variant */
-  .fs-sidenav {
-    position: fixed;
-    left: 2rem;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 55;
-    display: none;
-    flex-direction: column;
-    gap: 0.45rem;
-    max-width: 12rem;
-  }
-  body[data-nav="side"] .fs-sidenav { display: flex; }
-  .fs-sidenav button {
-    background: none;
-    border: none;
-    padding: 0.2rem 0;
-    cursor: pointer;
-    text-align: left;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 0.62rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: #c2c6d6;
-    transition: color 0.2s;
-    display: grid;
-    grid-template-columns: 2rem 1fr;
-    gap: 0.5rem;
-    align-items: center;
-  }
-  .fs-sidenav button:hover { color: #737785; }
-  .fs-sidenav button.active { color: #A08FEF; font-weight: 600; }
-  .fs-sidenav button .ix {
-    font-variant-numeric: tabular-nums;
-    color: inherit;
-    opacity: 0.7;
-  }
-
-  /* On dark screen, lighten chrome */
-  body.on-dark .fs-topbar {
-    background: rgba(27, 28, 25, 0.65);
-    color: #c2c6d6;
-  }
-  body.on-dark .fs-topbar-logo,
-  body.on-dark .fs-topbar-center,
-  body.on-dark .fs-topbar-center em,
-  body.on-dark .fs-topbar-counter b { color: #faf9f4; }
-  body.on-dark .fs-pagehint { color: #c2c6d6; }
-  body.on-dark .fs-pagehint .key { background: rgba(250, 249, 244, 0.15); color: #faf9f4; }
-
-  .body-no-snap { /* helper applied via Tweaks */ }
-</style>
+    @media (max-width: 900px) {
+      header[style*="padding: 5rem"] { padding: 3rem 0 0 !important; }
+    }
+    @media (max-width: 640px) {
+      header[style*="padding: 5rem"] { padding: 2rem 0 0 !important; }
+      [style*="grid-template-columns:1fr 1fr"]   { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns: 1fr 1fr"]  { grid-template-columns: 1fr !important; }
+      [style*="grid-template-columns:7rem 1fr 7rem"] { grid-template-columns: 1fr !important; }
+      table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    }
+  </style>
 </head>
-<body class="fs-soft density-default" data-nav="rail">
+<body>
 
-<script>
-(function () {
-  var gtagScript = document.createElement('script');
-  gtagScript.async = true;
-  gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-QGB963KK9R';
-  document.head.appendChild(gtagScript);
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-QGB963KK9R');
-})();
-</script>
+<div id="site-nav" data-active="work"></div>
+<script src="components/nav.js"></script>
 
-<!-- ── Fixed chrome ───────────────────────────────────────────── -->
-<header class="fs-topbar">
-  <a href="index.html" class="fs-topbar-logo">Samantha Lee</a>
-  <div class="fs-topbar-center" id="topbar-title">
-    <span>ION Group · Fidessa</span>
-    <em id="topbar-section">Platform Migration</em>
-  </div>
-  <div class="fs-topbar-counter">
-    <b id="counter-cur">01</b> / <span id="counter-tot">18</span>
-  </div>
-</header>
-
-<div class="fs-progress" id="progress"></div>
-
-<!-- Right dot rail -->
-<nav class="fs-rail" id="rail" aria-label="Section navigation"></nav>
-
-<!-- Optional side nav (Tweaks: nav-style = side) -->
-<nav class="fs-sidenav" id="sidenav" aria-label="Section navigation"></nav>
-
-<!-- Bottom keyboard hint -->
-<div class="fs-pagehint" id="pagehint">
-  <span><span class="key">↑</span> <span class="key">↓</span></span>
-  <span>Scroll · Arrow keys · Click rail</span>
+<!-- Shared Header + View Toggle -->
+<div class="cs-main">
+  <header style="padding: 5rem 0 0;">
+    <span class="font-label cs-company">ION Group / Fidessa</span>
+    <h1 class="cs-hero-title">Platform<br>Migration.</h1>
+  </header>
 </div>
 
-<!-- ── 01 · Hero ──────────────────────────────────────────────── -->
-<section class="screen hero-screen" data-screen-label="01 Hero" data-section-name="Cover" data-part="">
-  <div class="screen-inner">
-    <div>
-      <p class="hero-eyebrow">ION Group / Fidessa — Case Study №01</p>
-      <h1 class="hero-title">Platform<br><em>Migration.</em></h1>
-    </div>
-    <div class="hero-bottom">
-      <p class="hero-desc">Fidessa was forcing three million users across 6,500+ global financial firms to migrate platforms on a hard deadline, with seven known disruptions planned to ship unresolved.</p>
-      <dl class="hero-meta">
-        <dt>Role</dt>            <dd class="serif">Senior UX Designer · Sole UX practitioner</dd>
-        <dt>Timeline</dt>        <dd>9 Months</dd>
-        <dt>Company</dt>         <dd>ION Group</dd>
-        <dt>Responsibilities</dt><dd>Investigation · Advocacy · Design</dd>
-        <dt>Status</dt>          <dd><span class="hero-tag-inline">Shipped</span></dd>
-      </dl>
-    </div>
-  </div>
-</section>
+<div class="cs-main">
 
-<!-- ── 02 · Context & Role / Mission ──────────────────────────── -->
-<section class="screen surf-low" data-screen-label="02 Context" data-section-name="Context &amp; Role" data-part="Part One · Overview">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">02</span>
-        <div>
-          <span class="screen-part">Part One · Project Overview</span>
-          <h2 class="screen-title">The Mission</h2>
+  <!-- Hero meta -->
+  <header class="cs-hero" style="padding-top: 2.5rem;">
+    <div class="cs-hero-grid">
+      <p class="cs-hero-desc">Fidessa was forcing 3 million users across 6,500+ global financial firms to migrate platforms on a hard deadline, with seven known disruptions planned to ship unresolved.</p>
+      <div class="cs-meta">
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Timeline</span>
+          <span class="font-label cs-meta-value">9 Months</span>
         </div>
-      </div>
-      <div class="screen-meta">Domain context</div>
-    </header>
-    <div class="screen-body">
-      <div class="split-2">
-        <p class="body-lede">Fidessa runs two trading platforms in parallel — a legacy system built over thirty years ago and a newer platform a decade in the making.</p>
-        <div>
-          <p class="body-prose">Full migration is projected to take ten or more years. Maintaining both codebases consumes development capacity that would otherwise go toward the modern platform.</p>
-          <p class="body-prose">To accelerate the transition, Fidessa embeds legacy tools directly into the new platform so users can migrate without losing existing workflows. The two platforms differ significantly in tooling, UI, and interaction model. No one had mapped what that friction looked like in practice. I did. That meant domain research across both platforms, advocating against a fixed deadline, and designing disclosure for what couldn't be fixed in time.</p>
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Role</span>
+          <span class="font-label cs-meta-value">Senior UX Designer (Sole UX Practitioner)</span>
+        </div>
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Company</span>
+          <span class="font-label cs-meta-value">ION Group</span>
+        </div>
+        <div class="cs-meta-row">
+          <span class="font-label cs-meta-label">Responsibilities</span>
+          <span class="font-label cs-meta-value">Investigation, Advocacy, Design</span>
+        </div>
+        <div class="cs-meta-row" style="border-bottom: none; padding-bottom: 0;">
+          <span class="font-label cs-meta-label">Status</span>
+          <span class="font-label tag tag-shipped" style="padding: 0.15rem 0.6rem;">Shipped</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<!-- ── 03 · The Problem ───────────────────────────────────────── -->
-<section class="screen" data-screen-label="03 Problem" data-section-name="The Problem" data-part="Part One · Overview">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">03</span>
+  <!-- Body -->
+  <div class="cs-layout">
+
+    <!-- Sticky side nav -->
+    <aside class="cs-sidenav">
+      <p class="font-label cs-sidenav-title">Platform<br>Migration</p>
+      <nav class="cs-sidenav-links">
+        <a href="#overview" class="nav-link active">Project Overview</a>
+        <a href="#mission" class="nav-link nav-link-sub">Mission</a>
+        <a href="#problem" class="nav-link nav-link-sub">The Problem</a>
+        <a href="#solution" class="nav-link nav-link-sub">The Solution</a>
+        <a href="#my-impact" class="nav-link nav-link-sub">My Impact</a>
+        <a href="#discover" class="nav-link">Discover</a>
+        <a href="#seven-concerns" class="nav-link nav-link-sub">7 Concerns</a>
+        <a href="#advocate" class="nav-link">Advocate</a>
+        <a href="#the-decision" class="nav-link nav-link-sub">The Decision</a>
+        <a href="#making-the-case" class="nav-link nav-link-sub">Making the Case</a>
+        <a href="#design" class="nav-link">Design</a>
+        <a href="#onboarding" class="nav-link nav-link-sub">Onboarding Flow</a>
+        <a href="#develop" class="nav-link">Develop</a>
+        <a href="#what-shipped" class="nav-link nav-link-sub">What Shipped</a>
+      </nav>
+    </aside>
+
+    <!-- Content -->
+    <div class="cs-content">
+
+    
+
+      <!-- PART ONE: PROJECT OVERVIEW -->
+      <section id="overview" class="scroll-mt-24 section-grid">
         <div>
-          <span class="screen-part">Part One · Project Overview</span>
-          <h2 class="screen-title">The Problem</h2>
+          <p class="font-label cs-part-label">Part One</p>
+          <h2 class="cs-section-title">Project Overview</h2>
+
+          <!-- Mission -->
+          <div id="mission" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Mission</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+              <p class="body-text">Fidessa runs two trading platforms in parallel: a legacy system built over 30 years ago and a newer platform a decade in development. Full migration is projected to take 10 or more years, and maintaining both codebases throughout consumes development capacity that would otherwise go toward the modern platform. To accelerate the transition, Fidessa is pursuing an initiative to embed legacy tools directly into the new platform, so users can migrate without losing their existing workflows. Because the two platforms differ significantly in available tools, UI, and interaction model, the approach introduces friction that needs to be understood before moving forward.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Key Responsibilities</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.5rem;margin-bottom:1rem;">
+                  <li class="body-text">Domain research and functionality mapping across both platforms</li>
+                  <li class="body-text">Advocate for user needs</li>
+                  <li class="body-text">Onboarding flow design for concerns that couldn't be resolved before launch</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- The Problem -->
+          <div id="problem" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Problem</h3>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Stated ask</p>
+            <p class="body-text" style="margin-bottom:1.75rem;">Capture usability concerns introduced by running the legacy and new platforms side-by-side, and design solutions to address them before the February 2026 release.</p>
+            <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Actual problem</p>
+            <p class="body-text">The migration plan overlooked US segment users entirely. Unlike European and Asian users moving to a fully native environment, US segment users would operate in a mixed setup, with the new platform covering only ~50% of their regional workflows. The original plan was to ship with 7 known concerns unresolved and conduct usability testing post-launch. For a system serving 6,500+ global financial firms, disrupting live trading is a revenue risk, not a usability inconvenience.</p>
+          </div>
+
+          <!-- The Solution -->
+          <div id="solution" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Solution</h3>
+            <p class="body-text" style="margin-bottom:2rem;">Deep knowledge of how these user personas think and behave made it possible to call out the consequences of each concern before needing test data to prove them. The case was made directly, with enough specificity that the product team could act on it. Development was reprioritized. Every resolvable concern was addressed before launch. The two that couldn't be fixed within the timeline were disclosed to users before they encountered them.</p>
+            <div class="cs-grid-2" style="background:#e3e3de;">
+              <div style="background:#f4f4ef;padding:1.75rem;">
+                <p class="font-label cs-compare-label" style="margin-bottom:1rem;">Original plan</p>
+                <p class="cs-quote">Ship on the February deadline with known concerns. Conduct usability testing post-launch to build the case for resolving them.</p>
+              </div>
+              <div style="background:#faf9f4;padding:1.75rem;">
+                <p class="font-label cs-compare-label-blue" style="margin-bottom:1rem;">Outcome</p>
+                <p class="cs-quote">Every critical risk identified and triaged before a forced migration affecting 3 million users. Gradual rollout across 6,500+ global financial firms.</p>
+              </div>
+            </div>
+            <div class="cs-timeline-box" style="margin-top:2rem;">
+              <p class="font-label cs-timeline-header">Project Timeline</p>
+              <div class="cs-timeline-items">
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 1</span><p class="cs-timeline-text">Domain investigation: platform comparison, concern identification</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 2</span><p class="cs-timeline-text">Concerns raised and advocated for users</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 3</span><p class="cs-timeline-text">Onboarding flow design</p></div></div>
+                <div class="timeline-step"><div class="timeline-dot"></div><div><span class="font-label cs-month-label">Month 4–9</span><p class="cs-timeline-text">Dev reprioritization: every resolvable concern addressed before launch</p></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- My Impact -->
+          <div id="my-impact" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">My Impact</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;">
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Organizational Influence</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text">Made the case for development reprioritization without a usability study: domain knowledge alone was enough to act on, against deadline pressure and no formal research process.</li>
+                  <li class="body-text">Reframed usability concerns as revenue risk, giving the product manager specific, actionable language rather than a list of UX complaints.</li>
+                  <li class="body-text">Chose proactive disclosure on unresolvable concerns: clients knew what to expect before go-live.</li>
+                </ul>
+              </div>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Project Impact</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text"><span style="font-weight:600;">Every critical risk in a forced migration affecting 3 million users identified and triaged before launch.</span></li>
+                  <li class="body-text"><span style="font-weight:600;">Gradual rollout across 6,500+ global financial firms,</span> tied to each client firm's update cycle.</li>
+                  <li class="body-text"><span style="font-weight:600;">The two concerns that couldn't be resolved within the timeline were disclosed proactively,</span> with committed resolution dates.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </div>
-      <div class="screen-meta">Stated vs. actual</div>
-    </header>
-    <div class="screen-body">
-      <div class="compare" style="margin-bottom:3rem;">
-        <div class="a">
-          <p class="compare-label">Stated ask</p>
-          <p class="compare-quote">Capture usability concerns introduced by running the legacy and new platforms side-by-side, and design solutions before the February 2026 release.</p>
+      </section>
+
+      <!-- PART TWO: DISCOVER -->
+      <section id="discover" class="scroll-mt-24 section-grid">
+        <div>
+          <p class="font-label cs-part-label">Part Two</p>
+          <h2 class="cs-section-title">Discover</h2>
+
+          <!-- 7 Concerns -->
+          <div id="seven-concerns" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The 7 Concerns</h3>
+            <p class="body-text" style="margin-bottom:2rem;">By reviewing actual trader desktop setups across user segments and running a systematic platform comparison, seven usability concerns specific to the migration were identified. Each was documented with context, user impact, and whether resolution required design changes or development work.</p>
+            <div style="display:flex;flex-direction:column;">
+              <div style="padding:1.5rem 0;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">01</span>Visual Differences</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">Traders use desktop theming as a workflow cue. Running both platforms simultaneously creates a mixed-theme desktop with no consistent visual language.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Old Fidessa Desktop.png" alt="Legacy Fidessa desktop, dark theme, dense multi-window layout" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-Platform-Workspace.png" alt="New Fidessa platform workspace: dark theme, multi-panel layout with blotter, watchlist, and charting" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 0;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">02</span>Mixed Desktop Layouts</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">Traders organize their desktops using tabs and grouped windows. When a layout includes tools from both platforms, migration automatically breaks it apart. Screen real estate is critical for traders.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Legacy-Decoupling.png" alt="Legacy platform desktop layout with grouped windows" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-Decoupling.png" alt="New platform desktop layout with decoupled windows" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 0;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">03</span>Triggered Alerts</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">Alerts on the new platform are surfaced through the Alert Manager. Type 4 alerts are the exception: because they cannot be integrated into the Alert Manager, they surface in a separate dropdown button. Users with Type 4 alerts will receive notifications from two different places.</p>
+                <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                  <thead>
+                    <tr style="border-bottom:1px solid #e3e3de;">
+                      <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;">Alert Type</th>
+                      <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;">Legacy Platform</th>
+                      <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#A08FEF;">New Platform</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr style="border-bottom:1px solid #f0f0ec;">
+                      <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Pre-defined alerts migrated from FTW</td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#3a9a5c;font-size:1rem;">✓</span></td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#3a9a5c;font-size:1rem;">✓</span></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #f0f0ec;">
+                      <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Pre-defined non-grid alerts</td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#c0392b;font-size:1rem;">✗</span></td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#3a9a5c;font-size:1rem;">✓</span></td>
+                    </tr>
+                    <tr style="border-bottom:1px solid #f0f0ec;">
+                      <td style="padding:0.6rem 0.75rem;" class="body-text-sm">User-defined filter-based alerts</td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#c0392b;font-size:1rem;">✗</span></td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#3a9a5c;font-size:1rem;">✓</span></td>
+                    </tr>
+                    <tr>
+                      <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Pre-defined FTW-only alerts (convertible to filter-based)</td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#3a9a5c;font-size:1rem;">✓</span></td>
+                      <td style="padding:0.6rem 0.75rem;"><span style="color:#3a9a5c;font-size:1rem;">✓</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;margin-top:1.5rem;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Legacy-Notifications.png" alt="Legacy platform alert notifications" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-Notifications.png" alt="New platform alert notifications" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 0;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">04</span>Alert Configuration</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">In the legacy platform, alerts are configured through the Settings menu. In the new platform, this is handled through the Alerts and Sounds window.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;margin-top:1.5rem;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Legacy-AlertHub.png" alt="Legacy platform alert hub" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-AlertHub.png" alt="New platform alert hub" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 0;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">05</span>Loss of Right-Click Menu Options</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">Right-click menu options default to the European configuration, leaving US region-specific workflow options absent.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;margin-top:1.5rem;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Legacy-RightClick.png" alt="Legacy platform right-click menu options" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-RightClick.png" alt="New platform right-click menu options" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 0;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">06</span>No Data Transfer Between Tools</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">When an action in one platform triggers a tool in the other, data does not carry across between them.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Legacy-DataTransfer.png" alt="Legacy platform data transfer between tools" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-DataTransfer.png" alt="New platform data transfer between tools" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+              <div style="padding:1.5rem 0;border-bottom:1px solid #e3e3de;">
+                <h3 class="cs-subsubsection-title" style="margin-bottom:0.5rem;"><span style="color:#c2c6d6;margin-right:0.6rem;font-size:0.9rem;">07</span>Legacy Tools Not Accessible via Desktop Manager</h3>
+                <p class="body-text-sm" style="margin-bottom:1.25rem;">In the new platform, tools are opened through the Desktop Manager in the menu bar. The legacy platform uses its own menu bar with three dedicated items, each with a dropdown of tools. In forced embedding, legacy-only tools cannot be added to the Desktop Manager and must still be accessed through the legacy menu bar, splitting tool navigation across two separate systems.</p>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:start;">
+                  <div>
+                    <p class="font-label cs-compare-label" style="margin-bottom:0.75rem;">Legacy platform</p>
+                    <img src="assets/Migration_Legacy-Tooling.png" alt="Legacy platform tool navigation" style="width:100%;display:block;"/>
+                  </div>
+                  <div>
+                    <p class="font-label cs-compare-label-blue" style="margin-bottom:0.75rem;">New platform</p>
+                    <img src="assets/Migration_New-Tooling.png.png" alt="New platform tool navigation" style="width:100%;display:block;"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="b">
-          <p class="compare-label">Actual problem</p>
-          <p class="compare-quote">I found that the migration plan had overlooked US segment users entirely — leaving a mixed setup where the new platform covered only ~50% of their regional workflows.</p>
+      </section>
+
+
+      <!-- PART FOUR: ADVOCATE -->
+      <section id="advocate" class="scroll-mt-24 section-grid">
+        <div>
+          <p class="font-label cs-part-label">Part Four</p>
+          <h2 class="cs-section-title">Advocate</h2>
+
+          <!-- The Decision -->
+          <div id="the-decision" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">The Decision</h3>
+            <p class="body-text" style="margin-bottom:2rem;">The original plan was to ship with known concerns and address them post-launch. I pushed back. The concerns were more disruptive than the plan assumed, and there was no realistic development bandwidth to fix them after launch either. The PM was presented with two options.</p>
+            <div class="cs-grid-2" style="background:#e3e3de;margin-bottom:2rem;">
+              <div style="background:#f4f4ef;padding:1.75rem;">
+                <p class="font-label cs-compare-label" style="margin-bottom:1rem;">Option 1: Ship as Planned</p>
+                <p class="cs-quote">Ship with the February 2026 deadline. Conduct usability testing to document the disruption and use results to make the case to stakeholders post-launch.</p>
+              </div>
+              <div style="background:#faf9f4;padding:1.75rem;">
+                <p class="font-label cs-compare-label-blue" style="margin-bottom:1rem;">Option 2: Rescope</p>
+                <p class="cs-quote">Address the highest-impact blockers before forcing 3 million users to migrate. Delay resolves risk rather than defers it.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Making the Case -->
+          <div id="making-the-case" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Making the Case</h3>
+            <p class="body-text" style="margin-bottom:2rem;">The usability consequences of each concern were clear from domain knowledge alone, with no user testing required. The harder task was making the case internally and advocating for dev resources to resolve them before launch.</p>
+            <div style="overflow-x:auto;">
+              <table style="width:100%;border-collapse:collapse;font-size:0.85rem;">
+                <thead>
+                  <tr style="border-bottom:2px solid #e3e3de;">
+                    <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;white-space:nowrap;">#</th>
+                    <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;">Concern</th>
+                    <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;">Advocating for Users</th>
+                    <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;white-space:nowrap;">Severity</th>
+                    <th style="text-align:left;padding:0.6rem 0.75rem;font-weight:600;color:#1b1c19;white-space:nowrap;">Final Decision</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr style="border-bottom:1px solid #f0f0ec;">
+                    <td style="padding:0.6rem 0.75rem;color:#c2c6d6;font-weight:600;white-space:nowrap;">01</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Visual Differences</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Traders use theming as a workflow cue. Mixed themes across both platforms create disorientation from day one.</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Medium</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Not resolvable within timeline. Addressed via onboarding.</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid #f0f0ec;">
+                    <td style="padding:0.6rem 0.75rem;color:#c2c6d6;font-weight:600;white-space:nowrap;">02</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Mixed Desktop Layouts</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Traders are highly resistant to change. Even minor UI shifts generate complaints. Automatically breaking grouped window layouts on migration will cause immediate backlash, regardless of how minor the underlying change appears.</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">High</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Partially resolved: new platform equivalents built for the most common startup tools, but full coverage not achieved within the timeline.</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid #f0f0ec;">
+                    <td style="padding:0.6rem 0.75rem;color:#c2c6d6;font-weight:600;white-space:nowrap;">03 + 04</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Triggered Alerts + Alert Configuration</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Migrating users are accustomed to receiving alerts in one place. Introducing a second location is disorienting and makes it easy to miss alerts, which in a trading context is a revenue risk.</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">High</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Resolved before launch.</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid #f0f0ec;">
+                    <td style="padding:0.6rem 0.75rem;color:#c2c6d6;font-weight:600;white-space:nowrap;">05</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Loss of Right-Click Menu Options</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Doesn't block access entirely: an alternative path exists. But traders are optimized for speed. Added steps don't just slow them down; they compound across hundreds of daily actions.</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Medium–High</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Resolved before launch.</td>
+                  </tr>
+                  <tr style="border-bottom:1px solid #f0f0ec;">
+                    <td style="padding:0.6rem 0.75rem;color:#c2c6d6;font-weight:600;white-space:nowrap;">06</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">No Data Transfer Between Tools</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">When an action in one platform triggers a tool in the other, the context doesn't carry over, forcing users to re-enter information mid-task and interrupting time-sensitive workflows.</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">High</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Resolved before launch.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:0.6rem 0.75rem;color:#c2c6d6;font-weight:600;white-space:nowrap;">07</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Legacy Tools Not Accessible via Desktop Manager</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Users look for tools in the legacy menu bar, find nothing, and assume they're gone, only then discovering the Desktop Manager. Every session costs time until the new pattern becomes habit.</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Medium</td>
+                    <td style="padding:0.6rem 0.75rem;" class="body-text-sm">Resolved before launch.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div style="padding:1.25rem 1.5rem;background:#f4f4ef;margin-top:2rem;">
+              <p class="font-label cs-field-label" style="margin-bottom:0.4rem;">What happened</p>
+              <p class="body-text-sm">All concerns were ranked by impact. Surfacing them early gave dev enough runway to resolve every resolvable concern before the February 2026 launch. The two that couldn't be fixed within the timeline were disclosed proactively to users before they encountered them.</p>
+            </div>
+          </div>
+
         </div>
-      </div>
-      <p class="body-prose" style="max-width:46rem;">The original plan was to ship with seven known concerns unresolved and conduct usability testing post-launch. For a system serving 6,500+ global financial firms, disrupting live trading is a <strong style="color:#1b1c19;">revenue risk</strong> — not a usability inconvenience.</p>
+      </section>
+
+      <!-- PART FIVE: DESIGN -->
+      <section id="design" class="scroll-mt-24 section-grid">
+        <div>
+          <p class="font-label cs-part-label">Part Five</p>
+          <h2 class="cs-section-title">Design</h2>
+          <p class="section-subtitle">Two workstreams: push for resolution where possible, set expectations where not.</p>
+
+          <!-- Onboarding Flow -->
+          <div id="onboarding" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">Onboarding Flow</h3>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start;margin-bottom:2rem;">
+              <p class="body-text">The resolvable concerns were addressed before launch. The onboarding announcement covered the rest, getting ahead of the unresolvable issues by setting expectations before users encountered them. Content focused on transparency: what had changed, what was committed for future releases, and where to go if something felt off.</p>
+              <div>
+                <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Content covered</p>
+                <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
+                  <li class="body-text">The mixed tool environment: why it exists and what it means for desktop organization</li>
+                  <li class="body-text">New alert functionality and where alerts now surface</li>
+                  <li class="body-text">Desktop navigation changes: location of legacy toolbar in the new environment</li>
+                  <li class="body-text">Notice about previously grouped or tabbed tools that may no longer be contained</li>
+                  <li class="body-text">Theming acknowledged transparently: original options committed for a future release</li>
+                </ul>
+              </div>
+            </div>
+            <div style="width:80%;margin:0 auto;">
+              <img src="assets/Migration_OnboardingFlow.png" alt="Onboarding flow: first-time platform launch" style="width:100%;display:block;" />
+              <p class="cs-caption" style="margin-top:16px;">Onboarding announcement</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- PART SIX: DEVELOP -->
+      <section id="develop" class="scroll-mt-24 section-grid">
+        <div>
+          <p class="font-label cs-part-label">Part Six</p>
+          <h2 class="cs-section-title">Develop</h2>
+          <p class="section-subtitle">A forced migration of 3 million users. Gradual rollout across 6,500+ global financial firms, tied to each client firm's update cycle.</p>
+
+          <div id="what-shipped" class="cs-subsection-block scroll-mt-24">
+            <h3 class="cs-subsection-title">What Shipped</h3>
+            <p class="body-text" style="margin-bottom:2rem;">A forced migration of 3 million users. Gradual rollout across 6,500+ global financial firms, tied to each client firm's update cycle.</p>
+            <div style="border-top:1px solid #e3e3de;">
+              <div style="display:grid;grid-template-columns:7rem 1fr 7rem;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e3e3de;">
+                <p class="font-label" style="color:#c2c6d6;">Concern 01</p>
+                <p class="cs-outcome-text">Theming: committed for future release, disclosed to users at launch</p>
+                <span class="tag tag-backlog" style="text-align:center;">Post-launch</span>
+              </div>
+              <div style="display:grid;grid-template-columns:7rem 1fr 7rem;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e3e3de;">
+                <p class="font-label" style="color:#c2c6d6;">Concern 02</p>
+                <p class="cs-outcome-text">Layout decoupling: &lt;1% of desktop setups affected, documented and disclosed</p>
+                <span class="tag tag-backlog" style="text-align:center;">Post-launch</span>
+              </div>
+              <div style="display:grid;grid-template-columns:7rem 1fr 7rem;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e3e3de;">
+                <p class="font-label" style="color:#c2c6d6;">Concern 03-04</p>
+                <p class="cs-outcome-text">Alert types from both platforms accessible through the new platform alert area</p>
+                <span class="tag tag-shipped" style="text-align:center;">Resolved</span>
+              </div>
+              <div style="display:grid;grid-template-columns:7rem 1fr 7rem;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e3e3de;">
+                <p class="font-label" style="color:#c2c6d6;">Concern 05</p>
+                <p class="cs-outcome-text">Right-click menu options restored for affected grids</p>
+                <span class="tag tag-shipped" style="text-align:center;">Resolved</span>
+              </div>
+              <div style="display:grid;grid-template-columns:7rem 1fr 7rem;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e3e3de;">
+                <p class="font-label" style="color:#c2c6d6;">Concern 06</p>
+                <p class="cs-outcome-text">Data transfer fixes across interoped tools</p>
+                <span class="tag tag-shipped" style="text-align:center;">Resolved</span>
+              </div>
+              <div style="display:grid;grid-template-columns:7rem 1fr 7rem;gap:1.5rem;align-items:center;padding:1rem 0;border-bottom:1px solid #e3e3de;">
+                <p class="font-label" style="color:#c2c6d6;">Concern 07</p>
+                <p class="cs-outcome-text">Onboarding flow: mixed environment, alert changes, desktop navigation, theming notice</p>
+                <span class="tag tag-shipped" style="text-align:center;">Shipped</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
     </div>
   </div>
-</section>
+</div>
 
-<!-- ── 04 · The Solution + Timeline ───────────────────────────── -->
-<section class="screen surf-low" data-screen-label="04 Solution" data-section-name="The Solution" data-part="Part One · Overview">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">04</span>
-        <div>
-          <span class="screen-part">Part One · Project Overview</span>
-          <h2 class="screen-title">The Solution</h2>
-        </div>
-      </div>
-      <div class="screen-meta">9 months · 4 phases</div>
-    </header>
-    <div class="screen-body">
-      <p class="body-lede" style="max-width:46rem;margin-bottom:2.5rem;">I made the case through domain knowledge alone. I got development reprioritized, addressed every resolvable concern before launch, and designed disclosure for the two that couldn't be fixed before users encountered them.</p>
-
-      <div class="timeline">
-        <div class="tl-step">
-          <span class="tl-month">Month 01</span>
-          <p class="tl-text">Domain investigation: platform comparison, concern identification.</p>
-        </div>
-        <div class="tl-step">
-          <span class="tl-month">Month 02</span>
-          <p class="tl-text">Concerns raised and advocated for users with the product team.</p>
-        </div>
-        <div class="tl-step">
-          <span class="tl-month">Month 03</span>
-          <p class="tl-text">Onboarding flow designed for unresolvable concerns.</p>
-        </div>
-        <div class="tl-step">
-          <span class="tl-month">Month 04 — 09</span>
-          <p class="tl-text">Dev reprioritization: every resolvable concern addressed before launch.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 05 · My Impact ─────────────────────────────────────────── -->
-<section class="screen" data-screen-label="05 Impact" data-section-name="My Impact" data-part="Part One · Overview">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">05</span>
-        <div>
-          <span class="screen-part">Part One · Project Overview</span>
-          <h2 class="screen-title">My Impact</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Outcomes at scale</div>
-    </header>
-    <div class="screen-body">
-      <div class="bigstats">
-        <div class="bigstat">
-          <div class="n">3M</div>
-          <div class="l">Users forced to migrate</div>
-        </div>
-        <div class="bigstat">
-          <div class="n">6,500<span style="font-size:0.5em;">+</span></div>
-          <div class="l">Global financial firms</div>
-        </div>
-        <div class="bigstat">
-          <div class="n">7 / 5</div>
-          <div class="l">Concerns surfaced — resolved before launch</div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ── 06 · Discover / 7 Concerns Index ───────────────────────── -->
-<section class="screen surf-low" data-screen-label="06 Discover" data-section-name="Discover" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">06</span>
-        <div>
-          <span class="screen-part">Part Two · Discover</span>
-          <h2 class="screen-title">The Seven Concerns</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Systematic platform comparison</div>
-    </header>
-    <div class="screen-body" style="gap:1.5rem;">
-      <p class="body-prose" style="max-width:46rem;margin-bottom:0.5rem;">I reviewed actual trader desktop setups across user segments and ran a systematic platform comparison. That investigation surfaced seven usability concerns specific to the migration, each documented with context, user impact, and resolvability.</p>
-      <div class="concern-grid">
-        <div class="concern-cell summary">
-          <span class="num">07</span>
-          <span class="lbl">Concerns<br>Documented</span>
-        </div>
-        <div class="concern-cell" data-go="6"><span class="num">01</span><span class="nm">Visual Differences</span><span class="sv">Sev: Medium</span></div>
-        <div class="concern-cell" data-go="7"><span class="num">02</span><span class="nm">Mixed Desktop Layouts</span><span class="sv high">Sev: High</span></div>
-        <div class="concern-cell" data-go="8"><span class="num">03</span><span class="nm">Triggered Alerts</span><span class="sv high">Sev: High</span></div>
-        <div class="concern-cell" data-go="9"><span class="num">04</span><span class="nm">Alert Configuration</span><span class="sv high">Sev: High</span></div>
-        <div class="concern-cell" data-go="10"><span class="num">05</span><span class="nm">Right-Click Menu Loss</span><span class="sv">Sev: Med–High</span></div>
-        <div class="concern-cell" data-go="11"><span class="num">06</span><span class="nm">No Data Transfer</span><span class="sv high">Sev: High</span></div>
-        <div class="concern-cell" data-go="12"><span class="num">07</span><span class="nm">Tools Outside Desktop Manager</span><span class="sv">Sev: Medium</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 07 · Concern 01 ────────────────────────────────────────── -->
-<section class="screen" data-screen-label="07 Concern 01" data-section-name="C01 · Visual Differences" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">07</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 01 of 07</span>
-          <h2 class="screen-title">Visual Differences</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Theming as workflow</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">01</span>
-          <p class="desc">Traders use desktop theming as a workflow cue. Running both platforms simultaneously creates a mixed-theme desktop with no consistent visual language — disorienting users from day one.</p>
-          <div class="tags">
-            <span class="concern-tag">Severity · Medium</span>
-            <span class="concern-tag partial">Addressed via onboarding</span>
-          </div>
-        </div>
-        <div class="concern-detail-right">
-          <div class="concern-img">
-            <p class="cap">Legacy platform</p>
-            <img src="assets/Migration_Old Fidessa Desktop.png" alt="Legacy Fidessa desktop, dark theme, dense multi-window layout" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img">
-            <p class="cap new">New platform</p>
-            <img src="assets/Migration_New-Platform-Workspace.png" alt="New Fidessa platform workspace, dark theme, multi-panel layout" style="width:100%;display:block;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 08 · Concern 02 ────────────────────────────────────────── -->
-<section class="screen surf-low" data-screen-label="08 Concern 02" data-section-name="C02 · Desktop Layouts" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">08</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 02 of 07</span>
-          <h2 class="screen-title">Mixed Desktop Layouts</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Screen real-estate</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">02</span>
-          <p class="desc">Traders organize their desktops using tabs and grouped windows. When a layout includes tools from both platforms, migration automatically breaks it apart. Screen real estate is critical.</p>
-          <div class="tags">
-            <span class="concern-tag sev-high">Severity · High</span>
-            <span class="concern-tag partial">Partially resolved</span>
-          </div>
-        </div>
-        <div class="concern-detail-right">
-          <div class="concern-img">
-            <p class="cap">Legacy platform</p>
-            <img src="assets/Migration_Legacy-Decoupling.png" alt="Legacy platform desktop layout with grouped windows and tabs" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img">
-            <p class="cap new">New platform</p>
-            <img src="assets/Migration_New-Decoupling.png" alt="New platform desktop layout with decoupled windows after migration" style="width:100%;display:block;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 09 · Concern 03 ────────────────────────────────────────── -->
-<section class="screen" data-screen-label="09 Concern 03" data-section-name="C03 · Triggered Alerts" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">09</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 03 of 07</span>
-          <h2 class="screen-title">Triggered Alerts</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Notifications across two systems</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">03</span>
-          <p class="desc">Alerts on the new platform surface through the Alert Manager — except Type 4 alerts, which surface in a separate dropdown. Users with Type 4 alerts receive notifications from <b style="color:#1b1c19;">two different places</b>.</p>
-          <div class="tags">
-            <span class="concern-tag sev-high">Severity · High</span>
-            <span class="concern-tag resolved">Resolved pre-launch</span>
-          </div>
-        </div>
-        <div class="concern-detail-right" style="grid-template-columns:1fr;">
-          <div class="concern-img" style="grid-column:1/-1;">
-            <p class="cap">Legacy platform</p>
-            <img src="assets/Migration_Legacy-Notifications.png" alt="Legacy platform alert notifications" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img" style="grid-column:1/-1;">
-            <p class="cap new">New platform</p>
-            <img src="assets/Migration_New-Notifications.png" alt="New platform alert notifications showing two separate locations" style="width:100%;display:block;" />
-          </div>
-          <table class="case-table" style="font-size:0.82rem;grid-column:1/-1;margin-top:0.5rem;">
-            <thead>
-              <tr>
-                <th>Alert Type</th>
-                <th style="text-align:center;">Legacy</th>
-                <th style="text-align:center;color:#A08FEF;">New</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Pre-defined alerts migrated from FTW</td><td style="text-align:center;color:#3a9a5c;">✓</td><td style="text-align:center;color:#3a9a5c;">✓</td></tr>
-              <tr><td>Pre-defined non-grid alerts</td><td style="text-align:center;color:#c0392b;">✗</td><td style="text-align:center;color:#3a9a5c;">✓</td></tr>
-              <tr><td>User-defined filter-based alerts</td><td style="text-align:center;color:#c0392b;">✗</td><td style="text-align:center;color:#3a9a5c;">✓</td></tr>
-              <tr><td>Pre-defined FTW-only alerts</td><td style="text-align:center;color:#3a9a5c;">✓</td><td style="text-align:center;color:#3a9a5c;">✓</td></tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 10 · Concern 04 ────────────────────────────────────────── -->
-<section class="screen surf-low" data-screen-label="10 Concern 04" data-section-name="C04 · Alert Configuration" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">10</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 04 of 07</span>
-          <h2 class="screen-title">Alert Configuration</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Two settings panels</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">04</span>
-          <p class="desc">In the legacy platform, alerts are configured through the Settings menu. In the new platform, this lives in the Alerts and Sounds window — leaving users hunting across two distinct configuration surfaces.</p>
-          <div class="tags">
-            <span class="concern-tag sev-high">Severity · High</span>
-            <span class="concern-tag resolved">Resolved pre-launch</span>
-          </div>
-        </div>
-        <div class="concern-detail-right">
-          <div class="concern-img">
-            <p class="cap">Legacy — Alert Hub</p>
-            <img src="assets/Migration_Legacy-AlertHub.png" alt="Legacy platform alert hub in Settings menu" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img">
-            <p class="cap new">New — Alerts &amp; Sounds</p>
-            <img src="assets/Migration_New-AlertHub.png" alt="New platform Alerts and Sounds configuration window" style="width:100%;display:block;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 11 · Concern 05 ────────────────────────────────────────── -->
-<section class="screen" data-screen-label="11 Concern 05" data-section-name="C05 · Right-Click Menus" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">11</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 05 of 07</span>
-          <h2 class="screen-title">Loss of Right-Click Menus</h2>
-        </div>
-      </div>
-      <div class="screen-meta">US workflow loss</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">05</span>
-          <p class="desc">Right-click menus default to the European configuration, leaving US region-specific workflow options absent. Traders are optimized for speed — added steps compound across hundreds of daily actions.</p>
-          <div class="tags">
-            <span class="concern-tag">Severity · Med–High</span>
-            <span class="concern-tag resolved">Resolved pre-launch</span>
-          </div>
-        </div>
-        <div class="concern-detail-right">
-          <div class="concern-img">
-            <p class="cap">Legacy · US menu</p>
-            <img src="assets/Migration_Legacy-RightClick.png" alt="Legacy platform right-click menu with US region-specific options" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img">
-            <p class="cap new">New · default EU menu</p>
-            <img src="assets/Migration_New-RightClick.png" alt="New platform right-click menu defaulting to European configuration" style="width:100%;display:block;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 12 · Concern 06 ────────────────────────────────────────── -->
-<section class="screen surf-low" data-screen-label="12 Concern 06" data-section-name="C06 · Data Transfer" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">12</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 06 of 07</span>
-          <h2 class="screen-title">No Data Transfer Between Tools</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Lost context mid-task</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">06</span>
-          <p class="desc">When an action in one platform triggers a tool in the other, data does not carry across — forcing users to re-enter information mid-task and interrupting time-sensitive workflows.</p>
-          <div class="tags">
-            <span class="concern-tag sev-high">Severity · High</span>
-            <span class="concern-tag resolved">Resolved pre-launch</span>
-          </div>
-        </div>
-        <div class="concern-detail-right">
-          <div class="concern-img">
-            <p class="cap">Legacy → Legacy</p>
-            <img src="assets/Migration_Legacy-DataTransfer.png" alt="Legacy platform data transfer between tools, context carries" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img">
-            <p class="cap new">Legacy → New</p>
-            <img src="assets/Migration_New-DataTransfer.png" alt="Cross-platform action where context is dropped" style="width:100%;display:block;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 13 · Concern 07 ────────────────────────────────────────── -->
-<section class="screen" data-screen-label="13 Concern 07" data-section-name="C07 · Tooling Access" data-part="Part Two · Discover">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">13</span>
-        <div>
-          <span class="screen-part">Part Two · Concern 07 of 07</span>
-          <h2 class="screen-title">Legacy Tools Outside Desktop Manager</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Split tool navigation</div>
-    </header>
-    <div class="screen-body">
-      <div class="concern-detail">
-        <div class="concern-detail-left">
-          <span class="bignum">07</span>
-          <p class="desc">In the new platform, tools open through the Desktop Manager. Legacy-only tools cannot be added there and must still be accessed through the legacy menu bar — splitting tool navigation across two separate systems.</p>
-          <div class="tags">
-            <span class="concern-tag">Severity · Medium</span>
-            <span class="concern-tag resolved">Resolved pre-launch</span>
-          </div>
-        </div>
-        <div class="concern-detail-right">
-          <div class="concern-img">
-            <p class="cap">Legacy · Menu bar</p>
-            <img src="assets/Migration_Legacy-Tooling.png" alt="Legacy platform menu bar with three dedicated tool items" style="width:100%;display:block;" />
-          </div>
-          <div class="concern-img">
-            <p class="cap new">New · Desktop Manager</p>
-            <img src="assets/Migration_New-Tooling.png.png" alt="New platform Desktop Manager, legacy tools absent" style="width:100%;display:block;" />
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 14 · The Decision (Advocate) ───────────────────────────── -->
-<section class="screen surf-low" data-screen-label="14 Decision" data-section-name="The Decision" data-part="Part Three · Advocate">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">14</span>
-        <div>
-          <span class="screen-part">Part Three · Advocate</span>
-          <h2 class="screen-title">The Decision</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Two paths to the PM</div>
-    </header>
-    <div class="screen-body">
-      <p style="font-family:'Newsreader',serif;font-style:italic;font-size:0.95rem;color:#737785;margin:0 0 1.75rem;">Every bike shop was closed. I fixed it anyway.</p>
-      <p class="body-lede" style="max-width:48rem;margin-bottom:2.5rem;">The original plan was to ship with known concerns and address them post-launch. I pushed back. The concerns were more disruptive than the plan assumed, and there was no realistic dev bandwidth to fix them later either.</p>
-      <div class="compare" style="margin-bottom:2rem;">
-        <div class="a">
-          <p class="compare-label">Option 1 · Ship as planned</p>
-          <p class="compare-quote">Hit the February 2026 deadline. Conduct usability testing to document the disruption. Use the results to make the case to stakeholders post-launch.</p>
-        </div>
-        <div class="b">
-          <p class="compare-label">Option 2 · Rescope</p>
-          <p class="compare-quote">Address the highest-impact blockers before forcing 3M users to migrate. Delay resolves risk rather than defers it.</p>
-        </div>
-      </div>
-      <p class="cs-quote" style="max-width:44rem;margin-top:2rem;border-left:2px solid #A08FEF;padding-left:1.5rem;">No one asked me to audit the migration. I saw the risk, started investigating, and brought the findings to the PM with a clear recommendation. That investigation changed the launch plan.</p>
-      </div>
-  </div>
-</section>
-
-<!-- ── 15 · Making the Case ───────────────────────────────────── -->
-<section class="screen" data-screen-label="15 Making the Case" data-section-name="Making the Case" data-part="Part Three · Advocate">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">15</span>
-        <div>
-          <span class="screen-part">Part Three · Advocate</span>
-          <h2 class="screen-title">Making the Case</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Domain reasoning, no test data</div>
-    </header>
-    <div class="screen-body">
-      <p class="body-prose" style="max-width:46rem;margin-bottom:1.25rem;">The harder task was advocating internally for dev resources before launch. I reframed each concern as a revenue risk and ranked them by impact to give the PM a prioritized, actionable case rather than a list of UX complaints.</p>
-      <table class="case-table">
-        <thead>
-          <tr><th>#</th><th>Concern</th><th>Argument</th><th>Severity</th><th>Outcome</th></tr>
-        </thead>
-        <tbody>
-          <tr><td class="num">01</td><td class="concern">Visual Differences</td><td>Mixed themes create disorientation from day one.</td><td class="sev med">Medium</td><td class="res">Onboarding</td></tr>
-          <tr><td class="num">02</td><td class="concern">Mixed Desktop Layouts</td><td>Breaking grouped layouts on migration generates immediate backlash.</td><td class="sev high">High</td><td class="res">Partial</td></tr>
-          <tr><td class="num">03 · 04</td><td class="concern">Alerts (Triggered + Config)</td><td>Two notification sources = missed alerts = revenue risk.</td><td class="sev high">High</td><td class="res shipped">Resolved</td></tr>
-          <tr><td class="num">05</td><td class="concern">Right-Click Menus</td><td>Added steps compound across hundreds of daily actions.</td><td class="sev">Med–High</td><td class="res shipped">Resolved</td></tr>
-          <tr><td class="num">06</td><td class="concern">No Data Transfer</td><td>Re-entering context interrupts time-sensitive workflows.</td><td class="sev high">High</td><td class="res shipped">Resolved</td></tr>
-          <tr><td class="num">07</td><td class="concern">Tools Outside Desktop Manager</td><td>Users look in legacy menu, assume tools are gone.</td><td class="sev med">Medium</td><td class="res shipped">Resolved</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ── 16 · Onboarding (Design) ───────────────────────────────── -->
-<section class="screen surf-low" data-screen-label="16 Onboarding" data-section-name="Onboarding Flow" data-part="Part Four · Design">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">16</span>
-        <div>
-          <span class="screen-part">Part Four · Design</span>
-          <h2 class="screen-title">Onboarding Flow</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Setting expectations before users hit them</div>
-    </header>
-    <div class="screen-body">
-      <div class="onboarding-layout">
-        <div>
-          <p class="body-prose" style="margin-bottom:1.5rem;">I designed the onboarding announcement to get ahead of the two concerns we couldn't resolve. Users knew what to expect before they encountered them.</p>
-          <p class="field-label" style="margin-top:1.5rem;">Content covered</p>
-          <ul class="dash">
-            <li>The mixed tool environment and what it means for desktop organization</li>
-            <li>New alert functionality and where alerts now surface</li>
-            <li>Location of legacy toolbar in the new environment</li>
-            <li>Notice about previously grouped or tabbed tools</li>
-            <li>Theming acknowledged transparently — committed for future release</li>
-          </ul>
-        </div>
-        <div>
-          <img src="assets/Migration_OnboardingFlow.png" alt="Onboarding flow: first-time platform launch announcement" style="width:100%;display:block;" />
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 17 · What Shipped ──────────────────────────────────────── -->
-<section class="screen" data-screen-label="17 Shipped" data-section-name="What Shipped" data-part="Part Five · Outcome">
-  <div class="screen-inner">
-    <header class="screen-head">
-      <div class="screen-eyebrow">
-        <span class="screen-num">17</span>
-        <div>
-          <span class="screen-part">Part Five · Outcome</span>
-          <h2 class="screen-title">What Shipped</h2>
-        </div>
-      </div>
-      <div class="screen-meta">Feb 2026 · Gradual rollout</div>
-    </header>
-    <div class="screen-body">
-      <p class="body-prose" style="max-width:46rem;margin-bottom:1.5rem;">A forced migration of 3M users, rolled out gradually across 6,500+ global firms tied to each client's update cycle. Five of seven concerns resolved before go-live. Two disclosed proactively with committed resolution dates.</p>
-      <div class="shipped-list">
-        <div class="shipped-row">
-          <span class="cn">Concern 01</span>
-          <span class="tx">Theming — committed for future release, disclosed to users at launch</span>
-          <span class="st backlog">Post-launch</span>
-        </div>
-        <div class="shipped-row">
-          <span class="cn">Concern 02</span>
-          <span class="tx">Layout decoupling — &lt;1% of desktop setups affected, documented and disclosed</span>
-          <span class="st backlog">Post-launch</span>
-        </div>
-        <div class="shipped-row">
-          <span class="cn">Concern 03 · 04</span>
-          <span class="tx">Alert types from both platforms accessible through the new platform alert area</span>
-          <span class="st shipped">Resolved</span>
-        </div>
-        <div class="shipped-row">
-          <span class="cn">Concern 05</span>
-          <span class="tx">Right-click menu options restored for affected grids</span>
-          <span class="st shipped">Resolved</span>
-        </div>
-        <div class="shipped-row">
-          <span class="cn">Concern 06</span>
-          <span class="tx">Data transfer fixes across interoped tools</span>
-          <span class="st shipped">Resolved</span>
-        </div>
-        <div class="shipped-row">
-          <span class="cn">Concern 07</span>
-          <span class="tx">Onboarding flow: mixed environment, alert changes, desktop navigation, theming notice</span>
-          <span class="st shipped">Shipped</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ── 18 · End / Reflection ──────────────────────────────────── -->
-<section class="screen end-screen" data-screen-label="18 End" data-section-name="End" data-part="Reflection">
-  <div class="screen-inner">
-    <div class="end-card">
-      <p class="label">End of Case Study №01</p>
-      <h2>Three million users.<br>No live trading lost.</h2>
-      <p class="signoff">Samantha Lee, Senior UX Designer at ION Group</p>
-      <div class="links">
-        <a href="#" id="back-top">↑ Back to top</a>
-        <a href="mailto:samlee616@gmail.com">Get in touch</a>
-        <a href="resume.pdf" target="_blank">View résumé</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<script type="text/babel" src="tweaks-panel.jsx"></script>
-
+<div id="site-footer"></div>
+<script src="components/footer.js"></script>
+<script src="scripts/scroll-observer.js"></script>
 <script>
-/* ─── Section nav + progress + counter ─────────────────────────── */
-(function () {
-  const screens = Array.from(document.querySelectorAll('.screen'));
-  const rail = document.getElementById('rail');
-  const sidenav = document.getElementById('sidenav');
-  const progress = document.getElementById('progress');
-  const counterCur = document.getElementById('counter-cur');
-  const counterTot = document.getElementById('counter-tot');
-  const topbarSection = document.getElementById('topbar-section');
-  const pagehint = document.getElementById('pagehint');
+  (function () {
+    const nav = document.querySelector('.cs-sidenav-links');
+    if (!nav) return;
 
-  counterTot.textContent = String(screens.length).padStart(2, '0');
+    const links = Array.from(nav.querySelectorAll('.nav-link'));
 
-  // Build right-side dot rail
-  screens.forEach((sc, i) => {
-    const btn = document.createElement('button');
-    btn.className = 'fs-rail-dot';
-    btn.setAttribute('aria-label', `Go to section ${i + 1}`);
-    btn.dataset.idx = i;
-    const dot = document.createElement('span'); dot.className = 'dot';
-    const lbl = document.createElement('span'); lbl.className = 'lbl';
-    const name = sc.getAttribute('data-section-name') || `Section ${i + 1}`;
-    lbl.textContent = `${String(i + 1).padStart(2, '0')} · ${name}`;
-    btn.appendChild(lbl); btn.appendChild(dot);
-    btn.addEventListener('click', () => scrollToScreen(i));
-    rail.appendChild(btn);
-
-    // Add small gap between part groups
-    const part = sc.getAttribute('data-part') || '';
-    const next = screens[i + 1];
-    const nextPart = next ? (next.getAttribute('data-part') || '') : part;
-    if (nextPart !== part) {
-      const sep = document.createElement('span'); sep.className = 'fs-rail-sep';
-      rail.appendChild(sep);
-    }
-  });
-
-  // Build optional side nav (full labels)
-  screens.forEach((sc, i) => {
-    const btn = document.createElement('button');
-    btn.dataset.idx = i;
-    const ix = document.createElement('span'); ix.className = 'ix';
-    ix.textContent = String(i + 1).padStart(2, '0');
-    const nm = document.createElement('span');
-    nm.textContent = sc.getAttribute('data-section-name') || `Section ${i + 1}`;
-    btn.appendChild(ix); btn.appendChild(nm);
-    btn.addEventListener('click', () => scrollToScreen(i));
-    sidenav.appendChild(btn);
-  });
-
-  function scrollToScreen(i) {
-    if (i < 0 || i >= screens.length) return;
-    screens[i].scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  // Track current section via IntersectionObserver
-  let currentIdx = 0;
-  const railDots = rail.querySelectorAll('.fs-rail-dot');
-  const sideButtons = sidenav.querySelectorAll('button');
-
-  function setActive(idx) {
-    if (idx === currentIdx) return;
-    currentIdx = idx;
-    railDots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    sideButtons.forEach((b, i) => b.classList.toggle('active', i === idx));
-    counterCur.textContent = String(idx + 1).padStart(2, '0');
-    const sc = screens[idx];
-    topbarSection.textContent = sc.getAttribute('data-section-name') || 'Platform Migration';
-    progress.style.width = ((idx + 1) / screens.length * 100) + '%';
-
-    // Toggle dark chrome on dark screens
-    document.body.classList.toggle('on-dark', sc.classList.contains('end-screen') || sc.classList.contains('surf-ink'));
-  }
-
-  // Pick the screen whose center is nearest viewport center
-  function detectCurrent() {
-    const vc = window.innerHeight / 2;
-    let best = 0, bestDist = Infinity;
-    screens.forEach((sc, i) => {
-      const r = sc.getBoundingClientRect();
-      const c = r.top + r.height / 2;
-      const d = Math.abs(c - vc);
-      if (d < bestDist) { bestDist = d; best = i; }
+    // Group: each top-level nav-link owns the sub/sub-sub links that follow it
+    const groups = [];
+    let current = null;
+    links.forEach(link => {
+      const isSub = link.classList.contains('nav-link-sub') ||
+                    link.classList.contains('nav-link-sub-sub');
+      if (!isSub) {
+        current = { parent: link, children: [] };
+        groups.push(current);
+      } else if (current) {
+        current.children.push(link);
+      }
     });
-    setActive(best);
-  }
 
-  let scrollTimer;
-  window.addEventListener('scroll', () => {
-    clearTimeout(scrollTimer);
-    scrollTimer = setTimeout(detectCurrent, 30);
-    // Fade hint after first scroll
-    pagehint.classList.add('fade');
-  }, { passive: true });
-
-  // Initial
-  detectCurrent();
-
-  // Keyboard nav
-  window.addEventListener('keydown', (e) => {
-    if (e.target && (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA')) return;
-    if (e.key === 'ArrowDown' || e.key === 'PageDown' || e.key === ' ') {
-      e.preventDefault();
-      scrollToScreen(currentIdx + 1);
-    } else if (e.key === 'ArrowUp' || e.key === 'PageUp') {
-      e.preventDefault();
-      scrollToScreen(currentIdx - 1);
-    } else if (e.key === 'Home') {
-      e.preventDefault();
-      scrollToScreen(0);
-    } else if (e.key === 'End') {
-      e.preventDefault();
-      scrollToScreen(screens.length - 1);
-    }
-  });
-
-  // Concern grid → jump to that concern's screen
-  document.querySelectorAll('.concern-cell[data-go]').forEach(cell => {
-    cell.addEventListener('click', () => {
-      scrollToScreen(parseInt(cell.dataset.go, 10));
+    // Hide all sub-links initially
+    groups.forEach(({ children }) => {
+      children.forEach(child => { child.style.display = 'none'; });
     });
-  });
 
-  // Back to top in end screen
-  const backTop = document.getElementById('back-top');
-  if (backTop) backTop.addEventListener('click', (e) => { e.preventDefault(); scrollToScreen(0); });
+    // Show children whose parent is active (or any child is active), hide the rest
+    function syncVisibility() {
+      groups.forEach(({ parent, children }) => {
+        const show = parent.classList.contains('active') ||
+                     children.some(c => c.classList.contains('active'));
+        children.forEach(child => { child.style.display = show ? '' : 'none'; });
+      });
+    }
 
-  // Expose for Tweaks
-  window.__fsCaseStudy = { scrollToScreen, screens };
-})();
+    // Watch every nav-link for class changes set by the scroll-observer
+    const mo = new MutationObserver(syncVisibility);
+    links.forEach(link => mo.observe(link, { attributes: true, attributeFilter: ['class'] }));
+
+    syncVisibility();
+    // Re-run after IntersectionObserver has had a frame to fire for visible sections
+    requestAnimationFrame(syncVisibility);
+  })();
 </script>
 
-<div id="tweaks-root"></div>
-<script type="text/babel">
-/* ─── Tweaks Panel ─────────────────────────────────────────────── */
-const { useEffect } = React;
-
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "navStyle": "rail",
-  "snap": "soft",
-  "density": "default",
-  "showCounter": true
-}/*EDITMODE-END*/;
-
-function App() {
-  const [t, setTweak] = useTweaks(TWEAK_DEFAULTS);
-
-  useEffect(() => { document.body.dataset.nav = t.navStyle; }, [t.navStyle]);
-
-  useEffect(() => {
-    document.body.classList.remove('fs-snap', 'fs-soft', 'fs-off');
-    if (t.snap === 'hard')      document.body.classList.add('fs-snap');
-    else if (t.snap === 'soft') document.body.classList.add('fs-soft');
-    else                        document.body.classList.add('fs-off');
-  }, [t.snap]);
-
-  useEffect(() => {
-    document.body.classList.remove('density-tight', 'density-default', 'density-airy');
-    document.body.classList.add('density-' + t.density);
-  }, [t.density]);
-
-  useEffect(() => {
-    const c = document.querySelector('.fs-topbar-counter');
-    if (c) c.style.display = t.showCounter ? '' : 'none';
-  }, [t.showCounter]);
-
-  return (
-    <TweaksPanel title="Tweaks">
-      <TweakSection label="Navigation" />
-      <TweakRadio
-        label="Style"
-        value={t.navStyle}
-        options={[
-          { value: 'rail',    label: 'Rail' },
-          { value: 'side',    label: 'Side' },
-          { value: 'minimal', label: 'Off' },
-        ]}
-        onChange={v => setTweak('navStyle', v)}
-      />
-
-      <TweakSection label="Scrolling" />
-      <TweakRadio
-        label="Snap"
-        value={t.snap}
-        options={[
-          { value: 'hard', label: 'Hard' },
-          { value: 'soft', label: 'Soft' },
-          { value: 'off',  label: 'Off' },
-        ]}
-        onChange={v => setTweak('snap', v)}
-      />
-
-      <TweakSection label="Density" />
-      <TweakRadio
-        label="Scale"
-        value={t.density}
-        options={[
-          { value: 'tight',   label: 'Tight' },
-          { value: 'default', label: 'Default' },
-          { value: 'airy',    label: 'Airy' },
-        ]}
-        onChange={v => setTweak('density', v)}
-      />
-
-      <TweakSection label="Chrome" />
-      <TweakToggle
-        label="Section counter"
-        value={t.showCounter}
-        onChange={v => setTweak('showCounter', v)}
-      />
-    </TweaksPanel>
-  );
-}
-
-ReactDOM.createRoot(document.getElementById('tweaks-root')).render(<App />);
-</script>
-
-<script src="components/notes-tool.js"></script>
 </body>
 </html>
