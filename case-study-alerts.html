@@ -69,7 +69,7 @@
   <header class="cs-hero" style="padding-top: 2.5rem;">
     <div class="cs-hero-grid">
       <p class="cs-hero-desc">
-        Redesigned order-level alerting for front office traders at Fidessa. Adoption was at 13%. Triggers were limited to order state changes, not the performance fields traders actually watch. Within 12 months of launch, alerts created across the platform increased <span style="color:#A08FEF;font-weight:600;">34x</span>.</p>
+        Redesigned order-level alerting for front office traders at Fidessa. Adoption was at 13%. Triggers were limited to order state changes, not the performance fields traders actually watch. Six months after rollout, alerts created across the platform increased <span style="color:#A08FEF;font-weight:600;">34x</span>.</p>
       <div class="cs-meta">
         <div class="cs-meta-row">
           <span class="font-label cs-meta-label">
@@ -251,7 +251,7 @@
           <!-- The Problem -->
           <div id="pf-problem" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">The Problem</h3>
-            <p class="body-text" style="margin-bottom:2rem;">Front office traders monitor 100–10,000 orders at any moment with no automated way to flag which need attention. The only fallback is filtered grids. Adoption sat at 13%, with most users having inherited alerts from a colleague. Triggers were limited to order state changes, not the performance fields traders actually watch. A new regional client also required single-order alerting as a contract condition.</p>
+            <p class="body-text" style="margin-bottom:2rem;">Front office traders monitor 500 to 10,000 orders at any moment with no automated way to flag which need attention. The only fallback is filtered grids. Adoption sat at 13%, with most users having inherited alerts from a colleague. Triggers were limited to order state changes, not the performance fields traders actually watch. A new regional client also required single-order alerting as a contract condition.</p>
             <div style="margin-bottom:2rem;">
               <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Stated Ask</p>
               <p class="body-text">Allow alerting on single orders and alert triggering on order metadata.</p>
@@ -378,7 +378,7 @@
                   <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
                     <li class="body-text">Fragmented alerting functionality consolidated into a single hub, reducing code duplication across the platform</li>
                     <li class="body-text">Threshold and performance-based alerting brought to parity with alternative trading platforms</li>
-                    <li class="body-text">Manual order monitoring replaced with system-driven alerts across 100–10,000 orders per trader</li>
+                    <li class="body-text">Manual order monitoring replaced with system-driven alerts across 500 to 10,000 orders per trader</li>
                   </ul>
                 </div>
               </div>
@@ -454,7 +454,7 @@
           <!-- Competitive Analysis -->
           <div id="pf-benchmarking" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Competitive Analysis</h3>
-            <p class="body-text" style="margin-bottom:2rem;">A review of alerting in comparable trading tools established what standard capability looks like, not to copy patterns, but to identify where the platform was falling short. Research confirmed the gap: some firms run multiple trading platforms simultaneously, giving traders access to more advanced alerting elsewhere. As those platforms expand their coverage, the capability gap on Fidessa becomes harder to justify.</p>
+            <p class="body-text" style="margin-bottom:2rem;">I ran a competitive analysis across both financial and non-financial tools. I started by looking for comparable financial platforms, but access was limited, so I widened the research to other products that handle alerting and notifications for high-volume data. The pattern was consistent: threshold-based triggering, a centralized hub, and actionability from a notification are baseline functionality. Fidessa had none of them. That comparison mattered because it reframed the problem for the PM: this was not users asking for something extra, this was the platform falling behind what users expected.</p>
             <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1px;">
               <div class="cs-card">
                 <p class="font-label cs-card-label">Industry standard</p>
@@ -573,7 +573,7 @@
           <!-- Key Insights -->
           <div id="pf-insights" class="cs-subsection-block scroll-mt-24">
             <h3 class="cs-subsection-title">Key Insights</h3>
-            <p class="body-text" style="margin-bottom:1.75rem;">Fidessa's alert system wasn't built for front office volume. Alerts fired on errors, confirming damage after the fact rather than preventing it. At 100 to 10,000 orders at any moment per trader, the system needs to replace active monitoring entirely.</p>
+            <p class="body-text" style="margin-bottom:1.75rem;">Fidessa's alert system wasn't built for front office volume. Alerts fired on errors, confirming damage after the fact rather than preventing it. At 500 to 10,000 orders at any moment per trader, the system needs to replace active monitoring entirely.</p>
             <div class="cs-grid-2">
               <div class="cs-card">
                 <i data-lucide="list-filter" style="width:1.25rem;height:1.25rem;color:#A08FEF;margin-bottom:0.75rem;"></i>
@@ -1035,7 +1035,7 @@
           <div class="cs-grid-2 mb-8">
             <div class="cs-compare-original">
               <p class="font-label cs-compare-label">Round 1 scope</p>
-              <p class="cs-quote" style="color:#424654;">Single and multi-order alerts with order metadata triggers, within the existing architecture.</p>
+              <p class="cs-quote" style="color:#424654;">Single-order alert design with order metadata triggers, matching the original brief.</p>
             </div>
             <div class="cs-compare-rescoped">
               <p class="font-label cs-compare-label-blue">Full redesign</p>
@@ -1287,7 +1287,7 @@
             <div class="stat-block stat-block-lg">
               <span class="stat-number stat-number-lg">34×</span>
               <p class="font-label cs-stat-label mb-1">
-                Within 12 months</p>
+                Six months after rollout</p>
               <p class="body-text-sm">
                 increase in alerts created across the platform</p>
             </div>
@@ -1313,7 +1313,7 @@
             <div>
               <p class="font-label cs-field-label" style="margin-bottom:0.75rem;">Project Impact</p>
               <ul style="list-style:disc;padding-left:1.25rem;display:flex;flex-direction:column;gap:0.6rem;">
-                <li class="body-text">34x increase in alerts created within 12 months, surpassing the 20x target set by the head of product</li>
+                <li class="body-text">34x increase in alerts created six months after rollout, surpassing the 20x target set by the head of product</li>
                 <li class="body-text">6,500+ firms gained threshold alerting on par with alternative trading platforms, closing a capability gap that had been a consistent source of competitive frustration</li>
                 <li class="body-text">First UX-led project at Fidessa to ship, with developer collaboration throughout ensuring technical feasibility and establishing a process that subsequent projects followed</li>
               </ul>
